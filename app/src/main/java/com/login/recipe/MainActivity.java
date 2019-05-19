@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         email = (EditText)findViewById(R.id.email_input);
         password = (EditText)findViewById(R.id.password_input);
         login = (Button)findViewById(R.id.login_button);
-        register = (Button)findViewById(R.id.forgot_button);
+        register = (Button)findViewById(R.id.register_button);
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         progressDialog = new ProgressDialog(this);
