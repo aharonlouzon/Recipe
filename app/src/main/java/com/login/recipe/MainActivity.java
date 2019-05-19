@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
     private FirebaseUser user;
+    private Button forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         progressDialog = new ProgressDialog(this);
+        forgot_password = (Button)findViewById(R.id.forgot_password);
 
         if(user != null){
             finish();
@@ -57,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
                 validate(email.getText().toString(), password.getText().toString());
+            }
+        });
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, ForgotPassword.class));
             }
         });
 

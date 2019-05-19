@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Recipe</string>
     <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_set_user">SetUser</string>
+    <string name="welcome_message">
+        <![CDATA[Before we get started
+        we want to get to know you better.]]>
+    </string>
 </resources>
