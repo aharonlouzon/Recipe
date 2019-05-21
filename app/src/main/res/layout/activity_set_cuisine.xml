@@ -6,4 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".SetCuisine">
 
+    <CheckBox
+        android:id="@+id/asian_check_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="150dp"
+        android:text="Asian"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
+
+    <CheckBox
+        android:id="@+id/middle_eastern_checkbox_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="24dp"
+        android:text="Middle Eastern"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/asian_check_set_cuisine" />
+
+    <CheckBox
+        android:id="@+id/european_checkbox_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="150dp"
+        android:text="European"
+        app:layout_constraintStart_toStartOf="@+id/asian_check_set_cuisine"
+        app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
+
+    <CheckBox
+        android:id="@+id/italian_checkbox_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="24dp"
+        android:text="Italian"
+        app:layout_constraintStart_toStartOf="@+id/middle_eastern_checkbox_set_cuisine"
+        app:layout_constraintTop_toBottomOf="@+id/european_checkbox_set_cuisine" />
+
+    <CheckBox
+        android:id="@+id/meat_checkbox_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="24dp"
+        android:text="Meat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middle_eastern_checkbox_set_cuisine" />
+
+    <CheckBox
+        android:id="@+id/baking_checkbox_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="24dp"
+        android:text="Baking"
+        app:layout_constraintStart_toStartOf="@+id/meat_checkbox_set_cuisine"
+        app:layout_constraintTop_toBottomOf="@+id/italian_checkbox_set_cuisine" />
+
+    <TextView
+        android:id="@+id/cuisine_chose_msg_text_set_cuisine"
+        android:layout_width="307dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/cuisine_chose_msg"
+        android:textColor="#E91E63"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/continue_button_set_cuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginRight="75dp"
+        android:background="#E91E63"
+        android:text="Continue"
+        android:textColor="#FCFAFA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/baking_checkbox_set_cuisine" />
 </android.support.constraint.ConstraintLayout>

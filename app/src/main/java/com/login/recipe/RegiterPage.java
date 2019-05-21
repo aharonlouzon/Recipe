@@ -74,9 +74,4 @@ public class RegiterPage extends AppCompatActivity {
             }
         });
     }
-
-    private void sendUserData(){
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference reference = firebaseDatabase.getReference(firebaseAuth.getUid());
-    }
 }
