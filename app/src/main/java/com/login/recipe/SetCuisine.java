@@ -22,7 +22,11 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox meat;
     private Button continue_button;
     private UserProfile user;
+    private FirebaseUser firebaseUser;
+    private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+    private String userId;
 
 
     @Override
@@ -31,7 +35,13 @@ public class SetCuisine extends AppCompatActivity {
         setContentView(R.layout.activity_set_cuisine);
         Intent intent = getIntent();
         user = (UserProfile)intent.getSerializableExtra("user");
+
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        if (firebaseUser != null)
+            userId = firebaseUser.getUid();
+        databaseReference = firebaseDatabase.getReference(userId);
 
         asian = (CheckBox)findViewById(R.id.asian_check_set_cuisine);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_checkbox_set_cuisine);
@@ -56,16 +66,9 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("baking");
                 if(meat.isChecked())
                     user.addCuisine("meat");
-
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                FirebaseUser curUser = FirebaseAuth.getInstance().getCurrentUser();
-                String userId;
-                if (curUser != null) {
-                    userId = curUser.getUid();
-                    DatabaseReference databaseReference = firebaseDatabase.getReference(userId);
+                    //falls here
                     databaseReference.setValue(user);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
-                }
             }
         });
     }
