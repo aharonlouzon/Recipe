@@ -2,9 +2,33 @@ package com.login.recipe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class UserProfile implements Serializable {
     enum skillLevel{BEGINNER, INTEMEDIATE, PRO}
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public skillLevel getCookingSkills() {
+        return cookingSkills;
+    }
+
+    public ArrayList<String> getCuisine() {
+        return cuisine;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
     private String firstName;
     private String lastName;
     private skillLevel cookingSkills;
@@ -17,6 +41,7 @@ public class UserProfile implements Serializable {
         this.cookingSkills = cookingSkills;
         this.country = country;
     }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -51,4 +76,14 @@ public class UserProfile implements Serializable {
             }
         }
     }
+
+//    private void writeObject(ObjectOutputStream out) throws IOException {
+//        out.defaultWriteObject();
+//        out.writeObject(this.firstName);
+//    }
+//
+//    private void readObject(ObjectInputStream in) throws IOException,ClassNotFoundException {
+//        in.defaultReadObject();
+//        this.firstName = (String)in.readObject();
+//    }
 }
