@@ -1,6 +1,7 @@
 package com.login.recipe;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class RegiterPage extends AppCompatActivity {
     private Button sign_up;
     private Button alredy_user;
     private FirebaseAuth firebaseAuth;
+    private ProgressDialog progressDialog;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -42,12 +44,15 @@ public class RegiterPage extends AppCompatActivity {
         confirm_password = (EditText)findViewById(R.id.confirm_password_input);
         sign_up = (Button)findViewById(R.id.sign_up_button);
         alredy_user = (Button)findViewById(R.id.already_user_button);
+        progressDialog = new ProgressDialog(this);
 
         sign_up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String user_email = email.getText().toString().trim();
                 String user_password = password.getText().toString().trim();
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
                 if(email.getText().toString().isEmpty() || password.getText().toString().isEmpty() || !password.getText().toString().trim().equals(confirm_password.getText().toString().trim())) {
                     Toast.makeText(RegiterPage.this, "Invalid Input", Toast.LENGTH_SHORT);
                 }
