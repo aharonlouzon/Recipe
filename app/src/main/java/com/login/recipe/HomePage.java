@@ -31,11 +31,11 @@ public class HomePage extends AppCompatActivity {
         recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        myAdapter = new MyAdapter(this, getPlayers());
+        myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
     }
 
-    private ArrayList<Model> getPlayers(){
+    private ArrayList<Model> getRecipes(){
         ArrayList<Model> models = new ArrayList<>();
 
         Model m1 = new Model();
@@ -94,6 +94,9 @@ public class HomePage extends AppCompatActivity {
                 firebaseAuth.signOut();
                 finish();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
+            }
+            case R.id.my_area_button_user_menu: {
+                startActivity(new Intent(HomePage.this, MyArea.class));
             }
 
         }

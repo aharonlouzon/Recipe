@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SetCuisine"></activity>
+        <activity android:name=".AddRecipe"></activity>
+        <activity
+            android:name=".MyArea"
+            android:label="@string/title_activity_my_area"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SetCuisine" />
         <activity
             android:name=".SetUser"
             android:label="@string/title_activity_set_user"

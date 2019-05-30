@@ -10,4 +10,6 @@
         <![CDATA[Tell us what kind of
         do you like to cook.]]>
     </string>
+    <string name="my_area">My Area</string>
+    <string name="title_activity_my_area">MyArea</string>
 </resources>
