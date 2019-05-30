@@ -18,4 +18,16 @@ public class MyHolder extends RecyclerView.ViewHolder {
         this.title = itemView.findViewById(R.id.model_title);
         this.description = itemView.findViewById(R.id.model_card_detail);
     }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public void setTitle(TextView title) {
+        this.title = title;
+    }
+
+    public void setDescription(TextView description) {
+        this.description = description;
+    }
 }

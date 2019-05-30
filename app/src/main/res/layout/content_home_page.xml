@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="welcome!!!"
         tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="183dp" />
+        tools:layout_editor_absoluteY="183dp"
+        tools:ignore="MissingConstraints" />
 
 </android.support.constraint.ConstraintLayout>

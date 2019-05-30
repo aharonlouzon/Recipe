@@ -18,19 +18,19 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    RecyclerView recyclerView;
-    MyAdapter myAdapter;
+    private RecyclerView recyclerView;
+    private MyAdapter myAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page2);
+        setContentView(R.layout.activity_home_page);
         firebaseAuth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.home_page_recycle_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         myAdapter = new MyAdapter(this, getPlayers());
         recyclerView.setAdapter(myAdapter);
     }
@@ -42,31 +42,37 @@ public class HomePage extends AppCompatActivity {
         m1.setTitle("some title");
         m1.setDescription("some description");
         m1.setImg(R.drawable.pic1);
+        models.add(m1);
 
         Model m2 = new Model();
         m2.setTitle("some title 2");
         m2.setDescription("some description 2");
         m2.setImg(R.drawable.pic2);
+        models.add(m2);
 
         Model m3 = new Model();
         m3.setTitle("some title 2");
         m3.setDescription("some description 2");
         m3.setImg(R.drawable.pic3);
+        models.add(m3);
 
         Model m4 = new Model();
         m4.setTitle("some title");
         m4.setDescription("some description");
         m4.setImg(R.drawable.pic4);
+        models.add(m4);
 
         Model m5 = new Model();
         m5.setTitle("some title 2");
         m5.setDescription("some description 2");
         m5.setImg(R.drawable.pic5);
+        models.add(m5);
 
         Model m6 = new Model();
         m6.setTitle("some title 2");
         m6.setDescription("some description 2");
         m6.setImg(R.drawable.pic6);
+        models.add(m6);
 
 
         return models;
