@@ -7,7 +7,7 @@
     tools:context=".SetCuisine">
 
     <CheckBox
-        android:id="@+id/asian_check_set_cuisine"
+        android:id="@+id/asian_rec_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
 
     <CheckBox
-        android:id="@+id/middle_eastern_checkbox_set_cuisine"
+        android:id="@+id/middle_eastern_rec_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -26,32 +26,32 @@
         android:layout_marginTop="24dp"
         android:text="Middle Eastern"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/asian_check_set_cuisine" />
+        app:layout_constraintTop_toBottomOf="@+id/asian_rec_category" />
 
     <CheckBox
-        android:id="@+id/european_checkbox_set_cuisine"
+        android:id="@+id/european_rec_categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="150dp"
         android:text="European"
-        app:layout_constraintStart_toStartOf="@+id/asian_check_set_cuisine"
+        app:layout_constraintStart_toStartOf="@+id/asian_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
 
     <CheckBox
-        android:id="@+id/italian_checkbox_set_cuisine"
+        android:id="@+id/italian_rec_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="24dp"
         android:text="Italian"
-        app:layout_constraintStart_toStartOf="@+id/middle_eastern_checkbox_set_cuisine"
-        app:layout_constraintTop_toBottomOf="@+id/european_checkbox_set_cuisine" />
+        app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
+        app:layout_constraintTop_toBottomOf="@+id/european_rec_categories" />
 
     <CheckBox
-        android:id="@+id/meat_checkbox_set_cuisine"
+        android:id="@+id/meat_rec_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -59,18 +59,18 @@
         android:layout_marginTop="24dp"
         android:text="Meat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middle_eastern_checkbox_set_cuisine" />
+        app:layout_constraintTop_toBottomOf="@+id/middle_eastern_rec_category" />
 
     <CheckBox
-        android:id="@+id/baking_checkbox_set_cuisine"
+        android:id="@+id/baking_rec_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="24dp"
         android:text="Baking"
-        app:layout_constraintStart_toStartOf="@+id/meat_checkbox_set_cuisine"
-        app:layout_constraintTop_toBottomOf="@+id/italian_checkbox_set_cuisine" />
+        app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
+        app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
 
     <TextView
         android:id="@+id/cuisine_chose_msg_text_set_cuisine"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/continue_button_set_cuisine"
+        android:id="@+id/continue_button_add_recipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -99,5 +99,5 @@
         android:text="Continue"
         android:textColor="#FCFAFA"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/baking_checkbox_set_cuisine" />
+        app:layout_constraintTop_toBottomOf="@+id/baking_rec_category" />
 </android.support.constraint.ConstraintLayout>

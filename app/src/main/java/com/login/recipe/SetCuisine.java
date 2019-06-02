@@ -43,13 +43,13 @@ public class SetCuisine extends AppCompatActivity {
             userId = firebaseUser.getUid();
         databaseReference = firebaseDatabase.getReference(userId);
 
-        asian = (CheckBox)findViewById(R.id.asian_check_set_cuisine);
-        middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_checkbox_set_cuisine);
-        italian = (CheckBox)findViewById(R.id.italian_checkbox_set_cuisine);
-        european = (CheckBox)findViewById(R.id.european_checkbox_set_cuisine);
-        baking = (CheckBox)findViewById(R.id.baking_checkbox_set_cuisine);
-        meat = (CheckBox)findViewById(R.id.meat_checkbox_set_cuisine);
-        continue_button = (Button)findViewById(R.id.continue_button_set_cuisine);
+        asian = (CheckBox)findViewById(R.id.asian_rec_category);
+        middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
+        italian = (CheckBox)findViewById(R.id.italian_rec_category);
+        european = (CheckBox)findViewById(R.id.european_rec_categories);
+        baking = (CheckBox)findViewById(R.id.baking_rec_category);
+        meat = (CheckBox)findViewById(R.id.meat_rec_category);
+        continue_button = (Button)findViewById(R.id.continue_button_add_recipe);
 
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,14 +66,13 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("baking");
                 if(meat.isChecked())
                     user.addCuisine("meat");
-                    //falls here
+
                     databaseReference.child("first_name").setValue(user.getFirstName());
                     databaseReference.child("last_name").setValue(user.getLastName());
                     databaseReference.child("country").setValue(user.getCountry());
                     databaseReference.child("cooking_skill").setValue(user.getCookingSkills());
                     databaseReference.child("cuisine").setValue(user.getCuisine());
-//                    for (int i = 0; i < user.getCuisine().size(); i++)
-//                        databaseReference.setValue(user.getCuisine().get(i));
+
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
             }
         });

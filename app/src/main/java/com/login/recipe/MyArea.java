@@ -21,9 +21,8 @@ public class MyArea extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        avatar = (ImageView)findViewById(R.id.imageView_my_area);
-
-//        avatar.setImageDrawable(R.drawable.male_avatar.png);
+        avatar = (ImageView)findViewById(R.id.imageView_my_area);
+        avatar.setImageResource(R.drawable.male_avatar);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
