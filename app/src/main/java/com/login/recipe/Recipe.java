@@ -16,6 +16,7 @@ public class Recipe implements Serializable {
     private ArrayList<Integer> images = new ArrayList<>();
     private Map<String, String> ingredients = new HashMap<String, String>();
     private String Author;
+    private long releaseDate;
 
     public String getRecipeId() {
         return recipeId;
@@ -31,6 +32,14 @@ public class Recipe implements Serializable {
 
     public void setAuthor(String author) {
         Author = author;
+    }
+
+    public long getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(long releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getName() {

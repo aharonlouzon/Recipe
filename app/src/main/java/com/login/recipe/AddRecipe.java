@@ -129,6 +129,9 @@ public class AddRecipe extends AppCompatActivity {
                 //set author to be current user
                 recipe.setAuthor(userId);
 
+                //set release time for recipe
+                recipe.setReleaseDate(System.currentTimeMillis());
+
                 recipe.setName(title.getText().toString().trim());
                 databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
                 databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
