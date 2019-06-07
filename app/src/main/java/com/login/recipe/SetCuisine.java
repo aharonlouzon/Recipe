@@ -67,13 +67,16 @@ public class SetCuisine extends AppCompatActivity {
                 if(meat.isChecked())
                     user.addCuisine("meat");
 
-                    databaseReference.child("first_name").setValue(user.getFirstName());
-                    databaseReference.child("last_name").setValue(user.getLastName());
-                    databaseReference.child("country").setValue(user.getCountry());
-                    databaseReference.child("cooking_skill").setValue(user.getCookingSkills());
-                    databaseReference.child("cuisine").setValue(user.getCuisine());
+                //add user info to database
+                databaseReference.setValue(user.getFirstName());
 
-                    startActivity(new Intent(SetCuisine.this, HomePage.class));
+//                databaseReference.child("first_name").setValue(user.getFirstName());
+//                databaseReference.child("last_name").setValue(user.getLastName());
+//                databaseReference.child("country").setValue(user.getCountry());
+//                databaseReference.child("cooking_skill").setValue(user.getCookingSkills());
+//                databaseReference.child("cuisine").setValue(user.getCuisine());
+
+                startActivity(new Intent(SetCuisine.this, HomePage.class));
             }
         });
     }

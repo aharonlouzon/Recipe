@@ -10,10 +10,28 @@ import java.util.Set;
 public class Recipe implements Serializable {
 
     private String name;
+    private String recipeId;
     private ArrayList<String> directions = new ArrayList<>();
     private ArrayList<String> kitchenType = new ArrayList<>();
     private ArrayList<Integer> images = new ArrayList<>();
     private Map<String, String> ingredients = new HashMap<String, String>();
+    private String Author;
+
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
+    }
+
+    public String getAuthor() {
+        return Author;
+    }
+
+    public void setAuthor(String author) {
+        Author = author;
+    }
 
     public String getName() {
         return name;

@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.UUID;
+
 public class AddRecipe extends AppCompatActivity {
 
     private CheckBox asian;
@@ -41,6 +43,12 @@ public class AddRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        if (firebaseUser != null)
+            userId = firebaseUser.getUid();
 
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
@@ -114,9 +122,16 @@ public class AddRecipe extends AppCompatActivity {
                 if(meat.isChecked())
                     recipe.setKitchenType("meat");
 
+                //generate unique id
+                String uniqueID = UUID.randomUUID().toString();
+                recipe.setRecipeId(uniqueID);
+
+                //set author to be current user
+                recipe.setAuthor(userId);
+
                 recipe.setName(title.getText().toString().trim());
-                databaseReference.child("recipes").child(recipe.getName()).setValue(recipe);
-                databaseReference.getRoot().child("recipe").child(recipe.getName()).setValue(recipe);
+                databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
+                databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
 
                 startActivity(new Intent(AddRecipe.this, MyArea.class));
             }
