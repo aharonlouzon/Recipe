@@ -13,7 +13,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="24dp"
-        android:text="Asian"
+        android:text="@string/asian"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
 
@@ -24,7 +24,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="8dp"
-        android:text="Middle Eastern"
+        android:text="@string/middleEastern"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/asian_rec_category" />
 
@@ -35,7 +35,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="24dp"
-        android:text="European"
+        android:text="@string/european"
         app:layout_constraintStart_toStartOf="@+id/asian_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
 
@@ -46,7 +46,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="8dp"
-        android:text="Italian"
+        android:text="@string/italian"
         app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/european_rec_categories" />
 
@@ -57,7 +57,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="8dp"
-        android:text="Meat"
+        android:text="@string/Meat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/middle_eastern_rec_category" />
 
@@ -68,7 +68,7 @@
         android:layout_marginStart="150dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="8dp"
-        android:text="Baking"
+        android:text="@string/baking"
         app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
 
