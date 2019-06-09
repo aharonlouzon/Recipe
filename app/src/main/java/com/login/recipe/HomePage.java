@@ -12,6 +12,8 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -21,16 +23,30 @@ public class HomePage extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
 
+    private UserProfile user;
+    private FirebaseUser firebaseUser;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private String userId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        Intent intent = getIntent();
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        if (firebaseUser != null)
+            userId = firebaseUser.getUid();
+        databaseReference = firebaseDatabase.getReference(userId);
+
+
 
         recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
     }
@@ -77,7 +93,6 @@ public class HomePage extends AppCompatActivity {
 
         return models;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

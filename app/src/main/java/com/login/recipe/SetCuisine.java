@@ -68,7 +68,7 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
-                databaseReference.setValue(user.getFirstName());
+                databaseReference.setValue(user);
 
 //                databaseReference.child("first_name").setValue(user.getFirstName());
 //                databaseReference.child("last_name").setValue(user.getLastName());
