@@ -2,21 +2,41 @@ package com.login.recipe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.Date;
 
 public class Recipe implements Serializable {
 
+    public enum skillLevel{BEGINNER, INTERMEDIATE, PRO}
+    public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}
+
     private String name;
     private String recipeId;
-    private ArrayList<String> directions = new ArrayList<>();
-    private ArrayList<String> kitchenType = new ArrayList<>();
-    private ArrayList<Integer> images = new ArrayList<>();
-    private Map<String, String> ingredients = new HashMap<String, String>();
+    private recipeType type;
+    private skillLevel skillLevel;
+    private ArrayList<String> instructions;
+    private ArrayList<String> cuisines;
+    private ArrayList<Image> images;
+    private Map<String, String> ingredients;
+    private ArrayList<Comment> comments;
     private String Author;
-    private long releaseDate;
+    private Date releaseDate;
+
+    public Recipe(String name, String recipeId, recipeType type, skillLevel skillLevel,
+                  ArrayList<String> instructions, ArrayList<String> cuisines, ArrayList<Image> images,
+                  Map<String, String> ingredients, ArrayList<Comment> comments, String Author, Date releaseDate) {
+        this.name = name;
+        this.recipeId = recipeId;
+        this.type = type;
+        this.skillLevel = skillLevel;
+        this.instructions = instructions;
+        this.cuisines = cuisines;
+        this.images = images;
+        this.ingredients = ingredients;
+        this.comments = comments;
+        this.Author = Author;
+        this.releaseDate = releaseDate;
+    }
 
     public String getRecipeId() {
         return recipeId;
@@ -24,6 +44,14 @@ public class Recipe implements Serializable {
 
     public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
+    }
+
+    public skillLevel getSkillLevel() {
+        return skillLevel;
+    }
+
+    public void setSkillLevel(skillLevel skillLevel) {
+        this.skillLevel = skillLevel;
     }
 
     public String getAuthor() {
@@ -34,11 +62,11 @@ public class Recipe implements Serializable {
         Author = author;
     }
 
-    public long getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(long releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -50,27 +78,43 @@ public class Recipe implements Serializable {
         this.name = name;
     }
 
-    public ArrayList<String> getDirections() {
-        return directions;
+    public ArrayList<String> getInstructions() {
+        return instructions;
     }
 
-    public void setDirections(String step) {
-        this.directions.add(step);
+    public void setInstructions(ArrayList<String> instructions) {
+        this.instructions = instructions;
     }
 
-    public ArrayList<String> getKitchenType() {
-        return kitchenType;
+    public void addInstruction(String instruction) {
+        this.instructions.add(instruction);
     }
 
-    public void setKitchenType(String kitchenType) {
-        this.kitchenType.add(kitchenType);
+    public ArrayList<String> getCusines() {
+        return cuisines;
     }
 
-    public ArrayList<Integer> getImages() {
+    public ArrayList<String> getCuisines() {
+        return cuisines;
+    }
+
+    public void setCuisines(ArrayList<String> cuisines) {
+        this.cuisines = cuisines;
+    }
+
+    public void addCuisine(String cuisine) {
+        this.cuisines.add(cuisine);
+    }
+
+    public ArrayList<Image> getImages() {
         return images;
     }
 
-    public void setImages(int image) {
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
+    }
+
+    public void addImage(Image image) {
         this.images.add(image);
     }
 
@@ -78,7 +122,29 @@ public class Recipe implements Serializable {
         return ingredients;
     }
 
-    public void setIngredients(String name, String quantity) {
+    public void setIngredients(Map<String, String> ingredients) {
+        this.ingredients = ingredients;
+    }
+
+    public void addIngredient(String name, String quantity) {
         this.ingredients.put(name, quantity);
     }
+
+    public recipeType getType() {
+        return type;
+    }
+
+    public void setType(recipeType type) {
+        this.type = type;
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+
+
 }
