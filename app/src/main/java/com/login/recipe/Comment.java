@@ -1,9 +1,15 @@
 package com.login.recipe;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Comment {
 
     private String author;
     private String comment;
+
+    public Comment() {
+    }
 
     public Comment(String author, String comment) {
         this.author = author;
@@ -28,3 +34,4 @@ public class Comment {
 
 
 }
+

@@ -2,7 +2,13 @@ package com.login.recipe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class UserProfile implements Serializable {
 
     public enum skillLevel{BEGINNER, INTERMEDIATE, PRO}
@@ -11,10 +17,30 @@ public class UserProfile implements Serializable {
     private String firstName;
     private String lastName;
     private skillLevel cookingSkills;
-    private ArrayList<String> cuisines = new ArrayList<>();
+    @XmlElement
+    private ArrayList<String> cuisines;
     private String country;
+    @XmlElement
     private ArrayList<String> followers; // emails of followers
+    @XmlElement
     private ArrayList<String> followerOf; // emails of people the user follows
+
+    public UserProfile() {
+        followers = new ArrayList<>();
+        followerOf = new ArrayList<>();
+        cuisines = new ArrayList<>();
+    }
+
+    public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cookingSkills = cookingSkills;
+        this.country = country;
+        this.cuisines = new ArrayList<>();
+        this.followers = new ArrayList<>();
+        this.followerOf = new ArrayList<>();
+    }
 
     public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country, ArrayList<String> followers, ArrayList<String> followerOf) {
         this.email = email;
@@ -24,6 +50,14 @@ public class UserProfile implements Serializable {
         this.country = country;
         this.followers = followers;
         this.followerOf = followerOf;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -36,10 +70,6 @@ public class UserProfile implements Serializable {
 
     public skillLevel getCookingSkills() {
         return cookingSkills;
-    }
-
-    public ArrayList<String> getCuisine() {
-        return cuisines;
     }
 
     public String getCountry() {
@@ -68,6 +98,14 @@ public class UserProfile implements Serializable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public ArrayList<String> getCuisines() {
+        return cuisines;
+    }
+
+    public void setCuisines(ArrayList<String> cuisines) {
+        this.cuisines = cuisines;
     }
 
     public void setCuisine(String[] cuisine) {
