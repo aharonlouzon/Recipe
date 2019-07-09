@@ -45,7 +45,7 @@ public class SetUser extends AppCompatActivity {
                         cookingSkills = UserProfile.skillLevel.BEGINNER;
                         break;
                     case R.id.intermediate_set_user:
-                        cookingSkills = UserProfile.skillLevel.INTEMEDIATE;
+                        cookingSkills = UserProfile.skillLevel.INTERMEDIATE;
                         break;
                     case R.id.experienced_set_user:
                         cookingSkills = UserProfile.skillLevel.PRO;

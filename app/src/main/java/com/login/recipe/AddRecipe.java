@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
+import java.util.Date;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +32,6 @@ public class AddRecipe extends AppCompatActivity {
     private EditText title;
     private EditText direction_step;
     private Recipe recipe = new Recipe();
-
     private FirebaseUser firebaseUser;
     private FirebaseDatabase firebaseDatabase;
     private FirebaseAuth firebaseAuth;
@@ -80,7 +79,7 @@ public class AddRecipe extends AppCompatActivity {
                 int step_num = Integer.parseInt(addDirection.getText().toString());
                 step_num++;
                 addDirection.setText(String.valueOf(step_num));
-                recipe.setDirections(step);
+                recipe.addInstruction(step);
                 direction_step.getText().clear();
                 return;
             }
@@ -93,7 +92,7 @@ public class AddRecipe extends AppCompatActivity {
                     return;
                 String name = product_name.getText().toString().trim();
                 String quan = quantity.getText().toString().trim();
-                recipe.setIngredients(name, quan);
+                recipe.addIngredient(name, quan);
                 product_name.getText().clear();
                 quantity.getText().clear();
                 return;
@@ -105,36 +104,37 @@ public class AddRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 if(title.getText().toString().isEmpty())
                     return;
-                if(recipe.getDirections().size() == 0)
+                if(recipe.getInstructions().size() == 0)
                     return;
                 if(recipe.getIngredients().size() == 0)
                     return;
                 if(asian.isChecked())
-                    recipe.setKitchenType("asian");
+                    recipe.addCuisine("asian");
                 if(middle_eastern.isChecked())
-                    recipe.setKitchenType("middle_eastern");
+                    recipe.addCuisine("middle_eastern");
                 if(italian.isChecked())
-                    recipe.setKitchenType("italian");
+                    recipe.addCuisine("italian");
                 if(european.isChecked())
-                    recipe.setKitchenType("european");
+                    recipe.addCuisine("european");
                 if(baking.isChecked())
-                    recipe.setKitchenType("baking");
+                    recipe.addCuisine("baking");
                 if(meat.isChecked())
-                    recipe.setKitchenType("meat");
+                    recipe.addCuisine("meat");
 
                 //generate unique id
-                String uniqueID = UUID.randomUUID().toString();
+                int uniqueID = Integer.parseInt(UUID.randomUUID().toString());
                 recipe.setRecipeId(uniqueID);
 
                 //set author to be current user
                 recipe.setAuthor(userId);
 
                 //set release time for recipe
-                recipe.setReleaseDate(System.currentTimeMillis());
+                Date date = new Date();
+                recipe.setReleaseDate(date);
 
                 recipe.setName(title.getText().toString().trim());
-                databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
-                databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
+//                databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
+//                databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
 
                 startActivity(new Intent(AddRecipe.this, MyArea.class));
             }

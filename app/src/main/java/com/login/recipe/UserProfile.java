@@ -31,6 +31,16 @@ public class UserProfile implements Serializable {
         cuisines = new ArrayList<>();
     }
 
+    public UserProfile(String firstName, String lastName, skillLevel cookingSkills, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cookingSkills = cookingSkills;
+        this.country = country;
+        this.cuisines = new ArrayList<>();
+        this.followers = new ArrayList<>();
+        this.followerOf = new ArrayList<>();
+    }
+
     public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country) {
         this.email = email;
         this.firstName = firstName;
