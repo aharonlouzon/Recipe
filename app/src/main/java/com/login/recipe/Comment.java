@@ -1,8 +1,5 @@
 package com.login.recipe;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class Comment {
 
     private String author;

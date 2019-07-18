@@ -1,19 +1,12 @@
 package com.login.recipe;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Date;
 import com.login.recipe.UserProfile.skillLevel;
 import java.util.HashMap;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class Recipe implements Serializable {
 
     public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}
@@ -22,15 +15,12 @@ public class Recipe implements Serializable {
     private int recipeId;
     private recipeType type;
     private skillLevel skillLevel;
-    @XmlElement
     private ArrayList<String> instructions;
-    @XmlElement
     private ArrayList<String> cuisines;
     private ArrayList<byte[]> images;
-    @XmlElement
     private Map<String, String> ingredients;
     private ArrayList<Comment> comments;
-    private String Author;
+    private String author; // email address of the author
     private Date releaseDate;
 
     public Recipe() {
@@ -40,6 +30,21 @@ public class Recipe implements Serializable {
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
     }
+
+    public Recipe(String name, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
+        this.name = name;
+        this.type = type;
+        this.skillLevel = skillLevel;
+        this.author = authorEmail;
+        this.releaseDate = releaseDate;
+        this.comments = new ArrayList<>();
+        this.cuisines = new ArrayList<>();
+        this.images = new ArrayList<>();
+        this.ingredients = new HashMap<>();
+        this.instructions = new ArrayList<>();
+    }
+
+
 
     public Recipe(String name, recipeType type, skillLevel skillLevel,
                   ArrayList<String> instructions, ArrayList<String> cuisines, ArrayList<byte[]> images,
@@ -52,7 +57,7 @@ public class Recipe implements Serializable {
         this.images = images;
         this.ingredients = ingredients;
         this.comments = comments;
-        this.Author = authorEmail;
+        this.author = authorEmail;
         this.releaseDate = releaseDate;
     }
 
@@ -73,11 +78,11 @@ public class Recipe implements Serializable {
     }
 
     public String getAuthor() {
-        return Author;
+        return author;
     }
 
     public void setAuthor(String authorEmail) {
-        Author = authorEmail;
+        author = authorEmail;
     }
 
     public Date getReleaseDate() {
@@ -163,6 +168,5 @@ public class Recipe implements Serializable {
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
     }
-
 
 }
