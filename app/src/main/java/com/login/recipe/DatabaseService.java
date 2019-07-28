@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class DatabaseService {
 
-    private static final String BASE_URL = "http://localhost:8080/RecipeAppDatabaseService/webresources/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/RecipeAppDatabaseService/webresources/";
 
     /**
      * validate if correct password (on sign-in)
@@ -76,6 +76,26 @@ public class DatabaseService {
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             UserProfile user = new Gson().fromJson(reader, UserProfile.class);
             return user;
+        }
+        catch(IOException e) {
+            throw e;
+        }
+    }
+
+    /**
+     * sends email to user with password
+     * @return if successful - "email sent to " + userEmail.
+     *    if userEmail does not exist - returns null
+     * @throws IOException if error in connection to the server
+     */
+    public String forgotPassword(String userEmail) throws IOException {
+        String url = BASE_URL + "userProfile/forgotPassword/" + userEmail;
+        try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
+            TextMessage response = new Gson().fromJson(reader, TextMessage.class);
+            if (response == null)
+                return null;
+            else
+                return response.getMessage();
         }
         catch(IOException e) {
             throw e;

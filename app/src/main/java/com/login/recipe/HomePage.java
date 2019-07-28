@@ -10,14 +10,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
 import java.util.ArrayList;
 
 public class HomePage extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
     private RecyclerView recyclerView;
     private MyAdapter myAdapter;
 
@@ -26,7 +22,6 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        firebaseAuth = FirebaseAuth.getInstance();
 
         recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -91,7 +86,6 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-                firebaseAuth.signOut();
                 finish();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
             }

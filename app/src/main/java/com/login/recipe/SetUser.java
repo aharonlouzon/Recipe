@@ -29,6 +29,9 @@ public class SetUser extends AppCompatActivity {
         setContentView(R.layout.activity_set_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final MyApplication app = ((MyApplication)getApplicationContext());
+
         firstName = (EditText) findViewById(R.id.first_name_set_user);
         lastName = (EditText)findViewById(R.id.last_name_text_set_user);
         radioGroup = (RadioGroup)findViewById(R.id.radio_group_set_user);
@@ -45,7 +48,7 @@ public class SetUser extends AppCompatActivity {
                         cookingSkills = UserProfile.skillLevel.BEGINNER;
                         break;
                     case R.id.intermediate_set_user:
-                        cookingSkills = UserProfile.skillLevel.INTEMEDIATE;
+                        cookingSkills = UserProfile.skillLevel.INTERMEDIATE;
                         break;
                     case R.id.experienced_set_user:
                         cookingSkills = UserProfile.skillLevel.PRO;
@@ -53,9 +56,12 @@ public class SetUser extends AppCompatActivity {
                 }
                 String country_input = country.getText().toString().trim();
 
-                UserProfile user = new UserProfile(first_name, last_name, cookingSkills, country_input);
+                app.getUser().setFirstName(first_name);
+                app.getUser().setLastName(last_name);
+                app.getUser().setCookingSkills(cookingSkills);
+                app.getUser().setCountry(country_input);
+
                 Intent intent = new Intent(SetUser.this, SetCuisine.class);
-                intent.putExtra("user", user);
                 startActivity(intent);
             }
         });

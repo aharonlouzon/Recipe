@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import java.io.IOException;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -21,11 +19,6 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox baking;
     private CheckBox meat;
     private Button continue_button;
-    private UserProfile user;
-    private FirebaseUser firebaseUser;
-    private FirebaseDatabase firebaseDatabase;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
     private String userId;
 
 
@@ -34,14 +27,10 @@ public class SetCuisine extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_cuisine);
         Intent intent = getIntent();
-        user = (UserProfile)intent.getSerializableExtra("user");
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        if (firebaseUser != null)
-            userId = firebaseUser.getUid();
-        databaseReference = firebaseDatabase.getReference(userId);
+        final MyApplication app = ((MyApplication)getApplicationContext());
+        final UserProfile user = app.getUser();
+        final DatabaseService database = app.getDatabase();
 
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
@@ -68,15 +57,20 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
-                databaseReference.setValue(user.getFirstName());
+                try {
+                    String response = database.addUser(user,app.getNewPassword());
+                    if (response == null)
+                        Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                    else {
+                        Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
+                        startActivity(new Intent(SetCuisine.this, HomePage.class));
+                    }
+                }
+                catch (IOException e) {
+                    Toast.makeText(SetCuisine.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                }
 
-//                databaseReference.child("first_name").setValue(user.getFirstName());
-//                databaseReference.child("last_name").setValue(user.getLastName());
-//                databaseReference.child("country").setValue(user.getCountry());
-//                databaseReference.child("cooking_skill").setValue(user.getCookingSkills());
-//                databaseReference.child("cuisine").setValue(user.getCuisine());
 
-                startActivity(new Intent(SetCuisine.this, HomePage.class));
             }
         });
     }
