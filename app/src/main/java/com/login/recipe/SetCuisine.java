@@ -7,10 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+//import com.login.recipe.DatabaseService;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -22,11 +23,14 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox meat;
     private Button continue_button;
     private UserProfile user;
-    private FirebaseUser firebaseUser;
-    private FirebaseDatabase firebaseDatabase;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-    private String userId;
+    private DatabaseService databaseService = new DatabaseService();
+    private String password;
+
+//    private FirebaseUser firebaseUser;
+//    private FirebaseDatabase firebaseDatabase;
+//    private FirebaseAuth firebaseAuth;
+//    private DatabaseReference databaseReference;
+//    private String userId;
 
 
     @Override
@@ -35,13 +39,14 @@ public class SetCuisine extends AppCompatActivity {
         setContentView(R.layout.activity_set_cuisine);
         Intent intent = getIntent();
         user = (UserProfile)intent.getSerializableExtra("user");
+        password = (String)intent.getSerializableExtra("password");
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        if (firebaseUser != null)
-            userId = firebaseUser.getUid();
-        databaseReference = firebaseDatabase.getReference(userId);
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseUser = firebaseAuth.getCurrentUser();
+//        firebaseDatabase = FirebaseDatabase.getInstance();
+//        if (firebaseUser != null)
+//            userId = firebaseUser.getUid();
+//        databaseReference = firebaseDatabase.getReference(userId);
 
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
@@ -68,8 +73,9 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
-                databaseReference.setValue(user.getFirstName());
+                String response = databaseService.addUser(user, password);
 
+//                databaseReference.setValue(user.getFirstName());
 //                databaseReference.child("first_name").setValue(user.getFirstName());
 //                databaseReference.child("last_name").setValue(user.getLastName());
 //                databaseReference.child("country").setValue(user.getCountry());

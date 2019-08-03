@@ -1,9 +1,8 @@
 package com.login.recipe;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+//import android.support.design.widget.FloatingActionButton;
+//import android.support.design.widget.Snackbar;
 
 public class SetUser extends AppCompatActivity {
 
@@ -22,10 +24,15 @@ public class SetUser extends AppCompatActivity {
     private RadioButton radioButtonPro;
     private EditText country;
     private Button continueButton;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        final String password = (String)intent.getSerializableExtra("password");
+
         setContentView(R.layout.activity_set_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -34,6 +41,8 @@ public class SetUser extends AppCompatActivity {
         radioGroup = (RadioGroup)findViewById(R.id.radio_group_set_user);
         country = (EditText)findViewById(R.id.country_text_set_user);
         continueButton = (Button)findViewById(R.id.continue_button_set_user);
+        progressDialog = new ProgressDialog(this);
+
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,9 +62,12 @@ public class SetUser extends AppCompatActivity {
                 }
                 String country_input = country.getText().toString().trim();
 
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
                 UserProfile user = new UserProfile(first_name, last_name, cookingSkills, country_input);
                 Intent intent = new Intent(SetUser.this, SetCuisine.class);
                 intent.putExtra("user", user);
+                intent.putExtra("password", password);
                 startActivity(intent);
             }
         });

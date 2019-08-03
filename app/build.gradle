@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.login.recipe"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -30,11 +30,6 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-database:0.6.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
-    // https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api
-    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.4.0-b180830.0359'
-    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.1.1'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation fileTree(dir: 'libs', include: ['*.aar', '*.jar'], exclude: [])
 }
 apply plugin: 'com.google.gms.google-services'

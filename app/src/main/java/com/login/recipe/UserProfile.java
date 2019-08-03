@@ -2,13 +2,7 @@ package com.login.recipe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
-@XmlAccessorType(XmlAccessType.FIELD)
 public class UserProfile implements Serializable {
 
     public enum skillLevel{BEGINNER, INTERMEDIATE, PRO}
@@ -17,12 +11,9 @@ public class UserProfile implements Serializable {
     private String firstName;
     private String lastName;
     private skillLevel cookingSkills;
-    @XmlElement
     private ArrayList<String> cuisines;
     private String country;
-    @XmlElement
     private ArrayList<String> followers; // emails of followers
-    @XmlElement
     private ArrayList<String> followerOf; // emails of people the user follows
 
     public UserProfile() {

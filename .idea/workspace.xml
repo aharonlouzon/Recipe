@@ -33,26 +33,32 @@
       <library-update>
         <group-id>com.google.firebase</group-id>
         <name>firebase-core</name>
-        <version>16.0.9</version>
-        <repository>Google,Google Repository</repository>
+        <version>17.0.1</version>
+        <repository>Google</repository>
       </library-update>
       <library-update>
         <group-id>com.google.firebase</group-id>
         <name>firebase-auth</name>
-        <version>17.0.0</version>
-        <repository>Google,Google Repository</repository>
+        <version>18.1.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.android.support</group-id>
+        <name>cardview-v7</name>
+        <version>28.0.0</version>
+        <repository>Google</repository>
       </library-update>
       <library-update>
         <group-id>com.android.support.constraint</group-id>
         <name>constraint-layout</name>
-        <version>2.0.0-beta1</version>
+        <version>2.0.0-beta2</version>
         <repository>Google</repository>
       </library-update>
       <library-update>
         <group-id>com.google.firebase</group-id>
         <name>firebase-database</name>
-        <version>17.0.0</version>
-        <repository>Google,Google Repository</repository>
+        <version>18.0.0</version>
+        <repository>Google</repository>
       </library-update>
       <library-update>
         <group-id>junit</group-id>
@@ -73,10 +79,11 @@
         <repository>Google</repository>
       </library-update>
     </library-updates>
-    <last-search-timestamp>1558907146027</last-search-timestamp>
+    <last-search-timestamp>1563311823348</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dac2a951-c11f-4994-bde2-66cbfdd7f6c6" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -171,6 +178,10 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,6 +200,7 @@
     <favorites_list name="Recipe2" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java">
@@ -199,6 +211,70 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#3602#4174#0" expanded="true" />
                 <element signature="e#4173#4174#0" expanded="true" />
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1568#1569#0" expanded="true" />
+                <element signature="e#1596#1597#0" expanded="true" />
+                <element signature="e#1638#1639#0" expanded="true" />
+                <element signature="e#1672#1673#0" expanded="true" />
+                <element signature="e#1708#1709#0" expanded="true" />
+                <element signature="e#1740#1741#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+                <element signature="e#1806#1807#0" expanded="true" />
+                <element signature="e#1850#1851#0" expanded="true" />
+                <element signature="e#1886#1887#0" expanded="true" />
+                <element signature="e#1920#1921#0" expanded="true" />
+                <element signature="e#1950#1951#0" expanded="true" />
+                <element signature="e#1997#1998#0" expanded="true" />
+                <element signature="e#2029#2030#0" expanded="true" />
+                <element signature="e#2077#2078#0" expanded="true" />
+                <element signature="e#2110#2111#0" expanded="true" />
+                <element signature="e#2160#2161#0" expanded="true" />
+                <element signature="e#2202#2203#0" expanded="true" />
+                <element signature="e#2264#2265#0" expanded="true" />
+                <element signature="e#2314#2315#0" expanded="true" />
+                <element signature="e#2360#2361#0" expanded="true" />
+                <element signature="e#2398#2399#0" expanded="true" />
+                <element signature="e#2446#2447#0" expanded="true" />
+                <element signature="e#2486#2487#0" expanded="true" />
+                <element signature="e#2532#2533#0" expanded="true" />
+                <element signature="e#2563#2564#0" expanded="true" />
+                <element signature="e#2622#2623#0" expanded="true" />
+                <element signature="e#2662#2663#0" expanded="true" />
+                <element signature="e#2849#2850#0" expanded="true" />
+                <element signature="e#2891#2892#0" expanded="true" />
+                <element signature="e#3329#3330#0" expanded="true" />
+                <element signature="e#3373#3374#0" expanded="true" />
+                <element signature="e#3826#3827#0" expanded="true" />
+                <element signature="e#3873#3874#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#271#272#0" expanded="true" />
+                <element signature="e#295#296#0" expanded="true" />
+                <element signature="e#335#336#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#413#414#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
               </folding>
             </state>
           </provider>
@@ -207,12 +283,67 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="1080">
               <caret line="86" column="35" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#3255#3256#0" expanded="true" />
                 <element signature="e#3297#3298#0" expanded="true" />
+=======
+            <state relative-caret-position="119">
+              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#211#212#0" expanded="true" />
+                <element signature="e#234#235#0" expanded="true" />
+                <element signature="e#276#277#0" expanded="true" />
+                <element signature="e#300#301#0" expanded="true" />
+                <element signature="e#342#343#0" expanded="true" />
+                <element signature="e#369#370#0" expanded="true" />
+                <element signature="e#423#424#0" expanded="true" />
+                <element signature="e#460#461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/PictureList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#210#211#0" expanded="true" />
+                <element signature="e#233#234#0" expanded="true" />
+                <element signature="e#274#275#0" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+                <element signature="e#338#339#0" expanded="true" />
+                <element signature="e#365#366#0" expanded="true" />
+                <element signature="e#418#419#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-933">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -221,10 +352,45 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-933">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="238">
+              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#12007#12008#0" expanded="true" />
+                <element signature="e#12053#12054#0" expanded="true" />
+                <element signature="e#12091#12092#0" expanded="true" />
+                <element signature="e#12129#12130#0" expanded="true" />
+                <element signature="e#12179#12180#0" expanded="true" />
+                <element signature="e#12225#12226#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="76">
+              <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="7" selection-end-column="22" />
+              <folding>
+                <element signature="e#288#289#0" expanded="true" />
+                <element signature="e#317#318#0" expanded="true" />
+                <element signature="e#361#362#0" expanded="true" />
+                <element signature="e#397#398#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#461#462#0" expanded="true" />
+                <element signature="e#507#508#0" expanded="true" />
+                <element signature="e#545#546#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
               </folding>
             </state>
           </provider>
@@ -284,6 +450,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_recipe.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ReleaseTime.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java" />
@@ -294,13 +461,25 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/CommentList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/PictureList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="y" value="23" />
-    <option name="width" value="1680" />
-    <option name="height" value="905" />
+    <option name="x" value="10" />
+    <option name="y" value="28" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -371,6 +550,84 @@
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="libs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Recipe" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Recipe" type="58d84e3e:PackageViewProjectNode" />
+              <item name="app" type="616d4139:PackageViewModuleNode" />
+              <item name="Libraries" type="5c3f07af:PackageViewLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="Recipe" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -380,17 +637,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+<<<<<<< HEAD
     <property name="device.picker.selection" value="Pixel_2_API_Q" />
     <property name="project.structure.last.edited" value="Dependencies" />
+=======
+    <property name="device.picker.selection" value="emulator-5554" />
+    <property name="project.structure.last.edited" value="Project" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.4.0" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1561030290783" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
-      <recent name="$PROJECT_DIR$/app" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
     <key name="android.template.packageName">
       <recent name="com.login.recipe" />
@@ -398,8 +660,9 @@
     <key name="android.template.parentActivityClass">
       <recent name="" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -499,7 +762,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+=======
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
@@ -511,7 +778,11 @@
       <window_info id="Resources Explorer" order="6" weight="0.32967034" />
       <window_info id="Capture Tool" order="7" />
       <window_info x="435" y="343" width="141" height="406" id="Component Tree" order="8" side_tool="true" type="FLOATING" />
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="9" visible="true" weight="0.26597053" />
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="9" visible="true" weight="0.20574887" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
       <window_info anchor="bottom" id="Run" order="0" weight="0.4403444" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39237392" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3296433" />
@@ -519,7 +790,11 @@
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4993895" weight="0.3584288" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.5015129" side_tool="true" weight="0.2618658" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.3296433" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49848714" weight="0.33060557" />
+=======
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49848714" visible="true" weight="0.41734862" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
       <window_info anchor="bottom" id="Find" order="8" weight="0.3296433" />
       <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" weight="0.3296433" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -563,6 +838,34 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/JustPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/bin/build/intermediates/manifest-checker/debug/manifest.xml" />
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/frankfurt_000000_000576_gtCoarse_labelIds (1).png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-v24/000000013177.jpg" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic5.jpg">
@@ -792,6 +1095,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Recipe2.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -867,78 +1171,159 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="49" selection-start-line="13" selection-start-column="37" selection-end-line="13" selection-end-column="49" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1862#1863#0" expanded="true" />
-            <element signature="e#1890#1891#0" expanded="true" />
-            <element signature="e#1932#1933#0" expanded="true" />
-            <element signature="e#1966#1967#0" expanded="true" />
-            <element signature="e#2002#2003#0" expanded="true" />
-            <element signature="e#2034#2035#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <element signature="e#2100#2101#0" expanded="true" />
-            <element signature="e#2144#2145#0" expanded="true" />
-            <element signature="e#2180#2181#0" expanded="true" />
-            <element signature="e#2214#2215#0" expanded="true" />
-            <element signature="e#2244#2245#0" expanded="true" />
-            <element signature="e#2291#2292#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#2371#2372#0" expanded="true" />
-            <element signature="e#2404#2405#0" expanded="true" />
-            <element signature="e#2454#2455#0" expanded="true" />
-            <element signature="e#2496#2497#0" expanded="true" />
-            <element signature="e#2558#2559#0" expanded="true" />
-            <element signature="e#2608#2609#0" expanded="true" />
-            <element signature="e#2654#2655#0" expanded="true" />
-            <element signature="e#2692#2693#0" expanded="true" />
-            <element signature="e#2740#2741#0" expanded="true" />
-            <element signature="e#2780#2781#0" expanded="true" />
-            <element signature="e#2826#2827#0" expanded="true" />
-            <element signature="e#2857#2858#0" expanded="true" />
-            <element signature="e#2916#2917#0" expanded="true" />
-            <element signature="e#2956#2957#0" expanded="true" />
-            <element signature="e#3143#3144#0" expanded="true" />
-            <element signature="e#3185#3186#0" expanded="true" />
-            <element signature="e#3623#3624#0" expanded="true" />
-            <element signature="e#3667#3668#0" expanded="true" />
-            <element signature="e#4120#4121#0" expanded="true" />
-            <element signature="e#4167#4168#0" expanded="true" />
+            <element signature="e#1568#1569#0" expanded="true" />
+            <element signature="e#1596#1597#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1672#1673#0" expanded="true" />
+            <element signature="e#1708#1709#0" expanded="true" />
+            <element signature="e#1740#1741#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="e#1806#1807#0" expanded="true" />
+            <element signature="e#1850#1851#0" expanded="true" />
+            <element signature="e#1886#1887#0" expanded="true" />
+            <element signature="e#1920#1921#0" expanded="true" />
+            <element signature="e#1950#1951#0" expanded="true" />
+            <element signature="e#1997#1998#0" expanded="true" />
+            <element signature="e#2029#2030#0" expanded="true" />
+            <element signature="e#2077#2078#0" expanded="true" />
+            <element signature="e#2110#2111#0" expanded="true" />
+            <element signature="e#2160#2161#0" expanded="true" />
+            <element signature="e#2202#2203#0" expanded="true" />
+            <element signature="e#2264#2265#0" expanded="true" />
+            <element signature="e#2314#2315#0" expanded="true" />
+            <element signature="e#2360#2361#0" expanded="true" />
+            <element signature="e#2398#2399#0" expanded="true" />
+            <element signature="e#2446#2447#0" expanded="true" />
+            <element signature="e#2486#2487#0" expanded="true" />
+            <element signature="e#2532#2533#0" expanded="true" />
+            <element signature="e#2563#2564#0" expanded="true" />
+            <element signature="e#2622#2623#0" expanded="true" />
+            <element signature="e#2662#2663#0" expanded="true" />
+            <element signature="e#2849#2850#0" expanded="true" />
+            <element signature="e#2891#2892#0" expanded="true" />
+            <element signature="e#3329#3330#0" expanded="true" />
+            <element signature="e#3373#3374#0" expanded="true" />
+            <element signature="e#3826#3827#0" expanded="true" />
+            <element signature="e#3873#3874#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
           <caret line="47" column="75" selection-start-line="47" selection-start-column="75" selection-end-line="47" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/CommentList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#211#212#0" expanded="true" />
+            <element signature="e#234#235#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#300#301#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+            <element signature="e#423#424#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-933">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+=======
+        <state relative-caret-position="85">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#210#211#0" expanded="true" />
+            <element signature="e#233#234#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+            <element signature="e#338#339#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#418#419#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="1080">
           <caret line="86" column="35" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#3255#3256#0" expanded="true" />
             <element signature="e#3297#3298#0" expanded="true" />
+=======
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <element signature="e#288#289#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#361#362#0" expanded="true" />
+            <element signature="e#397#398#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#461#462#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -947,7 +1332,39 @@
             <element signature="imports" expanded="true" />
             <element signature="e#3602#4174#0" expanded="true" />
             <element signature="e#4173#4174#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/gradle.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-159">
+          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12007#12008#0" expanded="true" />
+            <element signature="e#12053#12054#0" expanded="true" />
+            <element signature="e#12091#12092#0" expanded="true" />
+            <element signature="e#12129#12130#0" expanded="true" />
+            <element signature="e#12179#12180#0" expanded="true" />
+            <element signature="e#12225#12226#0" expanded="true" />
+>>>>>>> 7abf7f7ba0f602fae04b313facca975e7bf380b9
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -13,8 +13,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.UUID;
+import com.login.recipe.DatabaseService;
 
 public class AddRecipe extends AppCompatActivity {
 
@@ -37,6 +37,7 @@ public class AddRecipe extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
     private String userId;
+    private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,8 +134,12 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setReleaseDate(date);
 
                 recipe.setName(title.getText().toString().trim());
+                databaseService.addRecipe(recipe);
 //                databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
 //                databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
+                RecipeList recipes = new RecipeList();
+                recipes = databaseService.getUsersRecipes("roni");
+                System.out.println("hi");
 
                 startActivity(new Intent(AddRecipe.this, MyArea.class));
             }
