@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         forgot_password = (Button)findViewById(R.id.forgot_password);
 
         app = ((MyApplication)getApplicationContext());
-        database = app.getDatabase();
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,18 +62,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validate(String email, String password){
-        UserProfile user;
+        Object user = null;
         try {
-            user = database.validateSignIn(email, password);
-            if (user != null) {
-                app.setUser(user);
-                startActivity(new Intent(MainActivity.this, HomePage.class));
-            }
-            else
-                Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
         }
-        catch (IOException e) {
+        catch (ExecutionException | InterruptedException e) {
+            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+        }
+        if (user == null)
+            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+        if (user.getClass().equals(UserProfile.class)) {
+            app.setUser((UserProfile) user);
+            startActivity(new Intent(MainActivity.this, HomePage.class));
+        }
+        else
             Toast.makeText(MainActivity.this, "Error connecting to database", Toast.LENGTH_SHORT);
         }
-    }
 }

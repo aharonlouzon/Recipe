@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class AddRecipe extends AppCompatActivity {
 
@@ -112,21 +113,21 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setName(title.getText().toString().trim());
 
                 // add the recipe to the database
-                DatabaseService database = app.getDatabase();
+                String response = null;
                 try {
-                    String response = database.addRecipe(recipe);
-                    if (response == null)
-                        Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
-                    else {
-                        Toast.makeText(AddRecipe.this, "Recipe added", Toast.LENGTH_SHORT);
-                        startActivity(new Intent(AddRecipe.this, MyArea.class));
-                    }
+                    response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
                 }
-                catch (IOException e) {
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                }
+                if (response == null)
+                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                else if (response.equals("error"))
                     Toast.makeText(AddRecipe.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                else {
+                    Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(AddRecipe.this, HomePage.class));
                 }
-
-
             }
         });
 

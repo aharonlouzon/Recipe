@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -23,7 +24,6 @@ public class ForgotPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
 
         final MyApplication app = ((MyApplication)getApplicationContext());
-        final DatabaseService database = app.getDatabase();
 
         reset = (Button)findViewById(R.id.reset_password_button);
         email = (EditText)findViewById(R.id.email_forgot_password);
@@ -40,21 +40,23 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View v) {
                 String text = email.getText().toString().trim();
                 if(!text.isEmpty() && !(text == "EnterEmail")) {
+                    String response = null;
                     try {
-                        String response = database.forgotPassword(text);
-                        if (response != null) {
+                        response = (String) new DatabaseServiceTask("forgotPassword", app).execute(text).get();
+                    }
+                    catch (ExecutionException | InterruptedException e) {
+                        Toast.makeText(ForgotPassword.this, "Failed to email password", Toast.LENGTH_SHORT);
+                    }
+                    if (response.equals("error"))
+                        Toast.makeText(ForgotPassword.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                    if (response == null)
+                        Toast.makeText(ForgotPassword.this, "User doesn't exist", Toast.LENGTH_SHORT);
+                        else {
                             Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
                             startActivity(new Intent(ForgotPassword.this, MainActivity.class));
                         }
-                        else
-                            Toast.makeText(ForgotPassword.this, "Login failed", Toast.LENGTH_SHORT);
                     }
-                    catch (IOException e) {
-                        Toast.makeText(ForgotPassword.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                    }
-
                 }
-            }
         });
     }
 }

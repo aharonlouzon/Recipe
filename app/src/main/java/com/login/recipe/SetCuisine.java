@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -19,18 +19,14 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox baking;
     private CheckBox meat;
     private Button continue_button;
-    private String userId;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_cuisine);
-        Intent intent = getIntent();
 
         final MyApplication app = ((MyApplication)getApplicationContext());
         final UserProfile user = app.getUser();
-        final DatabaseService database = app.getDatabase();
 
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
@@ -57,19 +53,21 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
+                String response = null;
                 try {
-                    String response = database.addUser(user,app.getNewPassword());
-                    if (response == null)
-                        Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
-                    else {
-                        Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
-                        startActivity(new Intent(SetCuisine.this, HomePage.class));
-                    }
+                    response = (String) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
                 }
-                catch (IOException e) {
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                }
+                if (response == null)
+                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                else if (response.equals("error"))
                     Toast.makeText(SetCuisine.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                else {
+                    Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }
-
 
             }
         });
