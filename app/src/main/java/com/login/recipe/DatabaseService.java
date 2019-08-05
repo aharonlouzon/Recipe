@@ -58,8 +58,7 @@ public class DatabaseService {
             else
                 return response.getMessage();
         }
-        catch(Exception e) {
-            android.util.Log.d("myTag", e.toString());
+        catch(IOException e) {
             throw e;
         }
         finally {

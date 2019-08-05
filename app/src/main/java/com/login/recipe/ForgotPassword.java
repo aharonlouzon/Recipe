@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+import android.app.ProgressDialog;
 
 public class ForgotPassword extends AppCompatActivity {
 
     private Button reset;
     private EditText email;
+    private ProgressDialog progressDialog;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -25,6 +26,7 @@ public class ForgotPassword extends AppCompatActivity {
 
         final MyApplication app = ((MyApplication)getApplicationContext());
 
+        progressDialog = new ProgressDialog(this);
         reset = (Button)findViewById(R.id.reset_password_button);
         email = (EditText)findViewById(R.id.email_forgot_password);
 
@@ -42,6 +44,8 @@ public class ForgotPassword extends AppCompatActivity {
                 if(!text.isEmpty() && !(text == "EnterEmail")) {
                     String response = null;
                     try {
+                        progressDialog.setMessage("Cooking...");
+                        progressDialog.show();
                         response = (String) new DatabaseServiceTask("forgotPassword", app).execute(text).get();
                     }
                     catch (ExecutionException | InterruptedException e) {

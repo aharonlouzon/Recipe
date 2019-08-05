@@ -36,6 +36,15 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                 return "error";
             }
 
+        else if (taskName.equals("getUser"))
+            // objects[0] is email
+            try {
+                result = database.getUser((String) objects[0]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
         else if (taskName.equals("forgotPassword"))
             // objects[0] is email
             try {
@@ -45,10 +54,73 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                 return "error";
             }
 
+        else if (taskName.equals("addFollower"))
+            // objects[0] is followedEmail. objects[1] is follower email.
+            try {
+                result = database.addFollower((String) objects[0], (String) objects[1]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("deleteFollower"))
+            // objects[0] is followedEmail. objects[1] is follower email.
+            try {
+                result = database.deleteFollower((String) objects[0], (String) objects[1]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
         else if (taskName.equals("addRecipe"))
             // objects[0] is Recipe to add.
             try {
                 result = database.addRecipe((Recipe) objects[0]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("getRecipe"))
+            // objects[0] is ID of Recipe to get.
+            try {
+                result = database.getRecipe((int) objects[0]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("getUsersRecipes"))
+            // objects[0] is User email.
+            try {
+                result = database.getUsersRecipes((String) objects[0]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("searchRecipes"))
+            // objects[0] is skill, objects[1] is cuisine, objects[2] is type, objects[3] is author email
+            try {
+                result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String) objects[1],(Recipe.recipeType) objects[2], (String) objects[3]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("addComment"))
+            // objects[0] is recipe ID. objects[1] is Comment
+            try {
+                result = database.addComment((int) objects[0], (Comment) objects[1]);
+            }
+            catch (IOException e) {
+                return "error";
+            }
+
+        else if (taskName.equals("addPicture"))
+            // objects[0] is recipe ID. objects[1] is picture
+            try {
+                result = database.addPicture((int) objects[0], (byte[]) objects[1]);
             }
             catch (IOException e) {
                 return "error";

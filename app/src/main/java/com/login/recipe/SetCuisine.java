@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+import android.app.ProgressDialog;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -19,6 +20,7 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox baking;
     private CheckBox meat;
     private Button continue_button;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class SetCuisine extends AppCompatActivity {
         final MyApplication app = ((MyApplication)getApplicationContext());
         final UserProfile user = app.getUser();
 
+        progressDialog = new ProgressDialog(this);
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
         italian = (CheckBox)findViewById(R.id.italian_rec_category);
@@ -55,6 +58,8 @@ public class SetCuisine extends AppCompatActivity {
                 //add user info to database
                 String response = null;
                 try {
+                    progressDialog.setMessage("Cooking...");
+                    progressDialog.show();
                     response = (String) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
                 }
                 catch (ExecutionException | InterruptedException e) {

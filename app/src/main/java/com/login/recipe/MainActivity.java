@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private Button forgot_password;
     private MyApplication app;
-    private DatabaseService database;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private void validate(String email, String password){
         Object user = null;
         try {
+            progressDialog.setMessage("Cooking...");
+            progressDialog.show();
             user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
         }
         catch (ExecutionException | InterruptedException e) {

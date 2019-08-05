@@ -11,13 +11,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import java.io.IOException;
+import android.app.ProgressDialog;
 import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 public class AddRecipe extends AppCompatActivity {
 
+    private ProgressDialog progressDialog;
     private CheckBox asian;
     private CheckBox middle_eastern;
     private CheckBox italian;
@@ -38,6 +38,7 @@ public class AddRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        progressDialog = new ProgressDialog(this);
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
         italian = (CheckBox)findViewById(R.id.italian_rec_category);
@@ -115,6 +116,8 @@ public class AddRecipe extends AppCompatActivity {
                 // add the recipe to the database
                 String response = null;
                 try {
+                    progressDialog.setMessage("Cooking...");
+                    progressDialog.show();
                     response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
                 }
                 catch (ExecutionException | InterruptedException e) {
