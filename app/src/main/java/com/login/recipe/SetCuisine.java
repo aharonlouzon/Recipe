@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,10 +22,10 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
-    private Button continue_button;
     private UserProfile user;
     private DatabaseService databaseService = new DatabaseService();
     private String password;
+    private ProgressDialog progressDialog;
 
 //    private FirebaseUser firebaseUser;
 //    private FirebaseDatabase firebaseDatabase;
@@ -40,6 +41,7 @@ public class SetCuisine extends AppCompatActivity {
         Intent intent = getIntent();
         user = (UserProfile)intent.getSerializableExtra("user");
         password = (String)intent.getSerializableExtra("password");
+        progressDialog = new ProgressDialog(this);
 
 //        firebaseAuth = FirebaseAuth.getInstance();
 //        firebaseUser = firebaseAuth.getCurrentUser();
@@ -48,17 +50,20 @@ public class SetCuisine extends AppCompatActivity {
 //            userId = firebaseUser.getUid();
 //        databaseReference = firebaseDatabase.getReference(userId);
 
-        asian = (CheckBox)findViewById(R.id.asian_rec_category);
-        middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
-        italian = (CheckBox)findViewById(R.id.italian_rec_category);
-        european = (CheckBox)findViewById(R.id.european_rec_categories);
-        baking = (CheckBox)findViewById(R.id.baking_rec_category);
-        meat = (CheckBox)findViewById(R.id.meat_rec_category);
-        continue_button = (Button)findViewById(R.id.continue_button_add_recipe);
+        asian = findViewById(R.id.asian_rec_category);
+        middle_eastern = findViewById(R.id.middle_eastern_rec_category);
+        italian = findViewById(R.id.italian_rec_category);
+        european = findViewById(R.id.european_rec_categories);
+        baking = findViewById(R.id.baking_rec_category);
+        meat = findViewById(R.id.meat_rec_category);
+        Button continue_button = findViewById(R.id.continue_button_add_recipe);
 
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
+
                 if(asian.isChecked())
                     user.addCuisine("asian");
                 if(middle_eastern.isChecked())

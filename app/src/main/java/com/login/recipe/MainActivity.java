@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,25 +20,21 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
-    private Button login;
-    private Button register;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-    private FirebaseUser user;
-    private Button forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email = (EditText)findViewById(R.id.email_input);
-        password = (EditText)findViewById(R.id.password_input);
-        login = (Button)findViewById(R.id.login_button);
-        register = (Button)findViewById(R.id.register_button);
+        email = findViewById(R.id.email_input);
+        password = findViewById(R.id.password_input);
+        Button login = findViewById(R.id.login_button);
+        Button register = findViewById(R.id.register_button);
         firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
         progressDialog = new ProgressDialog(this);
-        forgot_password = (Button)findViewById(R.id.forgot_password);
+        Button forgot_password = findViewById(R.id.forgot_password);
 
         if(user != null){
             finish();
@@ -72,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void validate(String email, String password){
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @SuppressLint("ShowToast")
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful())
