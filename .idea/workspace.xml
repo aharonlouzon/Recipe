@@ -83,14 +83,7 @@
     <last-search-timestamp>1563311823348</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dac2a951-c11f-4994-bde2-66cbfdd7f6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" afterDir="false" />
-    </list>
+    <list default="true" id="dac2a951-c11f-4994-bde2-66cbfdd7f6c6" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,8 +153,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="273" column="5" lean-forward="true" selection-start-line="273" selection-start-column="5" selection-end-line="273" selection-end-column="5" />
+            <state relative-caret-position="96">
+              <caret line="245" column="70" selection-start-line="245" selection-start-column="70" selection-end-line="245" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -546,7 +539,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.32967034" />
@@ -1016,8 +1008,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="273" column="5" lean-forward="true" selection-start-line="273" selection-start-column="5" selection-end-line="273" selection-end-column="5" />
+        <state relative-caret-position="96">
+          <caret line="245" column="70" selection-start-line="245" selection-start-column="70" selection-end-line="245" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
