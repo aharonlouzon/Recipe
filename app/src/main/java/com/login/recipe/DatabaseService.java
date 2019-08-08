@@ -10,7 +10,7 @@ import java.net.URL;
 
 public class DatabaseService {
 
-    private static final String BASE_URL = "http://localhost:8080/RecipeAppDatabaseService/webresources/";
+    private static final String BASE_URL = "https://localhost:8080/RecipeAppDatabaseService/webresources/";
 
     /**
      * validate if correct password (on sign-in)
