@@ -26,16 +26,20 @@ public class SetUser extends AppCompatActivity {
         setContentView(R.layout.activity_set_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        firstName = findViewById(R.id.first_name_set_user);
-        lastName = findViewById(R.id.last_name_text_set_user);
-        radioGroup = findViewById(R.id.radio_group_set_user);
-        country = findViewById(R.id.country_text_set_user);
-        Button continueButton = findViewById(R.id.continue_button_set_user);
-        progressDialog = new ProgressDialog(this);
 
+        final MyApplication app = ((MyApplication)getApplicationContext());
+
+        firstName = (EditText) findViewById(R.id.first_name_set_user);
+        lastName = (EditText)findViewById(R.id.last_name_text_set_user);
+        radioGroup = (RadioGroup)findViewById(R.id.radio_group_set_user);
+        country = (EditText)findViewById(R.id.country_text_set_user);
+        continueButton = (Button)findViewById(R.id.continue_button_set_user);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
+                
                 String first_name = firstName.getText().toString().trim();
                 String last_name = lastName.getText().toString().trim();
                 UserProfile.skillLevel cookingSkills = UserProfile.skillLevel.BEGINNER;
@@ -53,12 +57,16 @@ public class SetUser extends AppCompatActivity {
                 }
 
                 String country_input = country.getText().toString().trim();
-                progressDialog.setMessage("Cooking...");
-                progressDialog.show();
                 UserProfile user = new UserProfile(first_name, last_name, cookingSkills, country_input);
                 Intent intent = new Intent(SetUser.this, SetCuisine.class);
                 intent.putExtra("user", user);
                 intent.putExtra("password", password);
+                app.getUser().setFirstName(first_name);
+                app.getUser().setLastName(last_name);
+                app.getUser().setCookingSkills(cookingSkills);
+                app.getUser().setCountry(country_input);
+
+                Intent intent = new Intent(SetUser.this, SetCuisine.class);
                 startActivity(intent);
             }
         });

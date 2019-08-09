@@ -8,16 +8,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import android.app.ProgressDialog;
 import java.util.Date;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import java.util.UUID;
-import com.login.recipe.DatabaseService;
+import java.util.concurrent.ExecutionException;
 
 public class AddRecipe extends AppCompatActivity {
 
+    private ProgressDialog progressDialog;
     private CheckBox asian;
     private CheckBox middle_eastern;
     private CheckBox italian;
@@ -32,24 +32,13 @@ public class AddRecipe extends AppCompatActivity {
     private EditText title;
     private EditText direction_step;
     private Recipe recipe = new Recipe();
-    private FirebaseUser firebaseUser;
-    private FirebaseDatabase firebaseDatabase;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference databaseReference;
-    private String userId;
-    private DatabaseService databaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        if (firebaseUser != null)
-            userId = firebaseUser.getUid();
-
+        progressDialog = new ProgressDialog(this);
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
         italian = (CheckBox)findViewById(R.id.italian_rec_category);
@@ -64,13 +53,6 @@ public class AddRecipe extends AppCompatActivity {
         quantity = (EditText)findViewById(R.id.add_recipe_Quantity);
         title = (EditText)findViewById(R.id.title_add_recipe);
 
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseUser = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        if (firebaseUser != null)
-            userId = firebaseUser.getUid();
-        databaseReference = firebaseDatabase.getReference(userId);
-
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,7 +62,7 @@ public class AddRecipe extends AppCompatActivity {
                 int step_num = Integer.parseInt(addDirection.getText().toString());
                 step_num++;
                 addDirection.setText(String.valueOf(step_num));
-                recipe.addInstruction(step);
+                recipe.getInstructions().add(step);
                 direction_step.getText().clear();
                 return;
             }
@@ -93,7 +75,7 @@ public class AddRecipe extends AppCompatActivity {
                     return;
                 String name = product_name.getText().toString().trim();
                 String quan = quantity.getText().toString().trim();
-                recipe.addIngredient(name, quan);
+                recipe.getIngredients().put(name,quan);
                 product_name.getText().clear();
                 quantity.getText().clear();
                 return;
@@ -110,38 +92,44 @@ public class AddRecipe extends AppCompatActivity {
                 if(recipe.getIngredients().size() == 0)
                     return;
                 if(asian.isChecked())
-                    recipe.addCuisine("asian");
+                    recipe.getCuisines().add("asian");
                 if(middle_eastern.isChecked())
-                    recipe.addCuisine("middle_eastern");
+                    recipe.getCuisines().add("middle_eastern");
                 if(italian.isChecked())
-                    recipe.addCuisine("italian");
+                    recipe.getCuisines().add("italian");
                 if(european.isChecked())
-                    recipe.addCuisine("european");
+                    recipe.getCuisines().add("european");
                 if(baking.isChecked())
-                    recipe.addCuisine("baking");
+                    recipe.getCuisines().add("baking");
                 if(meat.isChecked())
-                    recipe.addCuisine("meat");
-
-                //generate unique id
-                int uniqueID = Integer.parseInt(UUID.randomUUID().toString());
-                recipe.setRecipeId(uniqueID);
+                    recipe.getCuisines().add("meat");
 
                 //set author to be current user
-                recipe.setAuthor(userId);
+                MyApplication app = ((MyApplication)getApplicationContext());
+                recipe.setAuthor(app.getUser().getEmail());
 
                 //set release time for recipe
-                Date date = new Date();
-                recipe.setReleaseDate(date);
-
+                recipe.setReleaseDate(new Date(System.currentTimeMillis()));
                 recipe.setName(title.getText().toString().trim());
-                databaseService.addRecipe(recipe);
-//                databaseReference.child("recipes").child(recipe.getRecipeId()).setValue(recipe);
-//                databaseReference.getRoot().child("recipe").child(recipe.getRecipeId()).setValue(recipe);
-                RecipeList recipes = new RecipeList();
-                recipes = databaseService.getUsersRecipes("roni");
-                System.out.println("hi");
 
-                startActivity(new Intent(AddRecipe.this, MyArea.class));
+                // add the recipe to the database
+                String response = null;
+                try {
+                    progressDialog.setMessage("Cooking...");
+                    progressDialog.show();
+                    response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+                }
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                }
+                if (response == null)
+                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                else if (response.equals("error"))
+                    Toast.makeText(AddRecipe.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                else {
+                    Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(AddRecipe.this, HomePage.class));
+                }
             }
         });
 

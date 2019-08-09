@@ -16,13 +16,14 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    private RecyclerView recyclerView;
+    private MyAdapter myAdapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        firebaseAuth = FirebaseAuth.getInstance();
 
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -86,7 +87,6 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-                firebaseAuth.signOut();
                 finish();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
                 break;

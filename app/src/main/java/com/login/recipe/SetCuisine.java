@@ -14,6 +14,11 @@ import android.widget.CheckBox;
 //import com.google.firebase.database.FirebaseDatabase;
 //import com.login.recipe.DatabaseService;
 
+import android.widget.Toast;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import android.app.ProgressDialog;
+
 public class SetCuisine extends AppCompatActivity {
 
     private CheckBox asian;
@@ -25,7 +30,6 @@ public class SetCuisine extends AppCompatActivity {
     private UserProfile user;
     private DatabaseService databaseService = new DatabaseService();
     private String password;
-    private ProgressDialog progressDialog;
 
 //    private FirebaseUser firebaseUser;
 //    private FirebaseDatabase firebaseDatabase;
@@ -33,6 +37,8 @@ public class SetCuisine extends AppCompatActivity {
 //    private DatabaseReference databaseReference;
 //    private String userId;
 
+    private Button continue_button;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,11 @@ public class SetCuisine extends AppCompatActivity {
         meat = findViewById(R.id.meat_rec_category);
         Button continue_button = findViewById(R.id.continue_button_add_recipe);
 
+        final MyApplication app = ((MyApplication)getApplicationContext());
+        final UserProfile user = app.getUser();
+
+        progressDialog = new ProgressDialog(this);
+
         continue_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,16 +89,24 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
-                String response = databaseService.addUser(user, password);
+                String response = null;
+                try {
+                    progressDialog.setMessage("Cooking...");
+                    progressDialog.show();
+                    response = (String) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
+                }
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                }
+                if (response == null)
+                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                else if (response.equals("error"))
+                    Toast.makeText(SetCuisine.this, "Error connecting to database", Toast.LENGTH_SHORT);
+                else {
+                    Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(SetCuisine.this, HomePage.class));
+                }
 
-//                databaseReference.setValue(user.getFirstName());
-//                databaseReference.child("first_name").setValue(user.getFirstName());
-//                databaseReference.child("last_name").setValue(user.getLastName());
-//                databaseReference.child("country").setValue(user.getCountry());
-//                databaseReference.child("cooking_skill").setValue(user.getCookingSkills());
-//                databaseReference.child("cuisine").setValue(user.getCuisine());
-
-                startActivity(new Intent(SetCuisine.this, HomePage.class));
             }
         });
     }

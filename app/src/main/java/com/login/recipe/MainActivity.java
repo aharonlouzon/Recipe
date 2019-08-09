@@ -2,7 +2,6 @@ package com.login.recipe;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +14,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,29 +23,31 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
     private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
+    private Button login;
+    private Button register;
+    private ProgressDialog progressDialog;
+    private Button forgot_password;
+    private MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email = findViewById(R.id.email_input);
-        password = findViewById(R.id.password_input);
-        Button login = findViewById(R.id.login_button);
-        Button register = findViewById(R.id.register_button);
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+        email = (EditText)findViewById(R.id.email_input);
+        password = (EditText)findViewById(R.id.password_input);
+        login = (Button)findViewById(R.id.login_button);
+        register = (Button)findViewById(R.id.register_button);
         progressDialog = new ProgressDialog(this);
         Button forgot_password = findViewById(R.id.forgot_password);
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if(user != null){
-            finish();
-            startActivity(new Intent(MainActivity.this, HomePage.class));
-        }
+        app = ((MyApplication)getApplicationContext());
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RegiterPage.class);
+                Intent intent = new Intent(MainActivity.this, RegisterPage.class);
                 startActivity(intent);
             }
         });
@@ -67,16 +70,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void validate(String email, String password){
-        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @SuppressLint("ShowToast")
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful())
-                    startActivity(new Intent(MainActivity.this, HomePage.class));
-                else
-                    Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
 
-            }
-        });
-    }
+        // firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        //     @SuppressLint("ShowToast")
+        //     @Override
+        //     public void onComplete(@NonNull Task<AuthResult> task) {
+        //         if(task.isSuccessful())
+        //             startActivity(new Intent(MainActivity.this, HomePage.class));
+        //         else
+        //             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+
+        //     }
+        // });
+
+        Object user = null;
+        try {
+            progressDialog.setMessage("Cooking...");
+            progressDialog.show();
+            user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
+        }
+        catch (ExecutionException | InterruptedException e) {
+            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+        }
+        if (user == null)
+            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+        if (user.getClass().equals(UserProfile.class)) {
+            app.setUser((UserProfile) user);
+            startActivity(new Intent(MainActivity.this, HomePage.class));
+        }
+        else
+            Toast.makeText(MainActivity.this, "Error connecting to database", Toast.LENGTH_SHORT);
+        }
 }
