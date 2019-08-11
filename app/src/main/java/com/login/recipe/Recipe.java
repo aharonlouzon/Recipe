@@ -6,13 +6,14 @@ import java.util.Map;
 import java.util.Date;
 import com.login.recipe.UserProfile.skillLevel;
 import java.util.HashMap;
+import java.util.UUID;
 
 public class Recipe implements Serializable {
 
     public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}
 
     private String name;
-    private int recipeId;
+    private String recipeId;
     private recipeType type;
     private skillLevel skillLevel;
     private ArrayList<String> instructions;
@@ -29,6 +30,7 @@ public class Recipe implements Serializable {
         this.images = new ArrayList<>();
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
+        this.recipeId = UUID.randomUUID().toString();
     }
 
     public Recipe(String name, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
@@ -42,6 +44,7 @@ public class Recipe implements Serializable {
         this.images = new ArrayList<>();
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
+        this.recipeId = UUID.randomUUID().toString();
     }
 
 
@@ -61,11 +64,11 @@ public class Recipe implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public int getRecipeId() {
+    public String getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(int recipeId) {
+    public void setRecipeId(String recipeId) {
         this.recipeId = recipeId;
     }
 

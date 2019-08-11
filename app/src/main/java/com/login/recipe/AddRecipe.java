@@ -38,6 +38,8 @@ public class AddRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        final MyApplication app = ((MyApplication)getApplicationContext());
+
         progressDialog = new ProgressDialog(this);
         asian = (CheckBox)findViewById(R.id.asian_rec_category);
         middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
@@ -85,6 +87,9 @@ public class AddRecipe extends AppCompatActivity {
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
+
                 if(title.getText().toString().isEmpty())
                     return;
                 if(recipe.getInstructions().size() == 0)
@@ -115,8 +120,6 @@ public class AddRecipe extends AppCompatActivity {
                 // add the recipe to the database
                 String response = null;
                 try {
-                    progressDialog.setMessage("Cooking...");
-                    progressDialog.show();
                     response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
                 }
                 catch (ExecutionException | InterruptedException e) {
@@ -128,7 +131,8 @@ public class AddRecipe extends AppCompatActivity {
                     Toast.makeText(AddRecipe.this, "Error connecting to database", Toast.LENGTH_SHORT);
                 else {
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
-                    startActivity(new Intent(AddRecipe.this, HomePage.class));
+                    app.setRecipe(recipe);
+                    startActivity(new Intent(AddRecipe.this, RecipePage.class));
                 }
             }
         });
