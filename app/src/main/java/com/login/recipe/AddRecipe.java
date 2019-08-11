@@ -110,7 +110,6 @@ public class AddRecipe extends AppCompatActivity {
 
                 //set release time for recipe
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
-
                 recipe.setName(title.getText().toString().trim());
 
                 // add the recipe to the database

@@ -12,9 +12,10 @@ import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
 import android.app.ProgressDialog;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ForgotPassword extends AppCompatActivity {
 
-    private Button reset;
     private EditText email;
     private ProgressDialog progressDialog;
 
@@ -27,7 +28,7 @@ public class ForgotPassword extends AppCompatActivity {
         final MyApplication app = ((MyApplication)getApplicationContext());
 
         progressDialog = new ProgressDialog(this);
-        reset = (Button)findViewById(R.id.reset_password_button);
+        Button reset = (Button) findViewById(R.id.reset_password_button);
         email = (EditText)findViewById(R.id.email_forgot_password);
 
         email.setOnTouchListener(new View.OnTouchListener() {
@@ -38,9 +39,16 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
                 String text = email.getText().toString().trim();
+
+                // if(!text.isEmpty() && !(text.equals("EnterEmail"))) {
+                //     firebaseAuth.sendPasswordResetEmail(text);
+                //     Toast.makeText(ForgotPassword.this, "Password Reset Mail was sent to your inbox", Toast.LENGTH_SHORT);
+                //     startActivity(new Intent(ForgotPassword.this, MainActivity.class));
+
                 if(!text.isEmpty() && !(text == "EnterEmail")) {
                     String response = null;
                     try {

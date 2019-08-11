@@ -3,28 +3,34 @@ package com.login.recipe;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import com.google.firebase.auth.FirebaseAuth;
 import android.widget.Toast;
-
+import com.google.firebase.auth.AuthResult;
+import android.support.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+//import android.view.KeyEvent;
+//import android.view.MotionEvent;
+//import android.widget.TextView;
 
 public class RegisterPage extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
     private EditText confirm_password;
+    private FirebaseAuth firebaseAuth;
     private Button sign_up;
     private Button already_user;
     private ProgressDialog progressDialog;
+//    private DatabaseService databaseService;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -43,6 +49,7 @@ public class RegisterPage extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         sign_up.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
                 String user_email = email.getText().toString().trim();
@@ -56,6 +63,20 @@ public class RegisterPage extends AppCompatActivity {
                     app.getUser().setEmail(user_email);
                     app.setNewPassword(user_password);
                     startActivity(new Intent(RegisterPage.this, SetUser.class));
+
+                    // firebaseAuth.createUserWithEmailAndPassword(user_email, user_password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    //     @Override
+                    //     public void onComplete(@NonNull Task<AuthResult> task) {
+                    //         if(task.isSuccessful()) {
+                    //             Toast.makeText(RegiterPage.this, "Registretion successful", Toast.LENGTH_SHORT);
+                    //             startActivity(intent);
+                    //         }
+                    //         else
+                    //             Toast.makeText(RegiterPage.this, "Registretion failed", Toast.LENGTH_SHORT);
+
+                    //     }
+                    // });
+
                 }
             }
         });
