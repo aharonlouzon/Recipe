@@ -345,7 +345,7 @@ public class DatabaseService {
         }
     }
 
-    private CommentList getComments (String recipeID)throws IOException {
+    private CommentList getComments (int recipeID)throws IOException {
         String url = BASE_URL + "recipe/getComments/" + recipeID;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             CommentList comments = new Gson().fromJson(reader, CommentList.class);
@@ -356,7 +356,7 @@ public class DatabaseService {
         }
     }
 
-    private PictureList getPictures(String recipeID) throws IOException {
+    private PictureList getPictures(int recipeID) throws IOException {
         String url = BASE_URL + "recipe/getPictures/" + recipeID;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             PictureList pictures = new Gson().fromJson(reader, PictureList.class);

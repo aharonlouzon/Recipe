@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 public class MyArea extends AppCompatActivity {
 
-    private FloatingActionButton floatingActionButton;
     private ImageView avatar;
 
     @Override
@@ -23,7 +22,7 @@ public class MyArea extends AppCompatActivity {
         avatar = (ImageView)findViewById(R.id.imageView_my_area);
         avatar.setImageResource(R.drawable.male_avatar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.recipe_page_add_photo);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

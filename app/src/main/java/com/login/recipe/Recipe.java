@@ -13,7 +13,7 @@ public class Recipe implements Serializable {
     public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}
 
     private String name;
-    private String recipeId;
+    private int recipeId;
     private recipeType type;
     private skillLevel skillLevel;
     private ArrayList<String> instructions;
@@ -30,7 +30,6 @@ public class Recipe implements Serializable {
         this.images = new ArrayList<>();
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
-        this.recipeId = UUID.randomUUID().toString();
     }
 
     public Recipe(String name, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
@@ -44,7 +43,6 @@ public class Recipe implements Serializable {
         this.images = new ArrayList<>();
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
-        this.recipeId = UUID.randomUUID().toString();
     }
 
 
@@ -64,11 +62,11 @@ public class Recipe implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public String getRecipeId() {
+    public int getRecipeId() {
         return recipeId;
     }
 
-    public void setRecipeId(String recipeId) {
+    public void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
     }
 

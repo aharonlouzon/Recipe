@@ -8,25 +8,14 @@
     tools:context=".RecipePage"
     tools:showIn="@layout/activity_recipe_page">
 
-    <TextView
-        android:id="@+id/recipe_page_title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/recipe_page_image_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" />
-
-    <TextView
-        android:id="@+id/recipe_page_ingredients"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/recipe_page_instructions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
+        <TextView
+            android:id="@+id/recipe_title_recipe_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+    </ScrollView>
 </android.support.v4.widget.NestedScrollView>

@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 import java.util.Date;
@@ -117,7 +115,7 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
                 recipe.setName(title.getText().toString().trim());
 
-                // add the recipe to the database
+//                 add the recipe to the database
                 String response = null;
                 try {
                     response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();

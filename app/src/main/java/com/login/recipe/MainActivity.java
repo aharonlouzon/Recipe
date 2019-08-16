@@ -91,8 +91,10 @@ public class MainActivity extends AppCompatActivity {
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
         }
-        if (user == null)
+        if (user == null){
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            return;
+        }
         if (user.getClass().equals(UserProfile.class)) {
             app.setUser((UserProfile) user);
             startActivity(new Intent(MainActivity.this, HomePage.class));
