@@ -35,8 +35,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.title.setText(models.get(position).getName());
         holder.description.setText(models.get(position).getName());
-        Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(position).getImages().get(0), 0, models.get(position).getImages().get(0).length);
-        holder.imageView.setImageBitmap(bitmap);
+        holder.setRecipeId(models.get(position).getRecipeId());
+        if(models.get(position).getImages().size() > 0){
+            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(position).getImages().get(0),0, models.get(position).getImages().get(0).length);
+            holder.imageView.setImageBitmap(bitmap);
+        }
 
         Animation animation = AnimationUtils.loadAnimation(c, android.R.anim.slide_in_left);
         holder.itemView.startAnimation(animation);

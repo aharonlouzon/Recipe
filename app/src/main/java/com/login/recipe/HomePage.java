@@ -11,11 +11,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.facebook.FacebookSdk;
 import com.google.firebase.auth.FirebaseAuth;
-
-
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class HomePage extends AppCompatActivity {
 
@@ -31,25 +31,25 @@ public class HomePage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_page);
 
+        progressDialog = new ProgressDialog(this);
+        app = ((MyApplication)getApplicationContext());
+        user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
-        progressDialog = new ProgressDialog(this);
-        app = ((MyApplication)getApplicationContext());
-        user = app.getUser();
-
 
     }
 
     private RecipeList getRecipes(){
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
 
-        //add user info to database
+        // get user's recipes
         try {
-            progressDialog.setMessage("Cooking...");
-            progressDialog.show();
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
         }
         catch (ExecutionException | InterruptedException e) {

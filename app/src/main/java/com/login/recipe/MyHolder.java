@@ -1,22 +1,43 @@
 package com.login.recipe;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.FacebookSdk;
 
-public class MyHolder extends RecyclerView.ViewHolder {
+import java.util.concurrent.ExecutionException;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
+
+
+public class MyHolder extends RecyclerView.ViewHolder{
 
     ImageView imageView;
     TextView title, description;
+    private MyApplication app;
+    private int recipeId;
+    private ProgressDialog progressDialog;
+    private Recipe recipe;
 
     public MyHolder(@NonNull View itemView) {
         super(itemView);
+        app = ((MyApplication)getApplicationContext());
         this.imageView = itemView.findViewById(R.id.card_image);
         this.title = itemView.findViewById(R.id.model_title);
         this.description = itemView.findViewById(R.id.model_card_detail);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                app.setRecipe(getRecipe());
+                v.getContext().startActivity(new Intent(v.getContext(), RecipePage.class));
+            }
+        });
     }
 
     public void setImageView(ImageView imageView) {
@@ -29,5 +50,23 @@ public class MyHolder extends RecyclerView.ViewHolder {
 
     public void setDescription(TextView description) {
         this.description = description;
+    }
+
+    private Recipe getRecipe(){
+
+        // get recipe by id
+        try {
+            recipe = (Recipe) new DatabaseServiceTask("getRecipe", app).execute(this.recipeId).get();
+        }
+        catch (ExecutionException | InterruptedException e) {
+
+        }
+
+        return recipe;
+
+    }
+
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
     }
 }
