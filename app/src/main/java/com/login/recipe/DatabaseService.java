@@ -103,6 +103,43 @@ public class DatabaseService {
     }
 
     /**
+     * change the profile picture of an existing User
+     * @return if successfully added - "change profile pic for " + userEmail .
+     *         if no profile exists for the given email - returns null
+     * @throws IOException if there is a error in connecting to the server
+     */
+    public String changeProfilePic(byte[] picture, String userEmail) throws IOException {
+        String url = BASE_URL + "userProfile/changeProfilePic/" + userEmail;
+        HttpURLConnection connection = null;
+        OutputStreamWriter writer = null;
+        InputStreamReader reader = null;
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Content-Type", "application/json;");
+            connection.setRequestProperty("Accept", "application/json");
+            connection.setRequestProperty("Method", "POST");
+            writer = new OutputStreamWriter(connection.getOutputStream());
+            writer.write(new Gson().toJson(new ProfilePic(picture)));
+            writer.flush();
+
+            reader = new InputStreamReader(connection.getInputStream());
+            TextMessage response = new Gson().fromJson(reader, TextMessage.class);
+            reader.close();
+            if (response == null)
+                return null;
+            else
+                return response.getMessage();
+        }
+        catch(IOException e) {
+            throw e;
+        }
+        finally {
+            closeResources(connection,reader,writer);
+        }
+    }
+
+    /**
      * add a follower to a user
      * @return if successful - "added follower " + followerEmail + " for " + userEmail.
      *    if userEmail or followerEmail doesn't exist - returns null

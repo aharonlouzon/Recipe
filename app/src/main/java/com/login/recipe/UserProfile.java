@@ -13,6 +13,7 @@ public class UserProfile implements Serializable {
     private skillLevel cookingSkills;
     private ArrayList<String> cuisines;
     private String country;
+    private byte[] picture;
     private ArrayList<String> followers; // emails of followers
     private ArrayList<String> followerOf; // emails of people the user follows
 
@@ -22,23 +23,25 @@ public class UserProfile implements Serializable {
         cuisines = new ArrayList<>();
     }
 
-    public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country) {
+    public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country, byte[] picture) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
+        this.picture = picture;
         this.cuisines = new ArrayList<>();
         this.followers = new ArrayList<>();
         this.followerOf = new ArrayList<>();
     }
 
-    public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country, ArrayList<String> followers, ArrayList<String> followerOf) {
+    public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country, byte[] picture, ArrayList<String> followers, ArrayList<String> followerOf) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
+        this.picture = picture;
         this.followers = followers;
         this.followerOf = followerOf;
     }
@@ -65,6 +68,14 @@ public class UserProfile implements Serializable {
 
     public String getCountry() {
         return country;
+    }
+
+    public byte[] getPicture() {
+        return picture;
+    }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
     }
 
     public ArrayList<String> getFollowers() {
