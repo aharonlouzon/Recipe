@@ -113,10 +113,6 @@ public class Recipe implements Serializable {
         this.instructions.add(instruction);
     }
 
-    public ArrayList<String> getCusines() {
-        return cuisines;
-    }
-
     public ArrayList<String> getCuisines() {
         return cuisines;
     }

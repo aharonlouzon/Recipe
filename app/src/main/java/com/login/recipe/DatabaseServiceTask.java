@@ -54,6 +54,15 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                 return "error";
             }
 
+        else if (taskName.equals("changeProfilePic"))
+            // objects[0] is email. objects[1] is new pic (a byte[]).
+            try {
+                result = database.changeProfilePic((byte[]) objects[1], (String) objects[0]);
+            }
+        catch (IOException e) {
+                return "error";
+        }
+
         else if (taskName.equals("addFollower"))
             // objects[0] is followedEmail. objects[1] is follower email.
             try {
