@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,8 +12,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.concurrent.ExecutionException;
 
 public class UploadRecipeImage extends AppCompatActivity {
@@ -28,9 +30,9 @@ public class UploadRecipeImage extends AppCompatActivity {
         setContentView(R.layout.activity_upload_recipe_image);
 
         //Initialize Views
-        Button btnChoose = (Button) findViewById(R.id.btnChoose);
-        Button btnUpload = (Button) findViewById(R.id.btnUpload);
-        imageView = (ImageView) findViewById(R.id.imgView);
+        Button btnChoose = findViewById(R.id.btnChoose);
+        Button btnUpload = findViewById(R.id.btnUpload);
+        imageView = findViewById(R.id.imgView);
         app = ((MyApplication)getApplicationContext());
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
@@ -72,32 +74,56 @@ public class UploadRecipeImage extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ShowToast")
     private void uploadImage() {
 
         if(filePath != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Coocing...");
+            progressDialog.setTitle("Cooking...");
             progressDialog.show();
             Recipe recipe = app.getRecipe();
+
+            InputStream iStream;
+            byte[] inputData = null;
+
+            try {
+                iStream = getContentResolver().openInputStream(filePath);
+                inputData = getBytes(iStream);
+            }catch (Exception e){
+                Toast.makeText(UploadRecipeImage.this, "Failed to get image", Toast.LENGTH_SHORT);
+                startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
+            }
 
             // add the recipe to the database
             String response = null;
             try {
-                response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+                response = (String) new DatabaseServiceTask("addPicture", app).execute(app.getRecipe().getRecipeId(), inputData).get();
             }
             catch (ExecutionException | InterruptedException e) {
-                Toast.makeText(UploadRecipeImage.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
             }
-            if (response == null)
-                Toast.makeText(UploadRecipeImage.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+            if (response == null) {
+                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+            }
             else if (response.equals("error"))
                 Toast.makeText(UploadRecipeImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
             else {
-                Toast.makeText(UploadRecipeImage.this, "Recipe Added", Toast.LENGTH_SHORT);
-                app.setRecipe(recipe);
-                startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
+                Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
             }
+            startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
         }
+    }
+
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 }

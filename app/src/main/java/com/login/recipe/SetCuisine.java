@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,16 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.login.recipe.DatabaseService;
-
 import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
-import android.app.ProgressDialog;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -28,17 +21,6 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
-    private UserProfile user;
-    private DatabaseService databaseService = new DatabaseService();
-    private String password;
-
-//    private FirebaseUser firebaseUser;
-//    private FirebaseDatabase firebaseDatabase;
-//    private FirebaseAuth firebaseAuth;
-//    private DatabaseReference databaseReference;
-//    private String userId;
-
-    private Button continue_button;
     private ProgressDialog progressDialog;
     private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
@@ -47,17 +29,7 @@ public class SetCuisine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_cuisine);
-        Intent intent = getIntent();
-        user = (UserProfile)intent.getSerializableExtra("user");
-        password = (String)intent.getSerializableExtra("password");
         progressDialog = new ProgressDialog(this);
-
-//        firebaseAuth = FirebaseAuth.getInstance();
-//        firebaseUser = firebaseAuth.getCurrentUser();
-//        firebaseDatabase = FirebaseDatabase.getInstance();
-//        if (firebaseUser != null)
-//            userId = firebaseUser.getUid();
-//        databaseReference = firebaseDatabase.getReference(userId);
 
         asian = findViewById(R.id.asian_rec_category);
         middle_eastern = findViewById(R.id.middle_eastern_rec_category);
@@ -74,6 +46,7 @@ public class SetCuisine extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         continue_button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
                 progressDialog.setMessage("Cooking...");

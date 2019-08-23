@@ -12,8 +12,6 @@ import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
 import android.app.ProgressDialog;
 
-import com.google.firebase.auth.FirebaseAuth;
-
 public class ForgotPassword extends AppCompatActivity {
 
     private EditText email;
@@ -28,9 +26,8 @@ public class ForgotPassword extends AppCompatActivity {
         final MyApplication app = ((MyApplication)getApplicationContext());
 
         progressDialog = new ProgressDialog(this);
-        Button reset = (Button) findViewById(R.id.reset_password_button);
-        email = (EditText)findViewById(R.id.email_forgot_password);
-        firebaseAuth = FirebaseAuth.getInstance();
+        Button reset = findViewById(R.id.reset_password_button);
+        email = findViewById(R.id.email_forgot_password);
 
         email.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -43,31 +40,25 @@ public class ForgotPassword extends AppCompatActivity {
             @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
                 String text = email.getText().toString().trim();
 
-                // if(!text.isEmpty() && !(text.equals("EnterEmail"))) {
-                //     firebaseAuth.sendPasswordResetEmail(text);
-                //     Toast.makeText(ForgotPassword.this, "Password Reset Mail was sent to your inbox", Toast.LENGTH_SHORT);
-                //     startActivity(new Intent(ForgotPassword.this, MainActivity.class));
-
-                if(!text.isEmpty() && !(text == "EnterEmail")) {
-                    String response = null;
+                if(!text.isEmpty() && !(text.equals("EnterEmail"))) {
+                    String response;
                     try {
-                        progressDialog.setMessage("Cooking...");
-                        progressDialog.show();
                         response = (String) new DatabaseServiceTask("forgotPassword", app).execute(text).get();
                     }
                     catch (ExecutionException | InterruptedException e) {
                         Toast.makeText(ForgotPassword.this, "Failed to email password", Toast.LENGTH_SHORT);
+                        return;
                     }
                     if (response.equals("error"))
                         Toast.makeText(ForgotPassword.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                    if (response == null)
-                        Toast.makeText(ForgotPassword.this, "User doesn't exist", Toast.LENGTH_SHORT);
-                        else {
-                            Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(ForgotPassword.this, MainActivity.class));
-                        }
+                    else {
+                        Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
+                        startActivity(new Intent(ForgotPassword.this, MainActivity.class));
+                    }
                     }
                 }
         });

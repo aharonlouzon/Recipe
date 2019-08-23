@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -29,6 +32,35 @@ public class MyArea extends AppCompatActivity {
                 startActivity(new Intent(MyArea.this, AddRecipe.class));
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.user_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.logout_button: {
+                finish();
+                startActivity(new Intent(MyArea.this, MainActivity.class));
+                break;
+            }
+            case R.id.my_area_button_user_menu: {
+                startActivity(new Intent(MyArea.this, MyArea.class));
+                break;
+            }
+            case R.id.home_page_button_user_menu: {
+                startActivity(new Intent(MyArea.this, HomePage.class));
+                break;
+            }
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

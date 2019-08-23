@@ -110,4 +110,5 @@
     <string name="select_image">Select Image</string>
     <string name="ingredients_title">Ingredients:</string>
     <string name="instructions_title">Instructions:</string>
+    <string name="home">Home Page</string>
 </resources>

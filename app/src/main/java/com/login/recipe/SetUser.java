@@ -29,12 +29,12 @@ public class SetUser extends AppCompatActivity {
 
         final MyApplication app = ((MyApplication)getApplicationContext());
 
-        firstName = (EditText) findViewById(R.id.first_name_set_user);
-        lastName = (EditText)findViewById(R.id.last_name_text_set_user);
-        radioGroup = (RadioGroup)findViewById(R.id.radio_group_set_user);
-        country = (EditText)findViewById(R.id.country_text_set_user);
+        firstName = findViewById(R.id.first_name_set_user);
+        lastName = findViewById(R.id.last_name_text_set_user);
+        radioGroup = findViewById(R.id.radio_group_set_user);
+        country = findViewById(R.id.country_text_set_user);
         progressDialog = new ProgressDialog(this);
-        Button continueButton = (Button) findViewById(R.id.continue_button_set_user);
+        Button continueButton = findViewById(R.id.continue_button_set_user);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,8 +67,7 @@ public class SetUser extends AppCompatActivity {
                 app.getUser().setCookingSkills(cookingSkills);
                 app.getUser().setCountry(country_input);
 
-                Intent intent = new Intent(SetUser.this, SetCuisine.class);
-                startActivity(intent);
+                startActivity(new Intent(SetUser.this, SetCuisine.class));
             }
         });
 

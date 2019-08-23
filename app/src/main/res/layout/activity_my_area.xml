@@ -8,27 +8,18 @@
     tools:context=".MyArea">
 
     <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarLayout2"
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:layout_constraintBottom_toTopOf="@+id/imageView_my_area"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:ignore="MissingConstraints">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            tools:visibility="visible" />
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -45,7 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ImageView
@@ -53,18 +44,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="141dp"
-        android:layout_marginLeft="141dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginRight="142dp"
         android:layout_marginBottom="22dp"
+        android:contentDescription="TODO"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/name_my_area"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
-        tools:srcCompat="@tools:sample/avatars"
-        android:contentDescription="TODO" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/name_my_area"

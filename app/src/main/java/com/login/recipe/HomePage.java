@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,20 +11,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-import com.google.firebase.auth.FirebaseAuth;
-
-
 import com.facebook.FacebookSdk;
-import com.google.firebase.auth.FirebaseAuth;
 import java.util.concurrent.ExecutionException;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class HomePage extends AppCompatActivity {
 
-    private FirebaseAuth firebaseAuth;
-    private RecyclerView recyclerView;
-    private MyAdapter myAdapter;
     private MyApplication app;
     private UserProfile user;
     private ProgressDialog progressDialog;
@@ -46,6 +38,7 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+    @SuppressLint("ShowToast")
     private RecipeList getRecipes(){
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
@@ -57,11 +50,9 @@ public class HomePage extends AppCompatActivity {
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
         }
-
+        progressDialog.dismiss();
         return recipeList;
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
