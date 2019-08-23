@@ -7,11 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.facebook.FacebookSdk;
-
 import java.util.concurrent.ExecutionException;
-
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
@@ -26,6 +22,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
 
     public MyHolder(@NonNull View itemView) {
         super(itemView);
+        progressDialog = new ProgressDialog(itemView.getContext());
         app = ((MyApplication)getApplicationContext());
         this.imageView = itemView.findViewById(R.id.card_image);
         this.title = itemView.findViewById(R.id.model_title);
@@ -34,6 +31,8 @@ public class MyHolder extends RecyclerView.ViewHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
                 app.setRecipe(getRecipe());
                 v.getContext().startActivity(new Intent(v.getContext(), RecipePage.class));
             }
