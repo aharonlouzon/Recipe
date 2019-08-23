@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
+import com.google.firebase.auth.FirebaseAuth;
+
 
 import com.facebook.FacebookSdk;
 import com.google.firebase.auth.FirebaseAuth;

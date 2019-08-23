@@ -16,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import java.io.IOException;
 import java.util.concurrent.ExecutionException;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private Button register;
     private Button forgot_password;
     private MyApplication app;
+    private SharedPreferences sharedpreferences;
+    private static final String preferences = "recipeAppPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         app = ((MyApplication)getApplicationContext());
+        sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        String email = sharedpreferences.getString("Email", null);
+        String password = sharedpreferences.getString("Password", null);
+        if (email != null && password != null)
+            validate(email, password);
     }
 
     private void validate(String email, String password){
@@ -97,6 +106,11 @@ public class MainActivity extends AppCompatActivity {
         }
         if (user.getClass().equals(UserProfile.class)) {
             app.setUser((UserProfile) user);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+
+            editor.putString("Email", email);
+            editor.putString("Password", password);
+            editor.commit();
             startActivity(new Intent(MainActivity.this, HomePage.class));
         }
         else

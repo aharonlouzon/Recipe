@@ -1,7 +1,9 @@
 package com.login.recipe;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +17,6 @@ import android.widget.CheckBox;
 //import com.login.recipe.DatabaseService;
 
 import android.widget.Toast;
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import android.app.ProgressDialog;
 
@@ -39,11 +40,16 @@ public class SetCuisine extends AppCompatActivity {
 
     private Button continue_button;
     private ProgressDialog progressDialog;
+    private SharedPreferences sharedpreferences;
+    private static final String preferences = "recipeAppPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_cuisine);
+        Intent intent = getIntent();
+        user = (UserProfile)intent.getSerializableExtra("user");
+        password = (String)intent.getSerializableExtra("password");
         progressDialog = new ProgressDialog(this);
 
 //        firebaseAuth = FirebaseAuth.getInstance();
@@ -63,6 +69,7 @@ public class SetCuisine extends AppCompatActivity {
 
         final MyApplication app = ((MyApplication)getApplicationContext());
         final UserProfile user = app.getUser();
+        sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(this);
 
@@ -100,6 +107,11 @@ public class SetCuisine extends AppCompatActivity {
                 else if (response.equals("error"))
                     Toast.makeText(SetCuisine.this, "Error connecting to database", Toast.LENGTH_SHORT);
                 else {
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                    editor.putString("Email", user.getEmail());
+                    editor.putString("Password", app.getNewPassword());
+                    editor.commit();
                     Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }

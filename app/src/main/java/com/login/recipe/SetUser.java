@@ -20,6 +20,9 @@ public class SetUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        final String password = (String)intent.getSerializableExtra("password");
+
         setContentView(R.layout.activity_set_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -56,6 +59,9 @@ public class SetUser extends AppCompatActivity {
 
                 String country_input = country.getText().toString().trim();
                 UserProfile user = new UserProfile(first_name, last_name, cookingSkills, country_input);
+                Intent intent = new Intent(SetUser.this, SetCuisine.class);
+                intent.putExtra("user", user);
+                intent.putExtra("password", password);
                 app.getUser().setFirstName(first_name);
                 app.getUser().setLastName(last_name);
                 app.getUser().setCookingSkills(cookingSkills);

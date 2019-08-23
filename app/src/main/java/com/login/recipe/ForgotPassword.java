@@ -30,6 +30,7 @@ public class ForgotPassword extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         Button reset = (Button) findViewById(R.id.reset_password_button);
         email = (EditText)findViewById(R.id.email_forgot_password);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         email.setOnTouchListener(new View.OnTouchListener() {
             @Override
