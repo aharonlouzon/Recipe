@@ -217,7 +217,7 @@ public class DatabaseService {
     /**
      * get recipes that meet given search parameters.
      * if a parameter can be anything - set to null
-     * @return list of recipes that meat the given criteria (the list will be empty if none do).
+     * @return list of recipes that meet the given criteria (the list will be empty if none do).
      *         returns null if bad input.
      * @throws IOException if there is an error connecting to the server
      */
