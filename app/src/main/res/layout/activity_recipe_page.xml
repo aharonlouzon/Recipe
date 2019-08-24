@@ -87,6 +87,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
                 android:background="#0DE91E63"></ListView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:gravity="center_vertical"
+                android:text="@string/comment_message"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/new_comment_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <ImageButton
+                android:id="@+id/add_comment_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_margin="5dp"
+                android:src="@android:drawable/ic_input_add"
+                android:text="Button" />
+
+            <ListView
+                android:id="@+id/recipe_page_recipe_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="#0DE91E63"></ListView>
+
         </LinearLayout>
 
     </ScrollView>

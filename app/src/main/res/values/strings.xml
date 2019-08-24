@@ -111,4 +111,5 @@
     <string name="ingredients_title">Ingredients:</string>
     <string name="instructions_title">Instructions:</string>
     <string name="home">Home Page</string>
+    <string name="comment_message">Share your thoughts...</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +23,7 @@ public class AddRecipe extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
-    private FloatingActionButton addIngredient;
     private Button addDirection;
-    private Button continueButton;
     private EditText product_name;
     private EditText quantity;
     private EditText title;
@@ -36,22 +35,20 @@ public class AddRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
-
         progressDialog = new ProgressDialog(this);
-        asian = (CheckBox)findViewById(R.id.asian_rec_category);
-        middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
-        italian = (CheckBox)findViewById(R.id.italian_rec_category);
-        european = (CheckBox)findViewById(R.id.european_rec_categories);
-        baking = (CheckBox)findViewById(R.id.baking_rec_category);
-        meat = (CheckBox)findViewById(R.id.meat_rec_category);
-        continueButton = (Button)findViewById(R.id.continue_button_add_recipe);
-        addDirection = (Button)findViewById(R.id.add_recipe_direction_num);
-        addIngredient = (FloatingActionButton) findViewById(R.id.add_ingredient_button);
-        product_name = (EditText)findViewById(R.id.add_recipe_product);
-        direction_step = (EditText)findViewById(R.id.direction_text_add_recipe);
-        quantity = (EditText)findViewById(R.id.add_recipe_Quantity);
-        title = (EditText)findViewById(R.id.title_add_recipe);
+        asian = findViewById(R.id.asian_rec_category);
+        middle_eastern = findViewById(R.id.middle_eastern_rec_category);
+        italian = findViewById(R.id.italian_rec_category);
+        european = findViewById(R.id.european_rec_categories);
+        baking = findViewById(R.id.baking_rec_category);
+        meat = findViewById(R.id.meat_rec_category);
+        Button continueButton = findViewById(R.id.continue_button_add_recipe);
+        addDirection = findViewById(R.id.add_recipe_direction_num);
+        FloatingActionButton addIngredient = findViewById(R.id.add_ingredient_button);
+        product_name = findViewById(R.id.add_recipe_product);
+        direction_step = findViewById(R.id.direction_text_add_recipe);
+        quantity = findViewById(R.id.add_recipe_Quantity);
+        title = findViewById(R.id.title_add_recipe);
 
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +61,6 @@ public class AddRecipe extends AppCompatActivity {
                 addDirection.setText(String.valueOf(step_num));
                 recipe.getInstructions().add(step);
                 direction_step.getText().clear();
-                return;
             }
         });
 
@@ -78,11 +74,11 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.getIngredients().put(name,quan);
                 product_name.getText().clear();
                 quantity.getText().clear();
-                return;
             }
         });
 
         continueButton.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
                 progressDialog.setMessage("Cooking...");
@@ -115,7 +111,7 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
                 recipe.setName(title.getText().toString().trim());
 
-//                 add the recipe to the database
+                //add the recipe to the database
                 String response = null;
                 try {
                     response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();

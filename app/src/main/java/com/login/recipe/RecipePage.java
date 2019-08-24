@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -10,16 +11,24 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 public class RecipePage extends AppCompatActivity {
+    private Recipe recipe;
+    private MyApplication app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +37,8 @@ public class RecipePage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
-        Recipe recipe = app.getRecipe();
+        app = ((MyApplication)getApplicationContext());
+        recipe = app.getRecipe();
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
 
@@ -51,16 +60,54 @@ public class RecipePage extends AppCompatActivity {
         }
 
         //locate Views
-        ListView ingredients_list_view = findViewById(R.id.ingredients_list_view);
-        ListView instructions_list_view = findViewById(R.id.instructions_list_view);
+        ListView ingredientsListView = findViewById(R.id.ingredients_list_view);
+        ListView instructionsListView = findViewById(R.id.instructions_list_view);
+        ListView commentsList = findViewById(R.id.recipe_page_recipe_comments);
+
 
         //set all Listview adapter
-        ingredients_list_view.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeIngredientsArray));
-        instructions_list_view.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeInstructions));
+        ingredientsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeIngredientsArray));
+        instructionsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeInstructions));
+        commentsList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipe.getComments()));
 
         //set dynmic height for all listviews
-        setDynamicHeight(ingredients_list_view);
-        setDynamicHeight(instructions_list_view);
+        setDynamicHeight(ingredientsListView);
+        setDynamicHeight(instructionsListView);
+        setDynamicHeight(commentsList);
+
+        //handle comments
+        ImageButton addCommentButton = findViewById(R.id.add_comment_button);
+        final EditText commentText = findViewById(R.id.new_comment_text);
+        addCommentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!commentText.getText().toString().isEmpty())
+                    leaveComment(commentText.getText().toString());
+            }
+        });
+
+    }
+
+    @SuppressLint("ShowToast")
+    public void leaveComment(String commentText){
+        //create comment object
+        String author = app.getUser().getFirstName() + app.getUser().getLastName();
+        Comment comment = new Comment(author, commentText);
+
+        //add the recipe comment to the database
+        String response = null;
+        try {
+            response = (String) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+        }
+        catch (ExecutionException | InterruptedException e) {
+            Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
+        }
+        if (response == null || response.equals("error"))
+            Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
+        else {
+            Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
+            startActivity(new Intent(RecipePage.this, RecipePage.class));
+        }
     }
 
     public static void setDynamicHeight(ListView listView) {
