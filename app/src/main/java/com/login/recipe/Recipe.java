@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.Date;
 import com.login.recipe.UserProfile.skillLevel;
 import java.util.HashMap;
-import java.util.UUID;
 
 public class Recipe implements Serializable {
 

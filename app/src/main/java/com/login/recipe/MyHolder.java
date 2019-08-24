@@ -20,7 +20,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
     private ProgressDialog progressDialog;
     private Recipe recipe;
 
-    public MyHolder(@NonNull View itemView) {
+    MyHolder(@NonNull View itemView) {
         super(itemView);
         progressDialog = new ProgressDialog(itemView.getContext());
         app = ((MyApplication)getApplicationContext());
@@ -57,7 +57,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
         try {
             recipe = (Recipe) new DatabaseServiceTask("getRecipe", app).execute(this.recipeId).get();
         }
-        catch (ExecutionException | InterruptedException e) {
+        catch (ExecutionException | InterruptedException ignored) {
 
         }
 
@@ -65,7 +65,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
 
     }
 
-    public void setRecipeId(int recipeId) {
+    void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
     }
 }

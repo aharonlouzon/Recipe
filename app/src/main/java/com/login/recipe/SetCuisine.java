@@ -84,7 +84,7 @@ public class SetCuisine extends AppCompatActivity {
 
                     editor.putString("Email", user.getEmail());
                     editor.putString("Password", app.getNewPassword());
-                    editor.commit();
+                    editor.apply();
                     Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }

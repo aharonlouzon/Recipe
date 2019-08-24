@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,15 +12,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-import java.util.ArrayList;
-
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
-    Context c;
-    RecipeList models;
+    private Context c;
+    private RecipeList models;
 
 
-    public MyAdapter(Context c, RecipeList models) {
+    MyAdapter(Context c, RecipeList models) {
         this.c = c;
         this.models = models;
     }
@@ -27,7 +26,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model, null );
+        @SuppressLint("InflateParams") View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model, null );
         return new MyHolder(v);
     }
 

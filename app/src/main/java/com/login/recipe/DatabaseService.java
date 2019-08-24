@@ -21,11 +21,7 @@ public class DatabaseService {
     public UserProfile validateSignIn(String email, String password) throws IOException {
         String url = BASE_URL + "userProfile/signIn/" + email + "/" + password;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
-            UserProfile user = new Gson().fromJson(reader, UserProfile.class);
-            return user;
-        }
-        catch(IOException e) {
-            throw e;
+            return new Gson().fromJson(reader, UserProfile.class);
         }
     }
 
@@ -57,11 +53,7 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+        } finally {
             closeResources(connection,reader,writer);
         }
     }
@@ -74,11 +66,7 @@ public class DatabaseService {
     public UserProfile getUser(String email) throws IOException {
         String url = BASE_URL + "userProfile/getUser/" + email;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
-            UserProfile user = new Gson().fromJson(reader, UserProfile.class);
-            return user;
-        }
-        catch(IOException e) {
-            throw e;
+            return new Gson().fromJson(reader, UserProfile.class);
         }
     }
 
@@ -96,9 +84,6 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
         }
     }
 
@@ -130,11 +115,7 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+        } finally {
             closeResources(connection,reader,writer);
         }
     }
@@ -154,9 +135,6 @@ public class DatabaseService {
             else
                 return response.getMessage();
         }
-        catch(IOException e) {
-            throw e;
-        }
     }
 
     /**
@@ -173,9 +151,6 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
         }
     }
     /**
@@ -206,11 +181,7 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+        } finally {
             closeResources(connection, reader, writer);
         }
     }
@@ -225,13 +196,8 @@ public class DatabaseService {
         InputStreamReader reader = null;
         try {
             reader = new InputStreamReader(new URL(url).openStream());
-            Recipe recipe = new Gson().fromJson(reader, Recipe.class);
-            return recipe;
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+            return new Gson().fromJson(reader, Recipe.class);
+        } finally {
             closeResources(null,reader,null);
         }
     }
@@ -244,11 +210,7 @@ public class DatabaseService {
     public RecipeList getUsersRecipes(String email) throws IOException {
         String url = BASE_URL + "recipe/getUsersRecipes/" + email;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
-            RecipeList recipes = new Gson().fromJson(reader, RecipeList.class);
-            return recipes;
-        }
-        catch(IOException e) {
-            throw e;
+            return new Gson().fromJson(reader, RecipeList.class);
         }
     }
 
@@ -264,11 +226,7 @@ public class DatabaseService {
         String skillString = skill.name();
         String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
-            RecipeList results = new Gson().fromJson(reader, RecipeList.class);
-            return results;
-        }
-        catch (IOException e) {
-            throw e;
+            return new Gson().fromJson(reader, RecipeList.class);
         }
     }
 
@@ -299,11 +257,7 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+        } finally {
             closeResources(connection, reader, writer);
         }
     }
@@ -335,11 +289,7 @@ public class DatabaseService {
                 return null;
             else
                 return response.getMessage();
-        }
-        catch(IOException e) {
-            throw e;
-        }
-        finally {
+        } finally {
             closeResources(connection, reader, writer);
         }
     }
@@ -353,7 +303,7 @@ public class DatabaseService {
             if (writer != null)
                 writer.close();
         }
-        catch(Exception e) {
+        catch(Exception ignored) {
 
         }
     }

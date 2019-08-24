@@ -9,12 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import java.io.IOException;
 import java.util.concurrent.ExecutionException;
 import android.content.SharedPreferences;
 import android.content.Context;
@@ -23,11 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
-    private FirebaseAuth firebaseAuth;
     private ProgressDialog progressDialog;
-    private Button login;
-    private Button register;
-    private Button forgot_password;
     private MyApplication app;
     private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
@@ -36,14 +26,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email = (EditText)findViewById(R.id.email_input);
-        password = (EditText)findViewById(R.id.password_input);
-        login = (Button)findViewById(R.id.login_button);
-        register = (Button)findViewById(R.id.register_button);
+        email = findViewById(R.id.email_input);
+        password = findViewById(R.id.password_input);
+        Button login = findViewById(R.id.login_button);
+        Button register = findViewById(R.id.register_button);
         progressDialog = new ProgressDialog(this);
         Button forgot_password = findViewById(R.id.forgot_password);
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = firebaseAuth.getCurrentUser();
 
         app = ((MyApplication)getApplicationContext());
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
@@ -77,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             validate(email, password);
     }
 
+    @SuppressLint("ShowToast")
     private void validate(String email, String password){
 
         // firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -110,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
             editor.putString("Email", email);
             editor.putString("Password", password);
-            editor.commit();
+            editor.apply();
             startActivity(new Intent(MainActivity.this, HomePage.class));
         }
         else
