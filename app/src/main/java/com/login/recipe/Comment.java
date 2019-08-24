@@ -4,10 +4,13 @@ public class Comment {
 
     private String author;
     private String comment;
+    private String authorName;
 
-    public Comment(String author, String comment) {
+    public Comment(String author, String comment, String authorName) {
         this.author = author;
         this.comment = comment;
+        this.authorName = authorName;
+
     }
 
     public String getAuthor() {
@@ -23,5 +26,12 @@ public class Comment {
     }
 
 
+    public String getauthorName() {
+        return authorName;
+    }
+
+    public void setAauthorName(String authorName) {
+        this.authorName = authorName;
+    }
 }
 

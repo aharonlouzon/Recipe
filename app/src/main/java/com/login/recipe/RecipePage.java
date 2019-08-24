@@ -51,9 +51,14 @@ public class RecipePage extends AppCompatActivity {
         ArrayList<String> recipeInstructions = recipe.getInstructions();
 
         ArrayList<String> recipeIngredientsArray = new ArrayList<>();
+        ArrayList<String> commentsText = new ArrayList<>();
 
         for (Map.Entry<String,String> entry : recipeIngredients.entrySet()) {
             recipeIngredientsArray.add(entry.getKey() + "   " +  entry.getValue());
+        }
+
+        for(Comment comment : recipe.getComments()) {
+            commentsText.add(comment.getauthorName() + "\n" + comment.getComment());
         }
 
         //locate Views
@@ -62,12 +67,12 @@ public class RecipePage extends AppCompatActivity {
         ListView commentsList = findViewById(R.id.recipe_page_recipe_comments);
 
 
-        //set all Listview adapter
+        //set all ListView adapters
         ingredientsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeIngredientsArray));
         instructionsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeInstructions));
-        commentsList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipe.getComments()));
+        commentsList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, commentsText));
 
-        //set dynmic height for all listviews
+        //set dynamic height for all ListViews
         setDynamicHeight(ingredientsListView);
         setDynamicHeight(instructionsListView);
         setDynamicHeight(commentsList);
@@ -88,8 +93,10 @@ public class RecipePage extends AppCompatActivity {
     @SuppressLint("ShowToast")
     public void leaveComment(String commentText){
         //create comment object
-        String author = app.getUser().getFirstName() + app.getUser().getLastName();
-        Comment comment = new Comment(author, commentText);
+        String authorName = app.getUser().getFirstName() + " " + app.getUser().getLastName();
+        String author = app.getUser().getEmail();
+        Comment comment = new Comment(author, commentText, authorName);
+        app.getRecipe().getComments().add(comment);
 
         //add the recipe comment to the database
         String response = null;
