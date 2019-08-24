@@ -16,6 +16,10 @@
                 android:title="Log-Out"
                 app:showAsAction="never"/>
 
+            <item android:id="@+id/my_area_button_user_menu"
+                android:title="@string/my_area"
+                app:showAsAction="never" />
+
         </menu>
 
     </item>

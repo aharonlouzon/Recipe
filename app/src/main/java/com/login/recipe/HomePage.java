@@ -1,78 +1,58 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
-import java.util.ArrayList;
+import android.widget.Toast;
+import com.facebook.FacebookSdk;
+import java.util.concurrent.ExecutionException;
 
 public class HomePage extends AppCompatActivity {
 
-    private RecyclerView recyclerView;
-    private MyAdapter myAdapter;
+    private MyApplication app;
+    private UserProfile user;
+    private ProgressDialog progressDialog;
+    private RecipeList recipeList;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_page);
 
-        recyclerView = findViewById(R.id.home_page_recycle_view);
+        progressDialog = new ProgressDialog(this);
+        app = ((MyApplication)getApplicationContext());
+        user = app.getUser();
+        RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        myAdapter = new MyAdapter(this, getRecipes());
+        MyAdapter myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
+
     }
 
-    private ArrayList<Model> getRecipes(){
-        ArrayList<Model> models = new ArrayList<>();
+    @SuppressLint("ShowToast")
+    private RecipeList getRecipes(){
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
 
-        Model m1 = new Model();
-        m1.setTitle("some title");
-        m1.setDescription("some description");
-        m1.setImg(R.drawable.pic1);
-        models.add(m1);
-
-        Model m2 = new Model();
-        m2.setTitle("some title 2");
-        m2.setDescription("some description 2");
-        m2.setImg(R.drawable.pic2);
-        models.add(m2);
-
-        Model m3 = new Model();
-        m3.setTitle("some title 2");
-        m3.setDescription("some description 2");
-        m3.setImg(R.drawable.pic3);
-        models.add(m3);
-
-        Model m4 = new Model();
-        m4.setTitle("some title");
-        m4.setDescription("some description");
-        m4.setImg(R.drawable.pic4);
-        models.add(m4);
-
-        Model m5 = new Model();
-        m5.setTitle("some title 2");
-        m5.setDescription("some description 2");
-        m5.setImg(R.drawable.pic5);
-        models.add(m5);
-
-        Model m6 = new Model();
-        m6.setTitle("some title 2");
-        m6.setDescription("some description 2");
-        m6.setImg(R.drawable.pic6);
-        models.add(m6);
-
-
-        return models;
+        // get user's recipes
+        try {
+            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
+        }
+        catch (ExecutionException | InterruptedException e) {
+            Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+        }
+        progressDialog.dismiss();
+        return recipeList;
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,9 +68,11 @@ public class HomePage extends AppCompatActivity {
             case R.id.logout_button: {
                 finish();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
+                break;
             }
             case R.id.my_area_button_user_menu: {
                 startActivity(new Intent(HomePage.this, MyArea.class));
+                break;
             }
 
         }

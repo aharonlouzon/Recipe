@@ -10,4 +10,9 @@
         <![CDATA[Tell us what kind of
         do you like to cook.]]>
     </string>
+    <string name="my_area">My Area</string>
+    <string name="title_activity_my_area">MyArea</string>
+    <string name="recipe_category_msg">Please chose category:</string>
+    <string name="add_recipe_ingredients">Ingredients:</string>
+    <string name="add_recipe_direction_title">Directions:</string>
 </resources>

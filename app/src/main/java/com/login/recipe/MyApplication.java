@@ -7,6 +7,7 @@ public class MyApplication extends Application {
     private UserProfile user;
     private String newPassword;
     private final DatabaseService database = new DatabaseService();
+    private Recipe recipe;
 
     public UserProfile getUser() {
         return user;
@@ -26,5 +27,13 @@ public class MyApplication extends Application {
 
     public DatabaseService getDatabase() {
         return database;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 }

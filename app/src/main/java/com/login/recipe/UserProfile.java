@@ -2,6 +2,7 @@ package com.login.recipe;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class UserProfile implements Serializable {
 
@@ -21,6 +22,16 @@ public class UserProfile implements Serializable {
         followers = new ArrayList<>();
         followerOf = new ArrayList<>();
         cuisines = new ArrayList<>();
+    }
+
+    public UserProfile(String firstName, String lastName, skillLevel cookingSkills, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cookingSkills = cookingSkills;
+        this.country = country;
+        this.cuisines = new ArrayList<>();
+        this.followers = new ArrayList<>();
+        this.followerOf = new ArrayList<>();
     }
 
     public UserProfile(String email, String firstName, String lastName, skillLevel cookingSkills, String country, byte[] picture) {
@@ -111,8 +122,7 @@ public class UserProfile implements Serializable {
     }
 
     public void setCuisine(String[] cuisine) {
-        for(int i=0; i<cuisine.length; i++)
-            this.cuisines.add(cuisine[i]);
+        Collections.addAll(this.cuisines, cuisine);
     }
 
     public void addCuisine(String cuisine) {
@@ -129,8 +139,7 @@ public class UserProfile implements Serializable {
     }
 
     public void setfollowers(String[] followers) {
-        for(int i=0; i<followers.length; i++)
-            this.followers.add(followers[i]);
+        Collections.addAll(this.followers, followers);
     }
 
     public void addFollower(String follower) {
@@ -147,8 +156,7 @@ public class UserProfile implements Serializable {
     }
 
     public void setfollowerOf(String[] followerOf) {
-        for(int i=0; i<followerOf.length; i++)
-            this.followerOf.add(followerOf[i]);
+        Collections.addAll(this.followerOf, followerOf);
     }
 
     public void addFollowerOf(String followerOf) {

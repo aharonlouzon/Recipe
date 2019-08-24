@@ -14,7 +14,6 @@ import android.app.ProgressDialog;
 
 public class ForgotPassword extends AppCompatActivity {
 
-    private Button reset;
     private EditText email;
     private ProgressDialog progressDialog;
 
@@ -27,8 +26,8 @@ public class ForgotPassword extends AppCompatActivity {
         final MyApplication app = ((MyApplication)getApplicationContext());
 
         progressDialog = new ProgressDialog(this);
-        reset = (Button)findViewById(R.id.reset_password_button);
-        email = (EditText)findViewById(R.id.email_forgot_password);
+        Button reset = findViewById(R.id.reset_password_button);
+        email = findViewById(R.id.email_forgot_password);
 
         email.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -38,27 +37,28 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
                 String text = email.getText().toString().trim();
-                if(!text.isEmpty() && !(text == "EnterEmail")) {
-                    String response = null;
+
+                if(!text.isEmpty() && !(text.equals("EnterEmail"))) {
+                    String response;
                     try {
-                        progressDialog.setMessage("Cooking...");
-                        progressDialog.show();
                         response = (String) new DatabaseServiceTask("forgotPassword", app).execute(text).get();
                     }
                     catch (ExecutionException | InterruptedException e) {
                         Toast.makeText(ForgotPassword.this, "Failed to email password", Toast.LENGTH_SHORT);
+                        return;
                     }
                     if (response.equals("error"))
                         Toast.makeText(ForgotPassword.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                    if (response == null)
-                        Toast.makeText(ForgotPassword.this, "User doesn't exist", Toast.LENGTH_SHORT);
-                        else {
-                            Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
-                            startActivity(new Intent(ForgotPassword.this, MainActivity.class));
-                        }
+                    else {
+                        Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
+                        startActivity(new Intent(ForgotPassword.this, MainActivity.class));
+                    }
                     }
                 }
         });

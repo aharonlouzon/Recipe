@@ -1,5 +1,7 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 import java.util.concurrent.ExecutionException;
-import android.app.ProgressDialog;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -20,7 +21,6 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
-    private Button continue_button;
     private ProgressDialog progressDialog;
     private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
@@ -29,23 +29,29 @@ public class SetCuisine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_cuisine);
+        progressDialog = new ProgressDialog(this);
+
+        asian = findViewById(R.id.asian_rec_category);
+        middle_eastern = findViewById(R.id.middle_eastern_rec_category);
+        italian = findViewById(R.id.italian_rec_category);
+        european = findViewById(R.id.european_rec_categories);
+        baking = findViewById(R.id.baking_rec_category);
+        meat = findViewById(R.id.meat_rec_category);
+        Button continue_button = findViewById(R.id.continue_button_add_recipe);
 
         final MyApplication app = ((MyApplication)getApplicationContext());
         final UserProfile user = app.getUser();
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(this);
-        asian = (CheckBox)findViewById(R.id.asian_rec_category);
-        middle_eastern = (CheckBox)findViewById(R.id.middle_eastern_rec_category);
-        italian = (CheckBox)findViewById(R.id.italian_rec_category);
-        european = (CheckBox)findViewById(R.id.european_rec_categories);
-        baking = (CheckBox)findViewById(R.id.baking_rec_category);
-        meat = (CheckBox)findViewById(R.id.meat_rec_category);
-        continue_button = (Button)findViewById(R.id.continue_button_add_recipe);
 
         continue_button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ShowToast")
             @Override
             public void onClick(View v) {
+                progressDialog.setMessage("Cooking...");
+                progressDialog.show();
+
                 if(asian.isChecked())
                     user.addCuisine("asian");
                 if(middle_eastern.isChecked())
@@ -78,7 +84,7 @@ public class SetCuisine extends AppCompatActivity {
 
                     editor.putString("Email", user.getEmail());
                     editor.putString("Password", app.getNewPassword());
-                    editor.commit();
+                    editor.apply();
                     Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }

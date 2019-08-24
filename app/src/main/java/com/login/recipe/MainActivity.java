@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,10 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText email;
     private EditText password;
-    private Button login;
-    private Button register;
     private ProgressDialog progressDialog;
-    private Button forgot_password;
     private MyApplication app;
     private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
@@ -28,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        email = (EditText)findViewById(R.id.email_input);
-        password = (EditText)findViewById(R.id.password_input);
-        login = (Button)findViewById(R.id.login_button);
-        register = (Button)findViewById(R.id.register_button);
+        email = findViewById(R.id.email_input);
+        password = findViewById(R.id.password_input);
+        Button login = findViewById(R.id.login_button);
+        Button register = findViewById(R.id.register_button);
         progressDialog = new ProgressDialog(this);
-        forgot_password = (Button)findViewById(R.id.forgot_password);
+        Button forgot_password = findViewById(R.id.forgot_password);
 
         app = ((MyApplication)getApplicationContext());
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
@@ -67,7 +65,21 @@ public class MainActivity extends AppCompatActivity {
             validate(email, password);
     }
 
+    @SuppressLint("ShowToast")
     private void validate(String email, String password){
+
+        // firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        //     @SuppressLint("ShowToast")
+        //     @Override
+        //     public void onComplete(@NonNull Task<AuthResult> task) {
+        //         if(task.isSuccessful())
+        //             startActivity(new Intent(MainActivity.this, HomePage.class));
+        //         else
+        //             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+
+        //     }
+        // });
+
         Object user = null;
         try {
             progressDialog.setMessage("Cooking...");
@@ -77,15 +89,17 @@ public class MainActivity extends AppCompatActivity {
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
         }
-        if (user == null)
+        if (user == null){
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            return;
+        }
         if (user.getClass().equals(UserProfile.class)) {
             app.setUser((UserProfile) user);
             SharedPreferences.Editor editor = sharedpreferences.edit();
 
             editor.putString("Email", email);
             editor.putString("Password", password);
-            editor.commit();
+            editor.apply();
             startActivity(new Intent(MainActivity.this, HomePage.class));
         }
         else
