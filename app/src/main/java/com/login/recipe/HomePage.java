@@ -10,6 +10,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import com.facebook.FacebookSdk;
 import java.util.concurrent.ExecutionException;
@@ -35,6 +37,14 @@ public class HomePage extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
+
+        ImageButton searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomePage.this, SearchPage.class));
+            }
+        });
 
     }
 

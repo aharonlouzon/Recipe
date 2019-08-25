@@ -112,4 +112,7 @@
     <string name="instructions_title">Instructions:</string>
     <string name="home">Home Page</string>
     <string name="comment_message">Share your thoughts...</string>
+    <string name="title_activity_search_page">SearchPage</string>
+    <string name="free_search_header">What are you in the mood for?</string>
+    <string name="by_cuisine_search_header">Or, search by cuisine type:</string>
 </resources>
