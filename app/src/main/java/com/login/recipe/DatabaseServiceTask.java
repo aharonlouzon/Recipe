@@ -100,9 +100,10 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                 }
                 break;
             case "searchRecipes":
-                // objects[0] is skill, objects[1] is cuisine, objects[2] is type, objects[3] is author email
+                // objects[0] is skill, objects[1] is cuisine, objects[2] is type, objects[3] is author email, objects[4] is freeText
                 try {
-                    result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String) objects[1], (Recipe.recipeType) objects[2], (String) objects[3]);
+                    result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String) objects[1],
+                                                    (Recipe.recipeType) objects[2], (String) objects[3], (String) objects[4]);
                 } catch (IOException e) {
                     return "error";
                 }
