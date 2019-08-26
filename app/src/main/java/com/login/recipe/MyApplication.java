@@ -8,6 +8,7 @@ public class MyApplication extends Application {
     private String newPassword;
     private final DatabaseService database = new DatabaseService();
     private Recipe recipe;
+    private String freeTextSearch;
 
     public UserProfile getUser() {
         return user;
@@ -35,5 +36,13 @@ public class MyApplication extends Application {
 
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
+    }
+
+    public String getFreeTextSearch() {
+        return freeTextSearch;
+    }
+
+    public void setFreeTextSearch(String freeTextSearch) {
+        this.freeTextSearch = freeTextSearch;
     }
 }

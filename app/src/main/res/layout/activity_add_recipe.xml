@@ -6,196 +6,190 @@
     android:layout_height="match_parent"
     tools:context=".SetCuisine">
 
-    <CheckBox
-        android:id="@+id/asian_rec_category"
+    <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="24dp"
-        android:text="Asian"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-162dp"
+        tools:layout_editor_absoluteY="233dp">
 
-    <CheckBox
-        android:id="@+id/middle_eastern_rec_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="8dp"
-        android:text="Middle Eastern"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/asian_rec_category" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/european_rec_categories"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="24dp"
-        android:text="European"
-        app:layout_constraintStart_toStartOf="@+id/asian_rec_category"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
+            <CheckBox
+                android:id="@+id/asian_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/asian"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_category" />
 
-    <CheckBox
-        android:id="@+id/italian_rec_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="8dp"
-        android:text="Italian"
-        app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
-        app:layout_constraintTop_toBottomOf="@+id/european_rec_categories" />
+            <CheckBox
+                android:id="@+id/middle_eastern_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/middle_eastern"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/asian_rec_category" />
 
-    <CheckBox
-        android:id="@+id/meat_rec_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="8dp"
-        android:text="Meat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/middle_eastern_rec_category" />
+            <CheckBox
+                android:id="@+id/european_rec_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/european" />
 
-    <CheckBox
-        android:id="@+id/baking_rec_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="8dp"
-        android:text="Baking"
-        app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
-        app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
+            <CheckBox
+                android:id="@+id/italian_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/italian"
+                app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
+                app:layout_constraintTop_toBottomOf="@+id/european_rec_categories" />
 
-    <TextView
-        android:id="@+id/add_recipe_category"
-        android:layout_width="250dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="14dp"
-        android:text="@string/recipe_category_msg"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_add_recipe" />
+            <CheckBox
+                android:id="@+id/meat_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/meat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/middle_eastern_rec_category" />
 
-    <TextView
-        android:id="@+id/add_recipe_ingredients"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="29dp"
-        android:text="@string/add_recipe_ingredients"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/meat_rec_category" />
+            <CheckBox
+                android:id="@+id/baking_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/baking"
+                app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
+                app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
 
-    <EditText
-        android:id="@+id/add_recipe_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Product"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients" />
+            <TextView
+                android:id="@+id/add_recipe_category"
+                android:layout_width="250dp"
+                android:layout_height="27dp"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="14dp"
+                android:text="@string/recipe_category_msg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_add_recipe" />
 
-    <EditText
-        android:id="@+id/add_recipe_Quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="79dp"
-        android:layout_marginLeft="79dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:hint="Quantity"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_product" />
+            <TextView
+                android:id="@+id/add_recipe_ingredients"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="29dp"
+                android:text="@string/add_recipe_ingredients"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/meat_rec_category" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_ingredient_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginLeft="29dp"
-        android:clickable="true"
-        app:layout_constraintStart_toEndOf="@+id/add_recipe_product"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_product"
-        app:srcCompat="@android:drawable/ic_menu_add" />
+            <EditText
+                android:id="@+id/add_recipe_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="@string/product"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients" />
 
-    <TextView
-        android:id="@+id/add_recipe_directions_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="36dp"
-        android:text="@string/add_recipe_direction_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_Quantity" />
+            <EditText
+                android:id="@+id/add_recipe_Quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="79dp"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="@string/quantity"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_product" />
 
-    <EditText
-        android:id="@+id/direction_text_add_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="31dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title" />
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/add_ingredient_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="29dp"
+                android:clickable="true"
+                app:layout_constraintStart_toEndOf="@+id/add_recipe_product"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_product"
+                app:srcCompat="@android:drawable/ic_menu_add"
+                android:focusable="true" />
 
-    <Button
-        android:id="@+id/add_recipe_direction_num"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="16dp"
-        android:background="#D81B60"
-        android:text="1"
-        android:textAllCaps="true"
-        android:textColor="#CAC6C6"
-        app:layout_constraintStart_toEndOf="@+id/direction_text_add_recipe"
-        app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title" />
+            <TextView
+                android:id="@+id/add_recipe_directions_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="36dp"
+                android:text="@string/add_recipe_direction_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_Quantity" />
 
-    <Button
-        android:id="@+id/continue_button_add_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="161dp"
-        android:layout_marginLeft="161dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="162dp"
-        android:layout_marginRight="162dp"
-        android:background="#E91E63"
-        android:text="Continue"
-        android:textColor="#FCFAFA"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/direction_text_add_recipe" />
+            <EditText
+                android:id="@+id/direction_text_add_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="31dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title" />
 
-    <EditText
-        android:id="@+id/title_add_recipe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Dish Name"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/add_recipe_direction_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="16dp"
+                android:background="#D81B60"
+                android:text="@string/_1"
+                android:textAllCaps="true"
+                android:textColor="#CAC6C6"
+                app:layout_constraintStart_toEndOf="@+id/direction_text_add_recipe"
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title" />
 
+            <Button
+                android:id="@+id/continue_button_add_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="161dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="162dp"
+                android:background="#E91E63"
+                android:text="@string/_continue"
+                android:textColor="#FCFAFA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/direction_text_add_recipe" />
+
+            <EditText
+                android:id="@+id/title_add_recipe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="63dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="@string/dish_name"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

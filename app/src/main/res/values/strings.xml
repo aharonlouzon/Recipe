@@ -115,4 +115,17 @@
     <string name="title_activity_search_page">SearchPage</string>
     <string name="free_search_header">What are you in the mood for?</string>
     <string name="by_cuisine_search_header">Or, search by cuisine type:</string>
+    <string name="Search">Button</string>
+    <string name="asian">Asian</string>
+    <string name="middle_eastern">Middle Eastern</string>
+    <string name="european">European</string>
+    <string name="italian">Italian</string>
+    <string name="meat">Meat</string>
+    <string name="baking">Baking</string>
+    <string name="product">Product</string>
+    <string name="quantity">Quantity</string>
+    <string name="_1">1</string>
+    <string name="continue">Continue</string>
+    <string name="_continue">continue</string>
+    <string name="dish_name">Dish Name</string>
 </resources>

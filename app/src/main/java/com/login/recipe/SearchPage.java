@@ -10,8 +10,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.SearchView;
 
 public class SearchPage extends AppCompatActivity {
+
+    private MyApplication app;
+    private Button search;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +26,26 @@ public class SearchPage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        app = ((MyApplication)getApplicationContext());
+        search = findViewById(R.id.search_button);
+        searchView = findViewById(R.id.free_text_search);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onQueryTextSubmit(String query) {
+                app.setFreeTextSearch(query);
+                startActivity(new Intent(SearchPage.this, SearchResults.class));
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
     }
@@ -48,6 +68,10 @@ public class SearchPage extends AppCompatActivity {
             }
             case R.id.my_area_button_user_menu: {
                 startActivity(new Intent(SearchPage.this, MyArea.class));
+                break;
+            }
+            case R.id.home_page_button_user_menu: {
+                startActivity(new Intent(SearchPage.this, HomePage.class));
                 break;
             }
 

@@ -120,4 +120,16 @@
         app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
 
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="84dp"
+        android:text="@string/Search"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meat_rec_category" />
+
 </android.support.constraint.ConstraintLayout>
