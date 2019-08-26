@@ -13,6 +13,7 @@ public class Recipe implements Serializable {
 
     private String name;
     private int recipeId;
+    private String description;
     private recipeType type;
     private skillLevel skillLevel;
     private ArrayList<String> instructions;
@@ -31,8 +32,9 @@ public class Recipe implements Serializable {
         this.instructions = new ArrayList<>();
     }
 
-    public Recipe(String name, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
+    public Recipe(String name, String description, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
         this.name = name;
+        this.description = description;
         this.type = type;
         this.skillLevel = skillLevel;
         this.author = authorEmail;
@@ -46,10 +48,11 @@ public class Recipe implements Serializable {
 
 
 
-    public Recipe(String name, recipeType type, skillLevel skillLevel,
+    public Recipe(String name, String description, recipeType type, skillLevel skillLevel,
                   ArrayList<String> instructions, ArrayList<String> cuisines, ArrayList<byte[]> images,
                   Map<String, String> ingredients, ArrayList<Comment> comments, String authorEmail, Date releaseDate) {
         this.name = name;
+        this.description = description;
         this.type = type;
         this.skillLevel = skillLevel;
         this.instructions = instructions;
@@ -67,6 +70,14 @@ public class Recipe implements Serializable {
 
     public void setRecipeId(int recipeId) {
         this.recipeId = recipeId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public skillLevel getSkillLevel() {

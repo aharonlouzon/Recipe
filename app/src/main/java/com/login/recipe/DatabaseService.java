@@ -217,14 +217,14 @@ public class DatabaseService {
     /**
      * get recipes that meet given search parameters.
      * if a parameter can be anything - set to null
-     * @return list of recipes that meat the given criteria (the list will be empty if none do).
+     * @return list of recipes that meet the given criteria (the list will be empty if none do).
      *         returns null if bad input.
      * @throws IOException if there is an error connecting to the server
      */
-    public RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail) throws IOException {
+    public RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail, String freeText) throws IOException {
         String typeString = type.name();
         String skillString = skill.name();
-        String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail;
+        String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail + "/" + freeText;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             return new Gson().fromJson(reader, RecipeList.class);
         }
