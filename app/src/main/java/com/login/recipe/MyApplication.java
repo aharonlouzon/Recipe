@@ -8,7 +8,11 @@ public class MyApplication extends Application {
     private String newPassword;
     private final DatabaseService database = new DatabaseService();
     private Recipe recipe;
-    private String freeTextSearch;
+    private String searchByFreeText;
+    private String searchByEmail;
+    private Recipe.recipeType searchByType;
+    private UserProfile.skillLevel searchBySkills;
+    private String searchByCuisine;
 
     public UserProfile getUser() {
         return user;
@@ -38,11 +42,43 @@ public class MyApplication extends Application {
         this.recipe = recipe;
     }
 
-    public String getFreeTextSearch() {
-        return freeTextSearch;
+    public String getSearchByFreeText() {
+        return searchByFreeText;
     }
 
-    public void setFreeTextSearch(String freeTextSearch) {
-        this.freeTextSearch = freeTextSearch;
+    public void setSearchByFreeText(String searchByFreeText) {
+        this.searchByFreeText = searchByFreeText;
+    }
+
+    public String getSearchByEmail() {
+        return searchByEmail;
+    }
+
+    public void setSearchByEmail(String searchByEmail) {
+        this.searchByEmail = searchByEmail;
+    }
+
+    public Recipe.recipeType getSearchByType() {
+        return searchByType;
+    }
+
+    public void setSearchByType(Recipe.recipeType searchByType) {
+        this.searchByType = searchByType;
+    }
+
+    public String getSearchByCuisine() {
+        return searchByCuisine;
+    }
+
+    public void setSearchByCuisine(String searchByCuisine) {
+        this.searchByCuisine = searchByCuisine;
+    }
+
+    public UserProfile.skillLevel getSearchBySkills() {
+        return searchBySkills;
+    }
+
+    public void setSearchBySkills(UserProfile.skillLevel searchBySkills) {
+        this.searchBySkills = searchBySkills;
     }
 }

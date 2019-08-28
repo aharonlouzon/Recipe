@@ -31,8 +31,14 @@ public class SearchResults extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
         app = ((MyApplication)getApplicationContext());
-        searchText = app.getFreeTextSearch();
         progressDialog = new ProgressDialog(this);
+
+        // get search params
+        searchText = app.getSearchByFreeText();
+        cuisine = app.getSearchByCuisine();
+        authorEmail = app.getSearchByEmail();
+        recipeType = app.getSearchByType();
+        skillLevel = app.getSearchBySkills();
 
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -47,7 +53,7 @@ public class SearchResults extends AppCompatActivity {
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(skillLevel, cuisine, recipeType, authorEmail).get();
+            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(skillLevel, cuisine, recipeType, authorEmail, searchText).get();
         }
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(SearchResults.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);

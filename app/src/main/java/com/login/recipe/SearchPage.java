@@ -2,8 +2,6 @@ package com.login.recipe;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -11,13 +9,38 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SearchView;
 
 public class SearchPage extends AppCompatActivity {
 
     private MyApplication app;
-    private Button search;
     private SearchView searchView;
+    private boolean cuisineIsChecked = false;
+    private int cuisineCheckedId = -1;
+    private boolean typeIsChecked = false;
+    private int typeCheckedId = -1;
+
+    //radio buttons cuisine
+    private RadioButton meat;
+    private RadioButton middle_eastern;
+    private RadioButton italian;
+    private RadioButton baking;
+    private RadioButton asian;
+    private RadioButton european;
+
+    //skills radio button
+    private RadioButton begginer;
+    private RadioButton intermediate;
+    private RadioButton pro;
+
+    //radio buttons type
+    private RadioButton dessert;
+    private RadioButton soup;
+    private RadioButton main;
+    private RadioButton appetizer;
+    private RadioButton salad;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +49,90 @@ public class SearchPage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //radio buttons cuisine
+        meat = findViewById(R.id.meat_b);
+        middle_eastern = findViewById(R.id.middle_b);
+        italian = findViewById(R.id.italian_b);
+        baking = findViewById(R.id.baking_b);
+        asian = findViewById(R.id.asian_b);
+        european = findViewById(R.id.european_b);
+
+        //radio buttons skill
+        begginer = findViewById(R.id.check_beginner);
+        intermediate = findViewById(R.id.check_inter);
+        pro = findViewById(R.id.check_pro);
+
+        //radio buttons type
+        dessert = findViewById(R.id.checkBoxDessert);
+        soup = findViewById(R.id.checkBoxSoup);
+        main = findViewById(R.id.checkBoxMain);
+        appetizer = findViewById(R.id.checkBoxAppetizer);
+        salad = findViewById(R.id.checkBoxSalad);
+
+        // cuisine radio group
+        final RadioGroup cuisine1 = findViewById(R.id.cuisine_radio_group1);
+        final RadioGroup cuisine2 = findViewById(R.id.cuisine_radio_group2);
+        cuisine1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && cuisineIsChecked) {
+                    cuisineIsChecked = false;
+                    cuisine2.clearCheck();
+                    cuisineCheckedId = checkedId;
+                }
+                cuisineIsChecked = true;
+            }
+        });
+
+        cuisine2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && cuisineIsChecked) {
+                    cuisineIsChecked = false;
+                    cuisine1.clearCheck();
+                    cuisineCheckedId = checkedId;
+                }
+                cuisineIsChecked = true;
+            }
+        });
+
+        // type radio group
+        final RadioGroup type1 = findViewById(R.id.type_radio_group1);
+        final RadioGroup type2 = findViewById(R.id.type_radio_group2);
+        type1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && typeIsChecked) {
+                    typeIsChecked = false;
+                    type2.clearCheck();
+                    typeCheckedId = checkedId;
+                }
+                typeIsChecked = true;
+            }
+        });
+
+        type2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && typeIsChecked) {
+                    typeIsChecked = false;
+                    type1.clearCheck();
+                    typeCheckedId = checkedId;
+                }
+                typeIsChecked = true;
+            }
+        });
+
+        // skills radio group
+        final RadioGroup skills = findViewById(R.id.radio_group_skills);
+
         app = ((MyApplication)getApplicationContext());
-        search = findViewById(R.id.search_button);
+        Button search = findViewById(R.id.search_button);
         searchView = findViewById(R.id.free_text_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                app.setFreeTextSearch(query);
+                app.setSearchByFreeText(query);
                 startActivity(new Intent(SearchPage.this, SearchResults.class));
                 return true;
             }
@@ -46,6 +146,54 @@ public class SearchPage extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String freeText = searchView.getQuery().toString();
+                if (freeText.equals(""))
+                    app.setSearchByFreeText(null);
+                else
+                    app.setSearchByFreeText(freeText);
+                app.setSearchByEmail(null);
+                if (skills.getCheckedRadioButtonId() != -1) {
+                    if (begginer.isChecked())
+                        app.setSearchBySkills(UserProfile.skillLevel.BEGINNER);
+                    else if (intermediate.isChecked())
+                        app.setSearchBySkills(UserProfile.skillLevel.INTERMEDIATE);
+                    else if (pro.isChecked())
+                        app.setSearchBySkills(UserProfile.skillLevel.PRO);
+                }
+                else
+                    app.setSearchBySkills(null);
+                if (cuisineCheckedId != -1)
+                    if(asian.isChecked())
+                        app.setSearchByCuisine("asian");
+                    else if(middle_eastern.isChecked())
+                        app.setSearchByCuisine("middle_eastern");
+                    else if(italian.isChecked())
+                        app.setSearchByCuisine("italian");
+                    else if(european.isChecked())
+                        app.setSearchByCuisine("european");
+                    else if(baking.isChecked())
+                        app.setSearchByCuisine("baking");
+                    else if(meat.isChecked())
+                        app.setSearchByCuisine("meat");
+                else
+                    app.setSearchByCuisine(null);
+
+                if (typeCheckedId != -1)
+                    if(main.isChecked())
+                        app.setSearchByType(Recipe.recipeType.MAIN);
+                    else if(dessert.isChecked())
+                        app.setSearchByType(Recipe.recipeType.DESSERT);
+                    else if(salad.isChecked())
+                        app.setSearchByType(Recipe.recipeType.SALAD);
+                    else if(soup.isChecked())
+                        app.setSearchByType(Recipe.recipeType.SOUP);
+                    else if(appetizer.isChecked())
+                        app.setSearchByType(Recipe.recipeType.APPETIZER);
+                    else
+                        app.setSearchByType(null);
+
+                startActivity(new Intent(SearchPage.this, SearchResults.class));
+
             }
         });
     }
