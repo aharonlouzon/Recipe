@@ -20,6 +20,10 @@
                 android:title="@string/my_area"
                 app:showAsAction="never" />
 
+            <item android:id="@+id/home_page_button_user_menu"
+                android:title="@string/home"
+                app:showAsAction="never" />
+
         </menu>
 
     </item>

@@ -34,9 +34,8 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="60dp"
-        android:layout_height="20dp"
+        android:layout_height="14dp"
         android:layout_marginStart="98dp"
-        android:layout_marginLeft="98dp"
         android:layout_marginTop="164dp"
         android:text="Email"
         app:layout_constraintStart_toStartOf="parent"
