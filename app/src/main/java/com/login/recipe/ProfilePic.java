@@ -8,10 +8,12 @@ public class ProfilePic {
         this.picture = picture;
     }
 
+    @SuppressWarnings("unused")
     public byte[] getPicture() {
         return picture;
     }
 
+    @SuppressWarnings("unused")
     public void setPicture(byte[] picture) {
         this.picture = picture;
     }

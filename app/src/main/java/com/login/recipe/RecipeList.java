@@ -3,6 +3,7 @@ package com.login.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class RecipeList extends ArrayList<Recipe> {
     private static final long serialVersionUID = 1L;
     public RecipeList() {

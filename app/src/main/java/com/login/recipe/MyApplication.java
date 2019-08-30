@@ -81,4 +81,11 @@ public class MyApplication extends Application {
     public void setSearchBySkills(UserProfile.skillLevel searchBySkills) {
         this.searchBySkills = searchBySkills;
     }
+
+    @SuppressWarnings("unused")
+    public void log_out(){
+        this.user = null;
+        this.newPassword = null;
+        this.recipe = null;
+    }
 }

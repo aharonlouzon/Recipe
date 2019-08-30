@@ -18,7 +18,7 @@ public class DatabaseService {
      * @return if correct - the user's profile. if incorrect username or password - returns null
      * @throws IOException if there is a error in connecting to the server
      */
-    public UserProfile validateSignIn(String email, String password) throws IOException {
+    UserProfile validateSignIn(String email, String password) throws IOException {
         String url = BASE_URL + "userProfile/signIn/" + email + "/" + password;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             return new Gson().fromJson(reader, UserProfile.class);
@@ -31,7 +31,7 @@ public class DatabaseService {
      *         if a profile already exists for the given email - returns null
      * @throws IOException if there is a error in connecting to the server
      */
-    public String addUser(UserProfile user, String password) throws IOException {
+    String addUser(UserProfile user, String password) throws IOException {
         String url = BASE_URL + "userProfile/add/" + password;
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;
@@ -76,7 +76,7 @@ public class DatabaseService {
      *    if userEmail does not exist - returns null
      * @throws IOException if error in connection to the server
      */
-    public String forgotPassword(String userEmail) throws IOException {
+    String forgotPassword(String userEmail) throws IOException {
         String url = BASE_URL + "userProfile/forgotPassword/" + userEmail;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             TextMessage response = new Gson().fromJson(reader, TextMessage.class);
@@ -93,7 +93,7 @@ public class DatabaseService {
      *         if no profile exists for the given email - returns null
      * @throws IOException if there is a error in connecting to the server
      */
-    public String changeProfilePic(byte[] picture, String userEmail) throws IOException {
+    String changeProfilePic(byte[] picture, String userEmail) throws IOException {
         String url = BASE_URL + "userProfile/changeProfilePic/" + userEmail;
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;
@@ -126,7 +126,7 @@ public class DatabaseService {
      *    if userEmail or followerEmail doesn't exist - returns null
      * @throws IOException if error in connection to the server
      */
-    public String addFollower(String userEmail, String followerEmail) throws IOException {
+    String addFollower(String userEmail, String followerEmail) throws IOException {
         String url = BASE_URL + "userProfile/addFollower/" + userEmail + "/" + followerEmail;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             TextMessage response = new Gson().fromJson(reader, TextMessage.class);
@@ -143,7 +143,7 @@ public class DatabaseService {
      *    if userEmail or followerEmail doesn't exist - returns null
      * @throws IOException if error in connection to the server
      */
-    public String deleteFollower(String userEmail, String followerEmail) throws IOException {
+    String deleteFollower(String userEmail, String followerEmail) throws IOException {
         String url = BASE_URL + "userProfile/deleteFollower/" + userEmail + "/" + followerEmail;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             TextMessage response = new Gson().fromJson(reader, TextMessage.class);
@@ -160,7 +160,7 @@ public class DatabaseService {
      *         if unsuccessful (because of bad input) - returns null
      * @throws IOException if error in connecting to database
      */
-    public String addRecipe(Recipe recipe) throws IOException {
+    String addRecipe(Recipe recipe) throws IOException {
         String url = BASE_URL + "recipe/add";
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;
@@ -191,7 +191,7 @@ public class DatabaseService {
      * @return if the recipeID exists - returns the recipe. if doesn't exist - returns null
      * @throws IOException if there is an error connecting to the server
      */
-    public Recipe getRecipe(int recipeID) throws IOException {
+    Recipe getRecipe(int recipeID) throws IOException {
         String url = BASE_URL + "recipe/getRecipe/" + recipeID;
         InputStreamReader reader = null;
         try {
@@ -207,7 +207,7 @@ public class DatabaseService {
      * @return if the user exists - returns the users recipeList. if doesn't exist - returns null
      * @throws IOException if there is an error connecting to the server
      */
-    public RecipeList getUsersRecipes(String email) throws IOException {
+    RecipeList getUsersRecipes(String email) throws IOException {
         String url = BASE_URL + "recipe/getUsersRecipes/" + email;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             return new Gson().fromJson(reader, RecipeList.class);
@@ -221,7 +221,7 @@ public class DatabaseService {
      *         returns null if bad input.
      * @throws IOException if there is an error connecting to the server
      */
-    public RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail, String freeText) throws IOException {
+    RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail, String freeText) throws IOException {
         String typeString = type.name();
         String skillString = skill.name();
         String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail + "/" + freeText;
@@ -236,7 +236,7 @@ public class DatabaseService {
      *         if recipeID or comment author doesn't exist - returns null
      * @throws IOException if error connecting to the server
      */
-    public String addComment(int recipeID, Comment comment) throws IOException {
+    String addComment(int recipeID, Comment comment) throws IOException {
         String url = BASE_URL + "recipe/addComment/" + recipeID;
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;
@@ -268,7 +268,7 @@ public class DatabaseService {
      *         if recipeID doesn't exist - returns null
      * @throws IOException if error connecting to the server
      */
-    public String addPicture(int recipeID, byte[] picture) throws IOException {
+    String addPicture(int recipeID, byte[] picture) throws IOException {
         String url = BASE_URL + "recipe/addPicture/" + recipeID;
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;

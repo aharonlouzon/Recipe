@@ -7,6 +7,7 @@ import java.util.Date;
 import com.login.recipe.UserProfile.skillLevel;
 import java.util.HashMap;
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class Recipe implements Serializable {
 
     public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}

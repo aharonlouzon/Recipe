@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -29,6 +30,7 @@ public class AddRecipe extends AppCompatActivity {
     private EditText title;
     private EditText direction_step;
     private Recipe recipe = new Recipe();
+    private EditText description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class AddRecipe extends AppCompatActivity {
         direction_step = findViewById(R.id.direction_text_add_recipe);
         quantity = findViewById(R.id.add_recipe_Quantity);
         title = findViewById(R.id.recipe_name);
+        description = findViewById(R.id.descriptions_text_add_recipe);
 
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +114,9 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
                 recipe.setName(title.getText().toString().trim());
 
+                // Set description
+                recipe.setDescription(description.getText().toString());
+
                 //add the recipe to the database
                 String response = null;
                 try {
@@ -131,5 +137,27 @@ public class AddRecipe extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.logout_button: {
+                finish();
+                startActivity(new Intent(AddRecipe.this, MainActivity.class));
+                break;
+            }
+            case R.id.my_area_button_user_menu: {
+                startActivity(new Intent(AddRecipe.this, MyArea.class));
+                break;
+            }
+            case R.id.home_page_button_user_menu: {
+                startActivity(new Intent(AddRecipe.this, HomePage.class));
+                break;
+            }
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

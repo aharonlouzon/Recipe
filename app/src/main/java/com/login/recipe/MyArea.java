@@ -3,6 +3,9 @@ package com.login.recipe;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +46,9 @@ public class MyArea extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
 
         ImageView avatar = findViewById(R.id.imageView_my_area);
+//        byte[] imageByte = user.getPicture();
+//        Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
+//        avatar.setImageDrawable(imageDrawable);
         avatar.setImageResource(R.drawable.male_avatar);
 
         TextView name = findViewById(R.id.name_my_area);

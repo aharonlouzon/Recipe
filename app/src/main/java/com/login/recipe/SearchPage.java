@@ -17,10 +17,14 @@ public class SearchPage extends AppCompatActivity {
 
     private MyApplication app;
     private SearchView searchView;
+
+    // Cuisine radio handling
     private boolean cuisineIsChecked = false;
-    private int cuisineCheckedId = -1;
+    private int cuisineCheckedId;
+
+    // Type radio handling
     private boolean typeIsChecked = false;
-    private int typeCheckedId = -1;
+    private int typeCheckedId;
 
     //radio buttons cuisine
     private RadioButton meat;
@@ -81,6 +85,7 @@ public class SearchPage extends AppCompatActivity {
                     cuisineCheckedId = checkedId;
                 }
                 cuisineIsChecked = true;
+                cuisineCheckedId = checkedId;
             }
         });
 
@@ -93,6 +98,7 @@ public class SearchPage extends AppCompatActivity {
                     cuisineCheckedId = checkedId;
                 }
                 cuisineIsChecked = true;
+                cuisineCheckedId = checkedId;
             }
         });
 
@@ -162,7 +168,7 @@ public class SearchPage extends AppCompatActivity {
                 }
                 else
                     app.setSearchBySkills(null);
-                if (cuisineCheckedId != -1)
+                if (cuisineIsChecked)
                     if(asian.isChecked())
                         app.setSearchByCuisine("asian");
                     else if(middle_eastern.isChecked())
@@ -178,7 +184,7 @@ public class SearchPage extends AppCompatActivity {
                 else
                     app.setSearchByCuisine(null);
 
-                if (typeCheckedId != -1)
+                if (typeIsChecked)
                     if(main.isChecked())
                         app.setSearchByType(Recipe.recipeType.MAIN);
                     else if(dessert.isChecked())
