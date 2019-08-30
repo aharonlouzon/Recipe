@@ -27,28 +27,30 @@
     <string name="free_search_header">What are you in the mood for?</string>
     <string name="by_cuisine_search_header">Filte by cuisine type:</string>
     <string name="Search">Button</string>
-    <string name="product">Product</string>
     <string name="italian">Italian</string>
     <string name="meat">Meat</string>
     <string name="baking">Baking</string>
     <string name="quantity">Quantity</string>
     <string name="_1">1</string>
     <string name="_continue">continue</string>
-    <string name="dish_name">Dish Name</string>
     <string name="by_cuisine_dish_type">Filter by dish type:</string>
-    <string name="middle_eastern">Middle Eastern</string>
-    <string name="soup">Soup</string>
     <string name="appetizer">Appetizer</string>
     <string name="asian">Asian</string>
     <string name="european">European</string>
     <string name="middle_eastern_new_line">
         <![CDATA[Middle
         Eastern]]></string>
-    <string name="main">Main</string>
+    <string name="continue_button_text">Continue</string>
     <string name="dessert">Dessert</string>
-    <string name="salad">Salad</string>
     <string name="filter_by_skills">Filter by skills:</string>
     <string name="search_button">Search</string>
+    <string name="dish_name">Dish Name</string>
+    <string name="product">Product</string>
+    <string name="recipe_type">Recipe Type:</string>
+    <string name="soup">Soup</string>
+    <string name="main">Main</string>
+    <string name="salad">Salad</string>
+    <string name="recipe_skill">Skill Level:</string>
     <string name="begginer">Begginer</string>
     <string name="intermediate">Intermediate</string>
     <string name="pro">Pro</string>

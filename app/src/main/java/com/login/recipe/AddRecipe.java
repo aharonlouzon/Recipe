@@ -48,7 +48,7 @@ public class AddRecipe extends AppCompatActivity {
         product_name = findViewById(R.id.add_recipe_product);
         direction_step = findViewById(R.id.direction_text_add_recipe);
         quantity = findViewById(R.id.add_recipe_Quantity);
-        title = findViewById(R.id.title_add_recipe);
+        title = findViewById(R.id.recipe_name);
 
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
