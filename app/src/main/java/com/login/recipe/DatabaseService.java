@@ -222,8 +222,12 @@ public class DatabaseService {
      * @throws IOException if there is an error connecting to the server
      */
     public RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail, String freeText) throws IOException {
-        String typeString = type.name();
-        String skillString = skill.name();
+        String typeString = null;
+        if (type != null)
+            typeString = type.name();
+        String skillString = null;
+        if (skill != null)
+            skillString = skill.name();
         String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail + "/" + freeText;
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             return new Gson().fromJson(reader, RecipeList.class);
