@@ -76,7 +76,8 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-                finish();
+//                app.log_out();
+//                finishAffinity();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
                 break;
             }

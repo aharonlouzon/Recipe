@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class UserProfile implements Serializable {
 
     public enum skillLevel{BEGINNER, INTERMEDIATE, PRO}

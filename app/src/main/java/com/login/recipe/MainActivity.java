@@ -68,18 +68,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ShowToast")
     private void validate(String email, String password){
 
-        // firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-        //     @SuppressLint("ShowToast")
-        //     @Override
-        //     public void onComplete(@NonNull Task<AuthResult> task) {
-        //         if(task.isSuccessful())
-        //             startActivity(new Intent(MainActivity.this, HomePage.class));
-        //         else
-        //             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
-
-        //     }
-        // });
-
         Object user = null;
         try {
             progressDialog.setMessage("Cooking...");

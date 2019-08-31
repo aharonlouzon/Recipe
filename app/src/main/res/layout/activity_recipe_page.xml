@@ -60,6 +60,12 @@
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/recipe_page_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -71,7 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
-                android:background="#0DE91E63"></ListView>
+                android:background="#0DE91E63">
+
+            </ListView>
 
             <TextView
                 android:layout_width="match_parent"

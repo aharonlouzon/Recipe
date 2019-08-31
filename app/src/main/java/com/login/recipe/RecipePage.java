@@ -36,6 +36,8 @@ public class RecipePage extends AppCompatActivity {
 
         app = ((MyApplication)getApplicationContext());
         recipe = app.getRecipe();
+        TextView description = findViewById(R.id.recipe_page_description);
+        description.setText(recipe.getDescription());
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
 
@@ -58,7 +60,7 @@ public class RecipePage extends AppCompatActivity {
         }
 
         for(Comment comment : recipe.getComments()) {
-            commentsText.add(comment.getauthorName() + "\n" + comment.getComment());
+            commentsText.add(comment.getAuthorName() + "\n" + comment.getComment());
         }
 
         //locate Views

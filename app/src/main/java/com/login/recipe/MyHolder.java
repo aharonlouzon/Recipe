@@ -39,6 +39,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
         });
     }
 
+    @SuppressWarnings("unused")
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
@@ -47,6 +48,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
         this.title = title;
     }
 
+    @SuppressWarnings("unused")
     public void setDescription(TextView description) {
         this.description = description;
     }
