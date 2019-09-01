@@ -42,14 +42,27 @@ public class MyArea extends AppCompatActivity {
         user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.my_area_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapter myAdapter = new MyAdapter(this, getRecipes());
-        recyclerView.setAdapter(myAdapter);
+        getRecipes();
+        if (recipeList != null) {
+            MyAdapter myAdapter = new MyAdapter(this, recipeList);
+            recyclerView.setAdapter(myAdapter);
+        }
 
         ImageView avatar = findViewById(R.id.imageView_my_area);
-//        byte[] imageByte = user.getPicture();
-//        Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
-//        avatar.setImageDrawable(imageDrawable);
-        avatar.setImageResource(R.drawable.male_avatar);
+        if (user.getPicture() != null){
+            byte[] imageByte = user.getPicture();
+            Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
+            avatar.setImageDrawable(imageDrawable);
+        }
+        else
+            avatar.setImageResource(R.drawable.male_avatar);
+
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyArea.this, UploadUserImage.class));
+            }
+        });
 
         TextView name = findViewById(R.id.name_my_area);
         TextView cookingSkills = findViewById(R.id.cooking_skills_my_area);
@@ -75,7 +88,7 @@ public class MyArea extends AppCompatActivity {
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
         }
-        catch (ExecutionException | InterruptedException e) {
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
         }
         progressDialog.dismiss();

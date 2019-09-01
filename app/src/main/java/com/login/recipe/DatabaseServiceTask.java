@@ -54,7 +54,7 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
             case "changeProfilePic":
                 // objects[0] is email. objects[1] is new pic (a byte[]).
                 try {
-                    result = database.changeProfilePic((byte[]) objects[1], (String) objects[0]);
+                    result = database.changeProfilePic((byte[]) objects[0], (String) objects[1]);
                 } catch (IOException e) {
                     return "error";
                 }

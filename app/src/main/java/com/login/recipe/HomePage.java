@@ -35,8 +35,11 @@ public class HomePage extends AppCompatActivity {
         user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapter myAdapter = new MyAdapter(this, getRecipes());
-        recyclerView.setAdapter(myAdapter);
+        getRecipes();
+        if (recipeList != null) {
+            MyAdapter myAdapter = new MyAdapter(this, recipeList);
+            recyclerView.setAdapter(myAdapter);
+        }
 
         ImageButton searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +60,7 @@ public class HomePage extends AppCompatActivity {
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
         }
-        catch (ExecutionException | InterruptedException e) {
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
         }
         progressDialog.dismiss();

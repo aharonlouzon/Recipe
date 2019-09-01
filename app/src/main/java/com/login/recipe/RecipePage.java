@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,6 +42,15 @@ public class RecipePage extends AppCompatActivity {
         description.setText(recipe.getDescription());
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
+
+        //image gridview
+        RecyclerView recyclerView = findViewById(R.id.recipe_page_recycle_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        if (recipe.getImages().size() > 0) {
+            MyAdapterRecipeImage myAdapter = new MyAdapterRecipeImage(this, recipe.getImages());
+            recyclerView.setAdapter(myAdapter);
+        }
+
 
         FloatingActionButton fab = findViewById(R.id.recipe_page_add_photo);
         fab.setOnClickListener(new View.OnClickListener() {

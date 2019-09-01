@@ -1,6 +1,7 @@
 package com.login.recipe;
 
 import android.app.Application;
+import android.graphics.Bitmap;
 
 public class MyApplication extends Application {
 
@@ -13,6 +14,7 @@ public class MyApplication extends Application {
     private Recipe.recipeType searchByType;
     private UserProfile.skillLevel searchBySkills;
     private String searchByCuisine;
+    private Bitmap imageShow;
 
     public UserProfile getUser() {
         return user;
@@ -87,5 +89,13 @@ public class MyApplication extends Application {
         this.user = null;
         this.newPassword = null;
         this.recipe = null;
+    }
+
+    public Bitmap getImageShow() {
+        return imageShow;
+    }
+
+    public void setImageShow(Bitmap imageShow) {
+        this.imageShow = imageShow;
     }
 }
