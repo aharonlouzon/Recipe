@@ -109,6 +109,7 @@ public class UploadRecipeImage extends AppCompatActivity {
             else if (response.equals("error"))
                 Toast.makeText(UploadRecipeImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
             else {
+                recipe.addImage(inputData);
                 Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
             }
             startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));

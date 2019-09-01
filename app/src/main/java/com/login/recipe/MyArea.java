@@ -49,10 +49,20 @@ public class MyArea extends AppCompatActivity {
         }
 
         ImageView avatar = findViewById(R.id.imageView_my_area);
-//        byte[] imageByte = user.getPicture();
-//        Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
-//        avatar.setImageDrawable(imageDrawable);
-        avatar.setImageResource(R.drawable.male_avatar);
+        if (user.getPicture() != null){
+            byte[] imageByte = user.getPicture();
+            Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
+            avatar.setImageDrawable(imageDrawable);
+        }
+        else
+            avatar.setImageResource(R.drawable.male_avatar);
+
+        avatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MyArea.this, UploadUserImage.class));
+            }
+        });
 
         TextView name = findViewById(R.id.name_my_area);
         TextView cookingSkills = findViewById(R.id.cooking_skills_my_area);

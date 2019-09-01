@@ -40,7 +40,7 @@ public class SearchResults extends AppCompatActivity {
         recipeType = app.getSearchByType();
         skillLevel = app.getSearchBySkills();
 
-        RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
+        RecyclerView recyclerView = findViewById(R.id.search_results_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         MyAdapter myAdapter = new MyAdapter(this, getRecipes());
         recyclerView.setAdapter(myAdapter);
