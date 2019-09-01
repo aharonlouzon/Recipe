@@ -90,6 +90,10 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="emulator-5554" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -116,20 +120,10 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>RegiterPage</find>
-      <find>skill_level_header</find>
-      <find>name_header_add_recipe</find>
-      <find>Italian</find>
-      <find>Meat</find>
-      <find>quantity</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="daniel" />
-      </map>
-    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,19 +131,30 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_home_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/user_menu.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_my_area.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ReleaseTime.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/CommentList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/PictureList.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegiterPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_set_user.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_regiter_page.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ProfilePic.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dish_type_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DishTypeGridViewAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_set_cuisine.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/content_search_page.xml" />
@@ -201,7 +206,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView">
+      <pane id="PackagesPane">
         <subPane>
           <expand>
             <path>
@@ -293,9 +298,13 @@
               <item name="app" type="616d4139:PackageViewModuleNode" />
             </path>
             <path>
-              <item name="Recipe" type="58d84e3e:PackageViewProjectNode" />
-              <item name="app" type="616d4139:PackageViewModuleNode" />
-              <item name="Libraries" type="5c3f07af:PackageViewLibrariesNode" />
+              <item name="Recipe" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Recipe" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -304,12 +313,17 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_API_29" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2019-08-30T09:25:05.835Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="device.picker.selection" value="Pixel_2_API_Q" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="instant.run" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.4.0" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1561030290783" />
   </component>
@@ -461,8 +475,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Android App.SetCuisine" />
-        <item itemvalue="Android App.SetCuisine" />
-        <item itemvalue="Android App.SetCuisine" />
       </list>
     </recent_temporary>
   </component>
@@ -477,6 +489,21 @@
       <option name="presentableId" value="Default" />
       <updated>1557668613820</updated>
     </task>
+    <task id="LOCAL-00001" summary="trying to pull">
+      <created>1567152294869</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1567152294869</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixed searchRecipes method (for null values)">
+      <created>1567275984926</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1567275984926</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -489,7 +516,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.32967034" />
@@ -500,9 +527,9 @@
       <window_info id="Resources Explorer" order="6" weight="0.32923833" />
       <window_info id="Capture Tool" order="7" />
       <window_info x="435" y="343" width="141" height="406" id="Component Tree" order="8" side_tool="true" type="FLOATING" />
-      <window_info content_ui="combo" id="Project" order="9" visible="true" weight="0.20515971" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49938574" weight="0.2893013" />
-      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39116204" />
+      <window_info content_ui="combo" id="Project" order="9" visible="true" weight="0.17697228" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.49733475" weight="0.43987" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49573562" weight="0.39111593" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.497558" weight="0.2521834" />
       <window_info active="true" anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" visible="true" weight="0.30676857" />
@@ -510,12 +537,13 @@
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.3286026" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49508598" weight="0.2849345" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3286026" />
-      <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3296433" />
+      <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" weight="0.3296433" />
+      <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.49733475" weight="0.32936078" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
-      <window_info anchor="right" id="Preview" order="4" weight="0.3290469" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.32889125" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Assistant" order="6" weight="0.32967034" />
       <window_info anchor="right" id="StringPreview" order="7" />
@@ -689,6 +717,7 @@
           </folding>
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -750,7 +779,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/os/AsyncTask.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5145">
           <caret line="379" selection-start-line="379" selection-end-line="379" />
@@ -863,6 +893,7 @@
           <caret column="44" selection-start-column="44" selection-end-column="44" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_recipe.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1011,6 +1042,7 @@
           <caret line="48" column="74" lean-forward="true" selection-start-line="48" selection-start-column="74" selection-end-line="48" selection-end-column="74" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#3308#3417#0" />
           </folding>
         </state>
       </provider>
