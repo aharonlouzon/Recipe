@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.app.ProgressDialog;
 import java.util.Date;
@@ -32,11 +34,28 @@ public class AddRecipe extends AppCompatActivity {
     private Recipe recipe = new Recipe();
     private EditText description;
 
+    // Type radio handling
+    private boolean typeIsChecked = false;
+    private int typeCheckedId;
+
+    //radio buttons type
+    private RadioButton dessert;
+    private RadioButton soup;
+    private RadioButton main;
+    private RadioButton appetizer;
+    private RadioButton salad;
+
+    //skills radio button
+    private RadioButton begginer;
+    private RadioButton intermediate;
+    private RadioButton pro;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
+        //globals
         progressDialog = new ProgressDialog(this);
         asian = findViewById(R.id.asian_rec_category);
         middle_eastern = findViewById(R.id.middle_eastern_rec_category);
@@ -52,6 +71,48 @@ public class AddRecipe extends AppCompatActivity {
         quantity = findViewById(R.id.add_recipe_Quantity);
         title = findViewById(R.id.recipe_name);
         description = findViewById(R.id.descriptions_text_add_recipe);
+
+        //radio buttons type
+        dessert = findViewById(R.id.radioButtonDessertAddRecipe);
+        soup = findViewById(R.id.radioButtonSoupAddRecipe);
+        main = findViewById(R.id.radioButtonMainAddRecipe);
+        appetizer = findViewById(R.id.radioButtonAppetizerAddRecipe);
+        salad = findViewById(R.id.radioButtonSaladAddRecipe);
+
+        //radio buttons skill
+        begginer = findViewById(R.id.begginer_radio_add_recipe);
+        intermediate = findViewById(R.id.intermediate_radio_add_recipe);
+        pro = findViewById(R.id.pro_radio_add_recipe);
+
+        // skills radio group
+        final RadioGroup skills = findViewById(R.id.skill_radio_group_add_recipe);
+
+        // type radio group
+        final RadioGroup type1 = findViewById(R.id.type_radio_group1_add_recipe);
+        final RadioGroup type2 = findViewById(R.id.type_radio_group2_add_recipe);
+        type1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && typeIsChecked) {
+                    typeIsChecked = false;
+                    type2.clearCheck();
+                    typeCheckedId = checkedId;
+                }
+                typeIsChecked = true;
+            }
+        });
+
+        type2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId != -1 && typeIsChecked) {
+                    typeIsChecked = false;
+                    type1.clearCheck();
+                    typeCheckedId = checkedId;
+                }
+                typeIsChecked = true;
+            }
+        });
 
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,12 +148,15 @@ public class AddRecipe extends AppCompatActivity {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
 
+                // mandatory fields
                 if(title.getText().toString().isEmpty())
                     return;
                 if(recipe.getInstructions().size() == 0)
                     return;
                 if(recipe.getIngredients().size() == 0)
                     return;
+
+                // cuisine
                 if(asian.isChecked())
                     recipe.getCuisines().add("asian");
                 if(middle_eastern.isChecked())
@@ -106,12 +170,37 @@ public class AddRecipe extends AppCompatActivity {
                 if(meat.isChecked())
                     recipe.getCuisines().add("meat");
 
+                //set type
+                if (typeIsChecked)
+                    if(main.isChecked())
+                        recipe.setType(Recipe.recipeType.MAIN);
+                    else if(dessert.isChecked())
+                        recipe.setType(Recipe.recipeType.DESSERT);
+                    else if(salad.isChecked())
+                        recipe.setType(Recipe.recipeType.SALAD);
+                    else if(soup.isChecked())
+                        recipe.setType(Recipe.recipeType.SOUP);
+                    else if(appetizer.isChecked())
+                        recipe.setType(Recipe.recipeType.APPETIZER);
+                    else
+                        recipe.setType(null);
+
+                //set skill level
+                if (begginer.isChecked())
+                    recipe.setSkillLevel(UserProfile.skillLevel.BEGINNER);
+                else if (intermediate.isChecked())
+                    recipe.setSkillLevel(UserProfile.skillLevel.INTERMEDIATE);
+                else if (pro.isChecked())
+                    recipe.setSkillLevel(UserProfile.skillLevel.PRO);
+
                 //set author to be current user
                 MyApplication app = ((MyApplication)getApplicationContext());
                 recipe.setAuthor(app.getUser().getEmail());
 
                 //set release time for recipe
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
+
+                //set recipe name
                 recipe.setName(title.getText().toString().trim());
 
                 // Set description
