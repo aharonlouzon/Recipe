@@ -156,11 +156,11 @@ public class DatabaseService {
     /**
      * add a new recipe to the database
      * don't need to provide recipeID - automatically assigned by the DB (auto-increment)
-     * @return if successful - "added recipe " + recipe.getName().
+     * @return if successful - the recipe with the assigned recipeID.
      *         if unsuccessful (because of bad input) - returns null
      * @throws IOException if error in connecting to database
      */
-    public String addRecipe(Recipe recipe) throws IOException {
+    public Recipe addRecipe(Recipe recipe) throws IOException {
         String url = BASE_URL + "recipe/add";
         HttpURLConnection connection = null;
         OutputStreamWriter writer = null;
@@ -176,12 +176,16 @@ public class DatabaseService {
             writer.flush();
 
             reader = new InputStreamReader(connection.getInputStream());
-            TextMessage response = new Gson().fromJson(reader, TextMessage.class);
-            if (response == null)
+            Recipe responseRecipe = new Gson().fromJson(reader, Recipe.class);
+            if (responseRecipe == null)
                 return null;
             else
-                return response.getMessage();
-        } finally {
+                return responseRecipe;
+        }
+        catch(IOException e) {
+            throw e;
+        }
+        finally {
             closeResources(connection, reader, writer);
         }
     }
