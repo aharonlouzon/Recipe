@@ -75,9 +75,11 @@ public class MainActivity extends AppCompatActivity {
             user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
         }
         catch (ExecutionException | InterruptedException e) {
+            progressDialog.dismiss();
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
         }
         if (user == null){
+            progressDialog.dismiss();
             Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
             return;
         }
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, HomePage.class));
         }
         else
+            progressDialog.dismiss();
             Toast.makeText(MainActivity.this, "Error connecting to database", Toast.LENGTH_SHORT);
         }
 }
