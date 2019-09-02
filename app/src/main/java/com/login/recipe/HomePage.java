@@ -2,7 +2,9 @@ package com.login.recipe;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,6 +24,8 @@ public class HomePage extends AppCompatActivity {
     private UserProfile user;
     private ProgressDialog progressDialog;
     private RecipeList recipeList;
+    private SharedPreferences sharedpreferences;
+    private static final String preferences = "recipeAppPrefs";
 
 
     @Override
@@ -79,8 +83,11 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-//                app.log_out();
-//                finishAffinity();
+                sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").commit();
+                sharedpreferences.edit().remove("Password").commit();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
                 break;
             }
