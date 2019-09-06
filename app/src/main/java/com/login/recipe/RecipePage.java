@@ -114,16 +114,14 @@ public class RecipePage extends AppCompatActivity {
         //add the recipe comment to the database
         String response = null;
         try {
-            response = (String) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+            recipe = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+            app.setRecipe(recipe);
+
+            Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
+            startActivity(new Intent(RecipePage.this, RecipePage.class));
         }
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
-        }
-        if (response == null || response.equals("error"))
-            Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
-        else {
-            Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
-            startActivity(new Intent(RecipePage.this, RecipePage.class));
         }
     }
 

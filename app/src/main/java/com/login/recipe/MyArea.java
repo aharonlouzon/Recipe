@@ -80,19 +80,18 @@ public class MyArea extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private RecipeList getRecipes(){
+    private void getRecipes(){
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
 
         // get user's recipes
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
+            progressDialog.dismiss();
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
         }
-        progressDialog.dismiss();
-        return recipeList;
     }
 
     @Override

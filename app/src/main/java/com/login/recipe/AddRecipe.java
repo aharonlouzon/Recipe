@@ -207,21 +207,14 @@ public class AddRecipe extends AppCompatActivity {
                 recipe.setDescription(description.getText().toString());
 
                 //add the recipe to the database
-                String response = null;
                 try {
-                    response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
-                }
-                catch (ExecutionException | InterruptedException e) {
-                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
-                }
-                if (response == null)
-                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
-                else if (response.equals("error"))
-                    Toast.makeText(AddRecipe.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                else {
+                    recipe = (Recipe) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
                     app.setRecipe(recipe);
                     startActivity(new Intent(AddRecipe.this, RecipePage.class));
+                }
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
                 }
             }
         });

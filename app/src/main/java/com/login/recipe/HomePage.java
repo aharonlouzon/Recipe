@@ -63,12 +63,14 @@ public class HomePage extends AppCompatActivity {
         // get user's recipes
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
+//            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe", app).execute(null, null, null, null, null).get();
+            progressDialog.dismiss();
+            return recipeList;
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            return new RecipeList();
         }
-        progressDialog.dismiss();
-        return recipeList;
     }
 
     @Override
@@ -84,8 +86,8 @@ public class HomePage extends AppCompatActivity {
 
             case R.id.logout_button: {
                 sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
-                sharedpreferences.edit().remove("Email").commit();
-                sharedpreferences.edit().remove("Password").commit();
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
                 app.log_out();
                 finishAffinity();
                 startActivity(new Intent(HomePage.this, MainActivity.class));

@@ -54,12 +54,13 @@ public class SearchResults extends AppCompatActivity {
         // get user's recipes
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("searchRecipes", app).execute(skillLevel, cuisine, recipeType, authorEmail, searchText).get();
+            progressDialog.dismiss();
+            return recipeList;
         }
         catch (ExecutionException | InterruptedException e) {
             Toast.makeText(SearchResults.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            return new RecipeList();
         }
-        progressDialog.dismiss();
-        return recipeList;
     }
 
     @Override

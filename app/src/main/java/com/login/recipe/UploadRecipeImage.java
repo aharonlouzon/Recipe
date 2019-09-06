@@ -98,21 +98,24 @@ public class UploadRecipeImage extends AppCompatActivity {
             // add the recipe to the database
             String response = null;
             try {
-                response = (String) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+                recipe = (Recipe) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+                app.setRecipe(recipe);
+                Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
+                startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
             }
             catch (ExecutionException | InterruptedException e) {
                 Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
             }
-            if (response == null) {
-                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
-            }
-            else if (response.equals("error"))
-                Toast.makeText(UploadRecipeImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
-            else {
-                recipe.addImage(inputData);
-                Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
-            }
-            startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
+//            if (response == null) {
+//                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+//            }
+//            else if (response.equals("error"))
+//                Toast.makeText(UploadRecipeImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
+//            else {
+//                recipe.addImage(inputData);
+//                Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
+//            }
+//            startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
         }
     }
 

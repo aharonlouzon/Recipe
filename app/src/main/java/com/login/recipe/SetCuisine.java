@@ -21,6 +21,7 @@ public class SetCuisine extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
+    private UserProfile user;
     private ProgressDialog progressDialog;
     private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
@@ -40,7 +41,7 @@ public class SetCuisine extends AppCompatActivity {
         Button continue_button = findViewById(R.id.continue_button_add_recipe);
 
         final MyApplication app = ((MyApplication)getApplicationContext());
-        final UserProfile user = app.getUser();
+        user = app.getUser();
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(this);
@@ -66,27 +67,21 @@ public class SetCuisine extends AppCompatActivity {
                     user.addCuisine("meat");
 
                 //add user info to database
-                String response = null;
                 try {
                     progressDialog.setMessage("Cooking...");
                     progressDialog.show();
-                    response = (String) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
-                }
-                catch (ExecutionException | InterruptedException e) {
-                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
-                }
-                if (response == null)
-                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
-                else if (response.equals("error"))
-                    Toast.makeText(SetCuisine.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                else {
-                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    user = (UserProfile) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
 
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString("Email", user.getEmail());
                     editor.putString("Password", app.getNewPassword());
                     editor.apply();
                     Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
+                }
+                catch (ExecutionException | InterruptedException e) {
+                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(SetCuisine.this, MainActivity.class));
                 }
 
             }
