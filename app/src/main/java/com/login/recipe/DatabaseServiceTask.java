@@ -61,6 +61,9 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                     // objects[0] is User email.
                     result = database.getUsersRecipes((String) objects[0]);
                     break;
+                case "getFollowedRecipes":
+                    // objects[0] is User email.
+                    result = database.getFollowedRecipes((String) objects[0]);
                 case "searchRecipes":
                     // objects[0] is skill, objects[1] is cuisine, objects[2] is type, objects[3] is author email, objects[4] is freeText
                     result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String) objects[1], (Recipe.recipeType) objects[2], (String) objects[3], (String) objects[4]);
@@ -77,15 +80,10 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
         }
         catch (Exception e) {
             exception = e;
+            return e;
         }
 
         return result;
-    }
-
-    @Override
-    protected void onPostExecute(Object result) {
-        if (exception != null)
-            throw new RuntimeException(exception.getMessage());
     }
 
 }

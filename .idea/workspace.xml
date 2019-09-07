@@ -92,24 +92,25 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/AddRecipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/AddRecipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService$TextMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService$TextMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseServiceTask.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseServiceTask.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/ForgotPassword.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/ForgotPassword.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MainActivity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RegisterPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RegisterPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchResults.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchResults.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SetCuisine.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SetCuisine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchResults.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadUserImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadUserImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_search_results.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_recipe_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_recipe_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,16 +130,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserArea.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
+            <state relative-caret-position="1500">
+              <caret line="124" column="25" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1919#2266#0" expanded="true" />
-                <element signature="e#2265#2266#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_area.xml">
+          <provider selected="true" editor-type-id="android-designer2" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -146,7 +155,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-290">
+            <state relative-caret-position="150">
               <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
             </state>
           </provider>
@@ -155,7 +164,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
+            <state relative-caret-position="1890">
               <caret line="133" selection-start-line="133" selection-end-line="133" />
             </state>
           </provider>
@@ -164,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
+            <state relative-caret-position="1080">
               <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -204,7 +213,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="daniel" />
+        <entry key="$PROJECT_DIR$" value="aharon" />
       </map>
     </option>
   </component>
@@ -573,6 +582,7 @@
         <item itemvalue="Android App.SetCuisine" />
         <item itemvalue="Android App.SetCuisine" />
         <item itemvalue="Android App.SetCuisine" />
+        <item itemvalue="Android App.SetCuisine" />
       </list>
     </recent_temporary>
   </component>
@@ -600,7 +610,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.32967034" />
@@ -611,15 +620,15 @@
       <window_info id="Resources Explorer" order="6" weight="0.32923833" />
       <window_info id="Capture Tool" order="7" />
       <window_info x="435" y="343" width="141" height="406" id="Component Tree" order="8" side_tool="true" type="FLOATING" />
-      <window_info active="true" content_ui="combo" id="Project" order="9" visible="true" weight="0.20515971" />
+      <window_info content_ui="combo" id="Project" order="9" visible="true" weight="0.20515971" />
       <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4963145" weight="0.36353713" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39116204" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3289689" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" visible="true" weight="0.27729258" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" weight="0.27729258" />
       <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.30567685" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.504914" side_tool="true" weight="0.31222707" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.3286026" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" weight="0.279476" />
+      <window_info active="true" anchor="bottom" id="Build" order="7" sideWeight="0.4938575" visible="true" weight="0.279476" />
       <window_info anchor="bottom" id="Find" order="8" weight="0.3286026" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3296433" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -1050,17 +1059,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_area.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="1186">
-          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserArea.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="124" column="25" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="133" selection-start-line="133" selection-end-line="133" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
+        <state relative-caret-position="1080">
           <caret line="89" column="23" selection-start-line="89" selection-start-column="23" selection-end-line="89" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1068,29 +1093,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-290">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="119" column="37" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1919#2266#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-          </folding>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_user_area.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="85" column="34" selection-start-line="85" selection-start-column="34" selection-end-line="85" selection-end-column="34" />
         </state>
       </provider>
     </entry>

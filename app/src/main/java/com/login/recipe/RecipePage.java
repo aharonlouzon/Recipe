@@ -127,9 +127,9 @@ public class RecipePage extends AppCompatActivity {
         app.getRecipe().getComments().add(comment);
 
         //add the recipe comment to the database
-        String response = null;
+        Recipe response = null;
         try {
-            recipe = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+            response = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
             app.setRecipe(recipe);
 
             Toast toast = Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
