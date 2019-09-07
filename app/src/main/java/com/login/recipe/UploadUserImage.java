@@ -96,9 +96,9 @@ public class UploadUserImage extends AppCompatActivity {
             }
 
             // add the recipe to the database
-            String response = null;
+            UserProfile response = null;
             try {
-                response = (String) new DatabaseServiceTask("changeProfilePic", app).execute(inputData, app.getUser().getEmail()).get();
+                response = (UserProfile) new DatabaseServiceTask("changeProfilePic", app).execute(inputData, app.getUser().getEmail()).get();
             }
             catch (ExecutionException | InterruptedException e) {
                 Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
