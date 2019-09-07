@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -147,14 +148,15 @@ public class AddRecipe extends AppCompatActivity {
             public void onClick(View v) {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
+                boolean legalRecipe = true;
 
                 // mandatory fields
                 if(title.getText().toString().isEmpty())
-                    return;
+                    legalRecipe = false;
                 if(recipe.getInstructions().size() == 0)
-                    return;
+                    legalRecipe = false;
                 if(recipe.getIngredients().size() == 0)
-                    return;
+                    legalRecipe = false;
 
                 // cuisine
                 if(asian.isChecked())
@@ -206,22 +208,26 @@ public class AddRecipe extends AppCompatActivity {
                 // Set description
                 recipe.setDescription(description.getText().toString());
 
+                if (!legalRecipe){
+                    progressDialog.dismiss();
+                    Toast toast = Toast.makeText(AddRecipe.this, "Title, instructions and ingredients\n" +
+                            "are mandatory fields", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
+                    return;
+                }
+
                 //add the recipe to the database
-                String response = null;
                 try {
-                    response = (String) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
-                }
-                catch (ExecutionException | InterruptedException e) {
-                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
-                }
-                if (response == null)
-                    Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
-                else if (response.equals("error"))
-                    Toast.makeText(AddRecipe.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                else {
+                    recipe = (Recipe) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
                     app.setRecipe(recipe);
                     startActivity(new Intent(AddRecipe.this, RecipePage.class));
+                }
+                catch (ExecutionException | InterruptedException e) {
+                    Toast toast = Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                 }
             }
         });

@@ -15,6 +15,7 @@ public class MyApplication extends Application {
     private UserProfile.skillLevel searchBySkills;
     private String searchByCuisine;
     private Bitmap imageShow;
+    private UserProfile visitedUser;
 
     public UserProfile getUser() {
         return user;
@@ -97,5 +98,13 @@ public class MyApplication extends Application {
 
     public void setImageShow(Bitmap imageShow) {
         this.imageShow = imageShow;
+    }
+
+    public UserProfile getVisitedUser() {
+        return visitedUser;
+    }
+
+    public void setVisitedUser(UserProfile visitedUser) {
+        this.visitedUser = visitedUser;
     }
 }

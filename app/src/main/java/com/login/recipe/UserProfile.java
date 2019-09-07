@@ -15,7 +15,7 @@ public class UserProfile implements Serializable {
     private skillLevel cookingSkills;
     private ArrayList<String> cuisines;
     private String country;
-    private byte[] picture;
+    private byte[] profilePic;
     private ArrayList<String> followers; // emails of followers
     private ArrayList<String> followerOf; // emails of people the user follows
 
@@ -41,7 +41,7 @@ public class UserProfile implements Serializable {
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
-        this.picture = picture;
+        this.profilePic = picture;
         this.cuisines = new ArrayList<>();
         this.followers = new ArrayList<>();
         this.followerOf = new ArrayList<>();
@@ -53,7 +53,7 @@ public class UserProfile implements Serializable {
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
-        this.picture = picture;
+        this.profilePic = picture;
         this.followers = followers;
         this.followerOf = followerOf;
     }
@@ -83,11 +83,11 @@ public class UserProfile implements Serializable {
     }
 
     public byte[] getPicture() {
-        return picture;
+        return profilePic;
     }
 
     public void setPicture(byte[] picture) {
-        this.picture = picture;
+        this.profilePic = picture;
     }
 
     public ArrayList<String> getFollowers() {

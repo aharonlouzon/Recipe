@@ -27,6 +27,7 @@
             android:label="@string/title_activity_recipe_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddRecipe" />
+        <activity android:name=".UserArea" />
         <activity
             android:name=".MyArea"
             android:label="@string/title_activity_my_area"

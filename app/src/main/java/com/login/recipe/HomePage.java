@@ -2,11 +2,15 @@ package com.login.recipe;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,6 +26,8 @@ public class HomePage extends AppCompatActivity {
     private UserProfile user;
     private ProgressDialog progressDialog;
     private RecipeList recipeList;
+    private SharedPreferences sharedpreferences;
+    private static final String preferences = "recipeAppPrefs";
 
 
     @Override
@@ -29,6 +35,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_page);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         progressDialog = new ProgressDialog(this);
         app = ((MyApplication)getApplicationContext());
@@ -59,12 +67,16 @@ public class HomePage extends AppCompatActivity {
         // get user's recipes
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
+//            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe", app).execute(null, null, null, null, null).get();
+            progressDialog.dismiss();
+            return recipeList;
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return new RecipeList();
         }
-        progressDialog.dismiss();
-        return recipeList;
     }
 
     @Override
@@ -79,8 +91,11 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-//                app.log_out();
-//                finishAffinity();
+                sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(HomePage.this, MainActivity.class));
                 break;
             }

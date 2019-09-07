@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
-import java.util.concurrent.ExecutionException;
 import android.content.SharedPreferences;
 import android.content.Context;
 
@@ -59,38 +59,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        String email = sharedpreferences.getString("Email", null);
-        String password = sharedpreferences.getString("Password", null);
+        String get_email = sharedpreferences.getString("Email", null);
+        String get_password = sharedpreferences.getString("Password", null);
         if (email != null && password != null)
-            validate(email, password);
+            try {
+                validate(get_email, get_password);
+            }catch (Exception e){
+                Toast toast = Toast.makeText(MainActivity.this, "Please log in", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+            }
     }
 
     @SuppressLint("ShowToast")
-    private void validate(String email, String password){
+    private void validate(String email, String password) {
 
-        Object user = null;
+        UserProfile user = null;
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
         try {
-            progressDialog.setMessage("Cooking...");
-            progressDialog.show();
-            user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
-        }
-        catch (ExecutionException | InterruptedException e) {
-            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
-        }
-        if (user == null){
-            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
-            return;
-        }
-        if (user.getClass().equals(UserProfile.class)) {
-            app.setUser((UserProfile) user);
+            user = (UserProfile) new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
+            if (user == null)
+                throw new Exception();
+            app.setUser(user);
             SharedPreferences.Editor editor = sharedpreferences.edit();
-
             editor.putString("Email", email);
             editor.putString("Password", password);
             editor.apply();
+            progressDialog.dismiss();
             startActivity(new Intent(MainActivity.this, HomePage.class));
+        } catch (Exception e) {
+            progressDialog.dismiss();
+            Toast toast = Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
         }
-        else
-            Toast.makeText(MainActivity.this, "Error connecting to database", Toast.LENGTH_SHORT);
-        }
+    }
 }
