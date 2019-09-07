@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -90,7 +91,9 @@ public class MyArea extends AppCompatActivity {
             progressDialog.dismiss();
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         }
     }
 

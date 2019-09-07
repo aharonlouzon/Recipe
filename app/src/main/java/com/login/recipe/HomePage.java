@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -33,6 +35,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_home_page);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         progressDialog = new ProgressDialog(this);
         app = ((MyApplication)getApplicationContext());
@@ -68,7 +72,9 @@ public class HomePage extends AppCompatActivity {
             return recipeList;
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
             return new RecipeList();
         }
     }

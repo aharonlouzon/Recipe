@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -76,11 +77,15 @@ public class SetCuisine extends AppCompatActivity {
                     editor.putString("Email", user.getEmail());
                     editor.putString("Password", app.getNewPassword());
                     editor.apply();
-                    Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }
                 catch (ExecutionException | InterruptedException e) {
-                    Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.show();
                     startActivity(new Intent(SetCuisine.this, MainActivity.class));
                 }
 

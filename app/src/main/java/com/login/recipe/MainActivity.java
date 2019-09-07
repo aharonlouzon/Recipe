@@ -4,12 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.content.Intent;
 import android.widget.Toast;
-import java.util.concurrent.ExecutionException;
 import android.content.SharedPreferences;
 import android.content.Context;
 
@@ -65,32 +65,35 @@ public class MainActivity extends AppCompatActivity {
             try {
                 validate(get_email, get_password);
             }catch (Exception e){
-                Toast.makeText(MainActivity.this, "Please log in", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(MainActivity.this, "Please log in", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
     }
 
     @SuppressLint("ShowToast")
     private void validate(String email, String password) {
 
-        Object user = null;
+        UserProfile user = null;
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
         try {
-            progressDialog.setMessage("Cooking...");
-            progressDialog.show();
-            user = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
-            if (user.getClass().equals(UserProfile.class)) {
-                app.setUser((UserProfile) user);
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                editor.putString("Email", email);
-                editor.putString("Password", password);
-                editor.apply();
-                startActivity(new Intent(MainActivity.this, HomePage.class));
-            } else
-                progressDialog.dismiss();
-            Toast.makeText(MainActivity.this, "Error connecting to database", Toast.LENGTH_SHORT);
-        } catch (ExecutionException | InterruptedException e) {
+            user = (UserProfile) new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
+            if (user == null)
+                throw new Exception();
+            app.setUser(user);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString("Email", email);
+            editor.putString("Password", password);
+            editor.apply();
             progressDialog.dismiss();
-            Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            startActivity(new Intent(MainActivity.this, HomePage.class));
+        } catch (Exception e) {
+            progressDialog.dismiss();
+            Toast toast = Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
         }
     }
 }

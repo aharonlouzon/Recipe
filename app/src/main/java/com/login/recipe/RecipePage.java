@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -42,6 +43,20 @@ public class RecipePage extends AppCompatActivity {
         description.setText(recipe.getDescription());
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
+
+        // author
+        final TextView author = findViewById(R.id.recipe_page_author);
+        author.setText(recipe.getAuthor());
+        author.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UserProfile userProfile = getAuthor(author.getText().toString());
+                if (userProfile != null) {
+                    app.setVisitedUser(userProfile);
+                    startActivity(new Intent(RecipePage.this, UserArea.class));
+                }
+            }
+        });
 
         //image gridview
         RecyclerView recyclerView = findViewById(R.id.recipe_page_recycle_view);
@@ -117,11 +132,15 @@ public class RecipePage extends AppCompatActivity {
             recipe = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
             app.setRecipe(recipe);
 
-            Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
             startActivity(new Intent(RecipePage.this, RecipePage.class));
         }
         catch (ExecutionException | InterruptedException e) {
-            Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
         }
     }
 
@@ -142,6 +161,20 @@ public class RecipePage extends AppCompatActivity {
         layoutParams.height = height + (listView.getDividerHeight() * (adapter.getCount() - 1));
         listView.setLayoutParams(layoutParams);
         listView.requestLayout();
+    }
+
+    @SuppressLint("ShowToast")
+    public UserProfile getAuthor(String email){
+        UserProfile userProfile = null;
+        try {
+            userProfile = (UserProfile) new DatabaseServiceTask("getUser", app).execute(email).get();
+        }
+        catch (ExecutionException | InterruptedException e) {
+            Toast toast = Toast.makeText(RecipePage.this, "User no longer exist", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+        return userProfile;
     }
 
     @Override
