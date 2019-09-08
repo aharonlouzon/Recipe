@@ -1,8 +1,14 @@
 package com.login.recipe;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.view.Gravity;
+import android.widget.Toast;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ExecutionException;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class UserProfile implements Serializable {
@@ -172,4 +178,44 @@ public class UserProfile implements Serializable {
             }
         }
     }
+
+    public void follow(String userEmail, String followEmail, Context context, MyApplication app){
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
+
+        UserProfile response;
+        // follow
+        try {
+            response = (UserProfile) new DatabaseServiceTask("addFollower", app).execute(userEmail, followEmail).get();
+            app.setUser(response);
+            progressDialog.dismiss();
+        }
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
+            Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+
+    }
+
+    public void unFollow(String userEmail, String followEmail, Context context, MyApplication app){
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
+
+        UserProfile response;
+        // unfollow
+        try {
+            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail).get();
+            app.setUser(response);
+            progressDialog.dismiss();
+        }
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
+            Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+    }
+
 }

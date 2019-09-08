@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImageShow"></activity>
-        <activity android:name=".UploadUserImage"></activity>
+        <activity android:name=".UsersList"></activity>
+        <activity android:name=".ImageShow" />
+        <activity android:name=".UploadUserImage" />
         <activity android:name=".SearchResults" />
         <activity
             android:name=".SearchPage"
@@ -27,7 +28,6 @@
             android:label="@string/title_activity_recipe_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddRecipe" />
-        <activity android:name=".UserArea" />
         <activity
             android:name=".MyArea"
             android:label="@string/title_activity_my_area"

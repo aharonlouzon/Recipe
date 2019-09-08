@@ -86,6 +86,7 @@ public class SearchResults extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(SearchResults.this, MyArea.class));
                 break;
             }

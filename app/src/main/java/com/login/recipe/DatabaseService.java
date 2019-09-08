@@ -265,6 +265,25 @@ public class DatabaseService {
     }
 
     /**
+     * get all the recipes of the users followed by a given user
+     * @return if the user exists - list of all the recipes of the users followed users.
+     * @throws Exception if user doesn't exist. exception message - "invalid email"
+     * @throws IOException if there is an error connecting to the server
+     */
+    public RecipeList getFollowedRecipes(String email) throws Exception, IOException {
+        String url = BASE_URL + "recipe/getFollowedRecipes/" + email;
+        try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
+            RecipeList recipes = new Gson().fromJson(reader, RecipeList.class);
+            if (recipes == null)
+                throw new Exception("invalid email");
+            return recipes;
+        }
+        catch(IOException e) {
+            throw e;
+        }
+    }
+
+    /**
      * get recipes that meet given search parameters.
      * if a parameter can be anything - set to null
      * @return list of recipes that meet the given criteria (the list will be empty if none do).

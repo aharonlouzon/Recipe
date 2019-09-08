@@ -97,10 +97,10 @@ public class UploadRecipeImage extends AppCompatActivity {
             }
 
             // add the recipe to the database
-            String response = null;
+            Recipe response = null;
             try {
-                recipe = (Recipe) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
-                app.setRecipe(recipe);
+                response = (Recipe) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+                app.setRecipe(response);
                 Toast toast = Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

@@ -16,6 +16,8 @@ public class MyApplication extends Application {
     private String searchByCuisine;
     private Bitmap imageShow;
     private UserProfile visitedUser;
+    private String userListType;
+    private boolean isMyArea = true;
 
     public UserProfile getUser() {
         return user;
@@ -106,5 +108,21 @@ public class MyApplication extends Application {
 
     public void setVisitedUser(UserProfile visitedUser) {
         this.visitedUser = visitedUser;
+    }
+
+    public String getUserListType() {
+        return userListType;
+    }
+
+    public void setUserListType(String userListType) {
+        this.userListType = userListType;
+    }
+
+    public boolean isMyArea() {
+        return isMyArea;
+    }
+
+    public void setIsMyArea(boolean myArea) {
+        this.isMyArea = myArea;
     }
 }

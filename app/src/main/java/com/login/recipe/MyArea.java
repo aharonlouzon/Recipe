@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ public class MyArea extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private UserProfile user;
     private RecipeList recipeList;
+    private Button follow;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -40,7 +42,35 @@ public class MyArea extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         app = ((MyApplication)getApplicationContext());
-        user = app.getUser();
+        if (app.isMyArea())
+            user = app.getUser();
+        else
+            user = app.getVisitedUser();
+
+        // follow button
+        follow = findViewById(R.id.follow_button);
+        if (app.isMyArea())
+            follow.setVisibility(View.GONE);
+        else {
+            if (app.getUser().getFollowers().contains(app.getVisitedUser().getEmail()))
+                follow.setText("unfollow");
+            else
+                follow.setText("follow");
+
+            follow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (follow.getText().toString().equals("follow")) {
+                        app.getUser().follow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
+                        follow.setText("unfollow");
+                    } else {
+                        app.getUser().unFollow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
+                        follow.setText("follow");
+                    }
+                }
+            });
+        }
+
         RecyclerView recyclerView = findViewById(R.id.my_area_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getRecipes();
@@ -58,12 +88,17 @@ public class MyArea extends AppCompatActivity {
         else
             avatar.setImageResource(R.drawable.male_avatar);
 
-        avatar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MyArea.this, UploadUserImage.class));
-            }
-        });
+        if (app.isMyArea()) {
+            avatar.setClickable(true);
+            avatar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(MyArea.this, UploadUserImage.class));
+                }
+            });
+        }
+        else
+            avatar.setClickable(false);
 
         TextView name = findViewById(R.id.name_my_area);
         TextView cookingSkills = findViewById(R.id.cooking_skills_my_area);
@@ -71,11 +106,43 @@ public class MyArea extends AppCompatActivity {
         name.setText(app.getUser().getFirstName() + " " + app.getUser().getLastName());
         cookingSkills.setText("Skills: " + app.getUser().getCookingSkills());
 
+        //floating button
         FloatingActionButton fab = findViewById(R.id.recipe_page_add_photo);
-        fab.setOnClickListener(new View.OnClickListener() {
+        if (!app.isMyArea()){
+            fab.hide();
+        }
+        else{
+            fab.show();
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(MyArea.this, AddRecipe.class));
+                }
+            });
+        }
+
+        TextView followers = findViewById(R.id.followers_my_area);
+        TextView following = findViewById(R.id.following_my_area);
+
+        String followersStr = user.getFollowers().size() + " followers";
+        String followingStr = user.getFollowerOf().size() + " following";
+
+        followers.setText(followersStr);
+        following.setText(followingStr);
+
+        followers.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MyArea.this, AddRecipe.class));
+            public void onClick(View v) {
+                app.setUserListType("followers");
+                startActivity(new Intent(MyArea.this, UsersList.class));
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                app.setUserListType("following");
+                startActivity(new Intent(MyArea.this, UsersList.class));
             }
         });
     }
@@ -114,6 +181,7 @@ public class MyArea extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(MyArea.this, MyArea.class));
                 break;
             }

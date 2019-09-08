@@ -34,6 +34,7 @@ public class AddRecipe extends AppCompatActivity {
     private EditText direction_step;
     private Recipe recipe = new Recipe();
     private EditText description;
+    private MyApplication app;
 
     // Type radio handling
     private boolean typeIsChecked = false;
@@ -57,6 +58,7 @@ public class AddRecipe extends AppCompatActivity {
         setContentView(R.layout.activity_add_recipe);
 
         //globals
+        app = ((MyApplication)getApplicationContext());
         progressDialog = new ProgressDialog(this);
         asian = findViewById(R.id.asian_rec_category);
         middle_eastern = findViewById(R.id.middle_eastern_rec_category);
@@ -244,6 +246,7 @@ public class AddRecipe extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(AddRecipe.this, MyArea.class));
                 break;
             }
