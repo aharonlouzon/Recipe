@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
                 validate(email.getText().toString(), password.getText().toString());
+                startActivity(new Intent(MainActivity.this, MainActivity.class));
             }
         });
         forgot_password.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            startActivity(new Intent(MainActivity.this, MainActivity.class));
         }
     }
 }

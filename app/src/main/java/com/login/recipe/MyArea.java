@@ -78,6 +78,31 @@ public class MyArea extends AppCompatActivity {
                 startActivity(new Intent(MyArea.this, AddRecipe.class));
             }
         });
+
+        TextView followers = findViewById(R.id.followers_my_area);
+        TextView following = findViewById(R.id.following_my_area);
+
+        String followersStr = user.getFollowers().size() + " followers";
+        String followingStr = user.getFollowerOf().size() + " following";
+
+        followers.setText(followersStr);
+        following.setText(followingStr);
+
+        followers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                app.setUserListType("followers");
+                startActivity(new Intent(MyArea.this, UsersList.class));
+            }
+        });
+
+        following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                app.setUserListType("following");
+                startActivity(new Intent(MyArea.this, UsersList.class));
+            }
+        });
     }
 
     @SuppressLint("ShowToast")

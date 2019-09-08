@@ -58,10 +58,14 @@ public class UserArea extends AppCompatActivity {
         follow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (follow.getText().toString().equals("follow"))
-                    follow(app.getUser().getEmail(), user.getEmail());
-                else
-                    unFollow(app.getUser().getEmail(), user.getEmail());
+                if (follow.getText().toString().equals("follow")) {
+                    app.getUser().follow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
+                    follow.setText("unfollow");
+                }
+                else {
+                    app.getUser().unFollow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
+                    follow.setText("follow");
+                }
             }
         });
 
@@ -107,44 +111,44 @@ public class UserArea extends AppCompatActivity {
         }
     }
 
-    public void follow(String userEmail, String followEmail){
-        progressDialog.setMessage("Cooking...");
-        progressDialog.show();
-
-        UserProfile response;
-        // follow
-        try {
-            response = (UserProfile) new DatabaseServiceTask("addFollower", app).execute(userEmail, followEmail).get();
-            app.setUser(response);
-            follow.setText("unfollow");
-            progressDialog.dismiss();
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast toast = Toast.makeText(UserArea.this, "Failed to follow user", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        }
-
-    }
-
-    public void unFollow(String userEmail, String followEmail){
-        progressDialog.setMessage("Cooking...");
-        progressDialog.show();
-
-        UserProfile response;
-        // unfollow
-        try {
-            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail).get();
-            app.setUser(response);
-            follow.setText("follow");
-            progressDialog.dismiss();
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast toast = Toast.makeText(UserArea.this, "Failed to follow user", Toast.LENGTH_SHORT);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
-        }
-    }
+//    public void follow(String userEmail, String followEmail){
+//        progressDialog.setMessage("Cooking...");
+//        progressDialog.show();
+//
+//        UserProfile response;
+//        // follow
+//        try {
+//            response = (UserProfile) new DatabaseServiceTask("addFollower", app).execute(userEmail, followEmail).get();
+//            app.setUser(response);
+//            follow.setText("unfollow");
+//            progressDialog.dismiss();
+//        }
+//        catch (ExecutionException | InterruptedException | ClassCastException e) {
+//            Toast toast = Toast.makeText(UserArea.this, "Failed to follow user", Toast.LENGTH_SHORT);
+//            toast.setGravity(Gravity.CENTER, 0, 0);
+//            toast.show();
+//        }
+//
+//    }
+//
+//    public void unFollow(String userEmail, String followEmail){
+//        progressDialog.setMessage("Cooking...");
+//        progressDialog.show();
+//
+//        UserProfile response;
+//        // unfollow
+//        try {
+//            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail).get();
+//            app.setUser(response);
+//            follow.setText("follow");
+//            progressDialog.dismiss();
+//        }
+//        catch (ExecutionException | InterruptedException | ClassCastException e) {
+//            Toast toast = Toast.makeText(UserArea.this, "Failed to follow user", Toast.LENGTH_SHORT);
+//            toast.setGravity(Gravity.CENTER, 0, 0);
+//            toast.show();
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -16,6 +16,7 @@ public class MyApplication extends Application {
     private String searchByCuisine;
     private Bitmap imageShow;
     private UserProfile visitedUser;
+    private String userListType;
 
     public UserProfile getUser() {
         return user;
@@ -106,5 +107,13 @@ public class MyApplication extends Application {
 
     public void setVisitedUser(UserProfile visitedUser) {
         this.visitedUser = visitedUser;
+    }
+
+    public String getUserListType() {
+        return userListType;
+    }
+
+    public void setUserListType(String userListType) {
+        this.userListType = userListType;
     }
 }
