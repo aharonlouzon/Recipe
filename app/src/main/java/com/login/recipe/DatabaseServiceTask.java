@@ -6,12 +6,10 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
 
     private String taskName;
     private MyApplication app;
-    private Exception exception;
 
     public DatabaseServiceTask(String taskName, MyApplication app) {
         this.app = app;
         this.taskName = taskName;
-        this.exception = null;
     }
 
     @Override
@@ -79,7 +77,6 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
             }
         }
         catch (Exception e) {
-            exception = e;
             return e;
         }
 
