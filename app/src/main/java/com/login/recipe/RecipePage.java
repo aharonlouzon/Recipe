@@ -52,8 +52,9 @@ public class RecipePage extends AppCompatActivity {
             public void onClick(View v) {
                 UserProfile userProfile = getAuthor(author.getText().toString());
                 if (userProfile != null) {
+                    app.setIsMyArea(false);
                     app.setVisitedUser(userProfile);
-                    startActivity(new Intent(RecipePage.this, UserArea.class));
+                    startActivity(new Intent(RecipePage.this, MyArea.class));
                 }
             }
         });
@@ -194,6 +195,7 @@ public class RecipePage extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(RecipePage.this, MyArea.class));
                 break;
             }

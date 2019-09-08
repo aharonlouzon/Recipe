@@ -221,6 +221,7 @@ public class SearchPage extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(SearchPage.this, MyArea.class));
                 break;
             }

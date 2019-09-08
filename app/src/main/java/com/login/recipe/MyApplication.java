@@ -17,6 +17,7 @@ public class MyApplication extends Application {
     private Bitmap imageShow;
     private UserProfile visitedUser;
     private String userListType;
+    private boolean isMyArea = true;
 
     public UserProfile getUser() {
         return user;
@@ -115,5 +116,13 @@ public class MyApplication extends Application {
 
     public void setUserListType(String userListType) {
         this.userListType = userListType;
+    }
+
+    public boolean isMyArea() {
+        return isMyArea;
+    }
+
+    public void setIsMyArea(boolean myArea) {
+        this.isMyArea = myArea;
     }
 }

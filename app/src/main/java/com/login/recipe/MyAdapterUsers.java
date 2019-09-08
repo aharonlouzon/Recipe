@@ -40,9 +40,11 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
         if(models.size() > 0){
             UserProfile user = getUser(models.get(position));
             holder.setUser(user);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(user.getPicture(),0, user.getPicture().length);
-            holder.setBitmap(bitmap);
-            holder.imageView.setImageBitmap(bitmap);
+            if (user.getPicture() != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(user.getPicture(), 0, user.getPicture().length);
+                holder.setBitmap(bitmap);
+                holder.imageView.setImageBitmap(bitmap);
+            }
             if (app.getUser().getFollowers().contains(user.getEmail()))
                 holder.button.setText("unfollow");
             else

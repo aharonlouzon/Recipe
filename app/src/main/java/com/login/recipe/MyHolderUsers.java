@@ -44,8 +44,17 @@ public class MyHolderUsers extends RecyclerView.ViewHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                app.setVisitedUser(user);
-                v.getContext().startActivity(new Intent(v.getContext(), UserArea.class));
+                if (user.getEmail().equals(app.getUser().getEmail())){
+                    app.setIsMyArea(true);
+                    app.setVisitedUser(app.getUser());
+                    v.getContext().startActivity(new Intent(v.getContext(), MyArea.class));
+                }
+                else{
+                    app.setIsMyArea(false);
+                    app.setVisitedUser(user);
+                    v.getContext().startActivity(new Intent(v.getContext(), MyArea.class));
+                }
+
             }
         });
     }
