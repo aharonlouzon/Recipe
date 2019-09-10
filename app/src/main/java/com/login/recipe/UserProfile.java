@@ -1,8 +1,14 @@
 package com.login.recipe;
 
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.view.Gravity;
+import android.widget.Toast;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.concurrent.ExecutionException;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class UserProfile implements Serializable {
@@ -15,7 +21,7 @@ public class UserProfile implements Serializable {
     private skillLevel cookingSkills;
     private ArrayList<String> cuisines;
     private String country;
-    private byte[] picture;
+    private byte[] profilePic;
     private ArrayList<String> followers; // emails of followers
     private ArrayList<String> followerOf; // emails of people the user follows
 
@@ -41,7 +47,7 @@ public class UserProfile implements Serializable {
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
-        this.picture = picture;
+        this.profilePic = picture;
         this.cuisines = new ArrayList<>();
         this.followers = new ArrayList<>();
         this.followerOf = new ArrayList<>();
@@ -53,7 +59,7 @@ public class UserProfile implements Serializable {
         this.lastName = lastName;
         this.cookingSkills = cookingSkills;
         this.country = country;
-        this.picture = picture;
+        this.profilePic = picture;
         this.followers = followers;
         this.followerOf = followerOf;
     }
@@ -83,11 +89,11 @@ public class UserProfile implements Serializable {
     }
 
     public byte[] getPicture() {
-        return picture;
+        return profilePic;
     }
 
     public void setPicture(byte[] picture) {
-        this.picture = picture;
+        this.profilePic = picture;
     }
 
     public ArrayList<String> getFollowers() {
@@ -172,4 +178,44 @@ public class UserProfile implements Serializable {
             }
         }
     }
+
+    public void follow(String userEmail, String followEmail, Context context, MyApplication app){
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
+
+        UserProfile response;
+        // follow
+        try {
+            response = (UserProfile) new DatabaseServiceTask("addFollower", app).execute(userEmail, followEmail).get();
+            app.setUser(response);
+            progressDialog.dismiss();
+        }
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
+            Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+
+    }
+
+    public void unFollow(String userEmail, String followEmail, Context context, MyApplication app){
+        ProgressDialog progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Cooking...");
+        progressDialog.show();
+
+        UserProfile response;
+        // unfollow
+        try {
+            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail).get();
+            app.setUser(response);
+            progressDialog.dismiss();
+        }
+        catch (ExecutionException | InterruptedException | ClassCastException e) {
+            Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
+    }
+
 }

@@ -44,23 +44,17 @@ public class ForgotPassword extends AppCompatActivity {
                 progressDialog.show();
                 String text = email.getText().toString().trim();
 
-                if(!text.isEmpty() && !(text.equals("EnterEmail"))) {
+                if (!text.isEmpty() && !(text.equals("EnterEmail"))) {
                     String response;
                     try {
                         response = (String) new DatabaseServiceTask("forgotPassword", app).execute(text).get();
-                    }
-                    catch (ExecutionException | InterruptedException e) {
+                        startActivity(new Intent(ForgotPassword.this, MainActivity.class));
+                    } catch (ExecutionException | InterruptedException e) {
                         Toast.makeText(ForgotPassword.this, "Failed to email password", Toast.LENGTH_SHORT);
-                        return;
-                    }
-                    if (response.equals("error"))
-                        Toast.makeText(ForgotPassword.this, "Error connecting to database", Toast.LENGTH_SHORT);
-                    else {
-                        Toast.makeText(ForgotPassword.this, "Password was sent to your inbox", Toast.LENGTH_SHORT);
                         startActivity(new Intent(ForgotPassword.this, MainActivity.class));
                     }
-                    }
                 }
+            }
         });
     }
 }

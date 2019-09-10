@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +32,8 @@ public class SearchResults extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         app = ((MyApplication)getApplicationContext());
         progressDialog = new ProgressDialog(this);
 
@@ -54,12 +58,15 @@ public class SearchResults extends AppCompatActivity {
         // get user's recipes
         try {
             recipeList = (RecipeList) new DatabaseServiceTask("searchRecipes", app).execute(skillLevel, cuisine, recipeType, authorEmail, searchText).get();
+            progressDialog.dismiss();
+            return recipeList;
         }
         catch (ExecutionException | InterruptedException e) {
-            Toast.makeText(SearchResults.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(SearchResults.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+            return new RecipeList();
         }
-        progressDialog.dismiss();
-        return recipeList;
     }
 
     @Override
@@ -79,6 +86,7 @@ public class SearchResults extends AppCompatActivity {
                 break;
             }
             case R.id.my_area_button_user_menu: {
+                app.setIsMyArea(true);
                 startActivity(new Intent(SearchResults.this, MyArea.class));
                 break;
             }

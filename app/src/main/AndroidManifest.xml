@@ -14,8 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ImageShow"></activity>
-        <activity android:name=".UploadUserImage"></activity>
+        <activity android:name=".UsersList"></activity>
+        <activity android:name=".ImageShow" />
+        <activity android:name=".UploadUserImage" />
         <activity android:name=".SearchResults" />
         <activity
             android:name=".SearchPage"

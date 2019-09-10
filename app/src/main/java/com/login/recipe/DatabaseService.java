@@ -290,14 +290,28 @@ public class DatabaseService {
      * @throws Exception if invalid input. exception message - "invalid input"
      * @throws IOException if there is an error connecting to the server
      */
-    public RecipeList searchRecipes(skillLevel skill, String cuisine, recipeType type, String authorEmail, String freeText) throws Exception, IOException {
+    public RecipeList searchRecipes(skillLevel skill, String[] cuisines, recipeType type, String authorEmail, String freeText) throws Exception, IOException {
+
         String typeString = null;
         if (type != null)
             typeString = type.name();
         String skillString = null;
         if (skill != null)
             skillString = skill.name();
-        String url = BASE_URL + "recipe/" + skillString + "/" + cuisine + "/" + typeString + "/" + authorEmail + "/" + freeText;
+        String url = BASE_URL + "recipe/" + skillString + "/";
+        String cuisinesString = null;
+        if (cuisines != null && cuisines.length != 0) {
+            cuisinesString = "";
+            for (int i = 0; i < cuisines.length; i++) {
+                if (i == cuisines.length - 1)
+                    cuisinesString += cuisines[i];
+                else
+                    cuisinesString += cuisines[i] + "+";
+            }
+        }
+        url += cuisinesString + "/" + typeString + "/" + authorEmail + "/" + freeText;
+
+
         try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
             RecipeList results = new Gson().fromJson(reader, RecipeList.class);
             if (results == null)

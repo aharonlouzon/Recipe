@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -99,20 +100,17 @@ public class UploadRecipeImage extends AppCompatActivity {
             Recipe response = null;
             try {
                 response = (Recipe) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+                app.setRecipe(response);
+                Toast toast = Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
             }
             catch (ExecutionException | InterruptedException e) {
-                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
             }
-            if (response == null) {
-                Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
-            }
-            else if (response.equals("error"))
-                Toast.makeText(UploadRecipeImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
-            else {
-                recipe.addImage(inputData);
-                Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
-            }
-            startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
         }
     }
 

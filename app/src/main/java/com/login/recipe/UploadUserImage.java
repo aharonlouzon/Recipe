@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -96,23 +96,20 @@ public class UploadUserImage extends AppCompatActivity {
             }
 
             // add the recipe to the database
-            UserProfile response = null;
             try {
-                response = (UserProfile) new DatabaseServiceTask("changeProfilePic", app).execute(inputData, app.getUser().getEmail()).get();
+                UserProfile user = (UserProfile) new DatabaseServiceTask("changeProfilePic", app).execute(inputData, app.getUser().getEmail()).get();
+                app.setUser(user);
+                Toast toast = Toast.makeText(UploadUserImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(UploadUserImage.this, MyArea.class));
             }
             catch (ExecutionException | InterruptedException e) {
-                Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(UploadUserImage.this, MyArea.class));
             }
-            if (response == null) {
-                Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
-            }
-            else if (response.equals("error"))
-                Toast.makeText(UploadUserImage.this, "Error connecting to database", Toast.LENGTH_SHORT);
-            else {
-                app.getUser().setPicture(inputData);
-                Toast.makeText(UploadUserImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
-            }
-            startActivity(new Intent(UploadUserImage.this, MyArea.class));
         }
     }
 

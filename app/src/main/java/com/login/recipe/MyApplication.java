@@ -15,6 +15,9 @@ public class MyApplication extends Application {
     private UserProfile.skillLevel searchBySkills;
     private String searchByCuisine;
     private Bitmap imageShow;
+    private UserProfile visitedUser;
+    private String userListType;
+    private boolean isMyArea = true;
 
     public UserProfile getUser() {
         return user;
@@ -97,5 +100,29 @@ public class MyApplication extends Application {
 
     public void setImageShow(Bitmap imageShow) {
         this.imageShow = imageShow;
+    }
+
+    public UserProfile getVisitedUser() {
+        return visitedUser;
+    }
+
+    public void setVisitedUser(UserProfile visitedUser) {
+        this.visitedUser = visitedUser;
+    }
+
+    public String getUserListType() {
+        return userListType;
+    }
+
+    public void setUserListType(String userListType) {
+        this.userListType = userListType;
+    }
+
+    public boolean isMyArea() {
+        return isMyArea;
+    }
+
+    public void setIsMyArea(boolean myArea) {
+        this.isMyArea = myArea;
     }
 }
