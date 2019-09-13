@@ -87,7 +87,6 @@ public class MyApplication extends Application {
         this.searchBySkills = searchBySkills;
     }
 
-    @SuppressWarnings("unused")
     public void log_out(){
         this.user = null;
         this.newPassword = null;

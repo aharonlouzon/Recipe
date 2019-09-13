@@ -34,5 +34,7 @@
     <ImageView
         android:id="@+id/imgViewUserImage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layout_button_user_image"
+        android:layout_marginTop="8dp" />
 </RelativeLayout>

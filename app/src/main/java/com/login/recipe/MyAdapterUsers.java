@@ -49,6 +49,8 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
                 holder.button.setText("unfollow");
             else
                 holder.button.setText("follow");
+            if (user.getEmail().equals(app.getUser().getEmail()))
+                holder.button.setVisibility(View.GONE);
             String name = user.getFirstName() + " " + user.getLastName();
             holder.userName.setText(name);
         }

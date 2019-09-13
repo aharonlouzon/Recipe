@@ -23,10 +23,8 @@ import java.util.concurrent.ExecutionException;
 public class HomePage extends AppCompatActivity {
 
     private MyApplication app;
-    private UserProfile user;
     private ProgressDialog progressDialog;
     private RecipeList recipeList;
-    private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
 
 
@@ -40,7 +38,7 @@ public class HomePage extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         app = ((MyApplication)getApplicationContext());
-        user = app.getUser();
+        UserProfile user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getRecipes();
@@ -66,13 +64,19 @@ public class HomePage extends AppCompatActivity {
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
-//            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe", app).execute(null, null, null, null, null).get();
+            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe",
+                                                app).execute(app.getSearchBySkills(),
+                                                             app.getSearchByCuisine(),
+                                                             app.getSearchByType(),
+                                                             app.getSearchByEmail(),
+                                                             app.getSearchByFreeText()).get();
             progressDialog.dismiss();
             return recipeList;
         }
         catch (ExecutionException | InterruptedException | ClassCastException e) {
-            Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(HomePage.this,
+                                         "Failed to get user's recipes", Toast.LENGTH_SHORT);
+
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             return new RecipeList();
@@ -91,7 +95,7 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.logout_button: {
-                sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
                 sharedpreferences.edit().remove("Email").apply();
                 sharedpreferences.edit().remove("Password").apply();
                 app.log_out();
