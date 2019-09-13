@@ -139,7 +139,7 @@ public class SearchPage extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 app.setSearchByFreeText(query);
-                startActivity(new Intent(SearchPage.this, SearchResults.class));
+                startActivity(new Intent(SearchPage.this, HomePage.class));
                 return true;
             }
 
@@ -168,6 +168,8 @@ public class SearchPage extends AppCompatActivity {
                 }
                 else
                     app.setSearchBySkills(null);
+
+                // cuisine
                 if (cuisineIsChecked)
                     if(asian.isChecked())
                         app.setSearchByCuisine("asian");
@@ -181,8 +183,6 @@ public class SearchPage extends AppCompatActivity {
                         app.setSearchByCuisine("baking");
                     else if(meat.isChecked())
                         app.setSearchByCuisine("meat");
-                else
-                    app.setSearchByCuisine(null);
 
                 if (typeIsChecked)
                     if(main.isChecked())
@@ -198,7 +198,8 @@ public class SearchPage extends AppCompatActivity {
                     else
                         app.setSearchByType(null);
 
-                startActivity(new Intent(SearchPage.this, SearchResults.class));
+                app.setHome(false);
+                startActivity(new Intent(SearchPage.this, HomePage.class));
 
             }
         });
@@ -226,7 +227,12 @@ public class SearchPage extends AppCompatActivity {
                 break;
             }
             case R.id.home_page_button_user_menu: {
+                app.setHome(true);
                 startActivity(new Intent(SearchPage.this, HomePage.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(SearchPage.this, Settings.class));
                 break;
             }
 

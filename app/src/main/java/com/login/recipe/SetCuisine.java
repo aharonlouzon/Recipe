@@ -80,8 +80,10 @@ public class SetCuisine extends AppCompatActivity {
                     Toast toast = Toast.makeText(SetCuisine.this, "Registration Successful", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                    //TODO
-                    //app.setSearchByCuisine(user.getCuisines());
+
+                    for(int i=0; i < user.getCuisines().size(); i++)
+                        app.setSearchByCuisine(user.getCuisines().get(i));
+                    app.setHome(true);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }
                 catch (ExecutionException | InterruptedException e) {

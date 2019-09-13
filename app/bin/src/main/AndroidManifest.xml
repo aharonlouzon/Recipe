@@ -17,7 +17,6 @@
         <activity android:name=".UsersList"></activity>
         <activity android:name=".ImageShow" />
         <activity android:name=".UploadUserImage" />
-        <activity android:name=".SearchResults" />
         <activity
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"

@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("Password", password);
             editor.apply();
             progressDialog.dismiss();
+            app.setHome(true);
             startActivity(new Intent(MainActivity.this, HomePage.class));
         } catch (Exception e) {
             progressDialog.dismiss();

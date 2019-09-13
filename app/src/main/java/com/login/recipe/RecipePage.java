@@ -200,7 +200,12 @@ public class RecipePage extends AppCompatActivity {
                 break;
             }
             case R.id.home_page_button_user_menu: {
+                app.setHome(true);
                 startActivity(new Intent(RecipePage.this, HomePage.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(RecipePage.this, Settings.class));
                 break;
             }
 

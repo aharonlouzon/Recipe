@@ -37,8 +37,8 @@ public class AddRecipe extends AppCompatActivity {
     private MyApplication app;
 
     // Type radio handling
-    private boolean typeIsChecked = false;
     private int typeCheckedId;
+    private boolean typeIsChecked = false;
 
     //radio buttons type
     private RadioButton dessert;
@@ -251,7 +251,12 @@ public class AddRecipe extends AppCompatActivity {
                 break;
             }
             case R.id.home_page_button_user_menu: {
+                app.setHome(true);
                 startActivity(new Intent(AddRecipe.this, HomePage.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(AddRecipe.this, Settings.class));
                 break;
             }
 

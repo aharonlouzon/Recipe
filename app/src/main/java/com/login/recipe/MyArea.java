@@ -186,7 +186,12 @@ public class MyArea extends AppCompatActivity {
                 break;
             }
             case R.id.home_page_button_user_menu: {
+                app.setHome(true);
                 startActivity(new Intent(MyArea.this, HomePage.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(MyArea.this, Settings.class));
                 break;
             }
 

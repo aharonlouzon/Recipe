@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UsersList"></activity>
+        <activity android:name=".Settings"></activity>
+        <activity android:name=".UsersList" />
         <activity android:name=".ImageShow" />
         <activity android:name=".UploadUserImage" />
-        <activity android:name=".SearchResults" />
         <activity
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"

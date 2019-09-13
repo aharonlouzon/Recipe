@@ -151,7 +151,7 @@ public class DatabaseService {
      * @throws Exception if userEmail doesn't exist or if invalid input. exception message - "invalid email or input"
      * @throws IOException if error in connection to the server
      */
-    public UserProfile updateUserProfileString(String userEmail, String newPassword, String newFirstName, String newLastName,
+    public UserProfile updateUserProfile(String userEmail, String newPassword, String newFirstName, String newLastName,
                                                String newCountry, String[] newCuisines, skillLevel newSkillLevel) throws Exception, IOException {
         String newSkillString = null;
         if (newSkillLevel != null)

@@ -64,7 +64,7 @@ public class HomePage extends AppCompatActivity {
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe",
+            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipes",
                                                 app).execute(app.getSearchBySkills(),
                                                              app.getSearchByCuisine(),
                                                              app.getSearchByType(),
@@ -106,6 +106,10 @@ public class HomePage extends AppCompatActivity {
             case R.id.my_area_button_user_menu: {
                 app.setIsMyArea(true);
                 startActivity(new Intent(HomePage.this, MyArea.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(HomePage.this, Settings.class));
                 break;
             }
 
