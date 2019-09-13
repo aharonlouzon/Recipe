@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="com.login.recipe.UploadRecipeImage">
+    tools:context="com.login.recipe.UploadUserImage">
 
     <LinearLayout
-    android:id="@+id/layout_button"
+    android:id="@+id/layout_button_user_image"
     android:orientation="horizontal"
     android:layout_alignParentTop="true"
     android:weightSum="2"
@@ -15,14 +15,14 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/btnChoose"
+        android:id="@+id/btnChooseUserImage"
         android:text="Choose"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnUpload"
+        android:id="@+id/btnUploadUserImage"
         android:text="Upload"
         android:layout_weight="1"
         android:layout_width="0dp"
@@ -32,9 +32,9 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imgView"
+        android:id="@+id/imgViewUserImage"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layout_button"
+        android:layout_below="@+id/layout_button_user_image"
         android:layout_marginTop="8dp" />
 </RelativeLayout>

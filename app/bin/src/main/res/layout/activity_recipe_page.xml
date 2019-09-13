@@ -60,10 +60,20 @@
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/recipe_page_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
                 android:id="@+id/recipe_page_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="TextView" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recipe_page_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
 
             <TextView
                 android:layout_width="match_parent"

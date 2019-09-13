@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         String get_email = sharedpreferences.getString("Email", null);
         String get_password = sharedpreferences.getString("Password", null);
-        if (email != null && password != null)
+        if (get_email != null && get_password != null)
             try {
                 validate(get_email, get_password);
             }catch (Exception e){

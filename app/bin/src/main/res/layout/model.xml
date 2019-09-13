@@ -16,13 +16,16 @@
             android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
         <ImageView
             android:id="@+id/card_image"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_below="@+id/model_title"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:background="@color/colorPrimaryDark"/>
+            android:layout_marginEnd="0dp"
+            android:background="@color/colorPrimaryDark" />
 
         <TextView
             android:id="@+id/model_card_detail"
