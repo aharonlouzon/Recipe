@@ -18,6 +18,4 @@ public class ProfilePic {
         this.picture = picture;
     }
 
-
 }
-

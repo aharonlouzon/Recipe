@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class MyHolderRecipeImage extends RecyclerView.ViewHolder{
+public class MyHolderRecipeImage extends RecyclerView.ViewHolder {
 
     private MyApplication app;
     ImageView imageView;
@@ -17,7 +17,7 @@ public class MyHolderRecipeImage extends RecyclerView.ViewHolder{
 
     MyHolderRecipeImage(@NonNull View itemView) {
         super(itemView);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         this.imageView = itemView.findViewById(R.id.card_image_recipe);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -29,7 +29,7 @@ public class MyHolderRecipeImage extends RecyclerView.ViewHolder{
         });
     }
 
-    public void setBitmap(Bitmap bitmap){
+    public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
 

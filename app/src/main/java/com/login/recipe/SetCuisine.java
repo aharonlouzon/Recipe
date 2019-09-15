@@ -40,7 +40,7 @@ public class SetCuisine extends AppCompatActivity {
         meat = findViewById(R.id.meat_rec_category);
         Button continue_button = findViewById(R.id.continue_button_add_recipe);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
+        final MyApplication app = ((MyApplication) getApplicationContext());
         user = app.getUser();
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
@@ -53,20 +53,20 @@ public class SetCuisine extends AppCompatActivity {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
 
-                if(asian.isChecked())
+                if (asian.isChecked())
                     user.addCuisine("asian");
-                if(middle_eastern.isChecked())
+                if (middle_eastern.isChecked())
                     user.addCuisine("middle_eastern");
-                if(italian.isChecked())
+                if (italian.isChecked())
                     user.addCuisine("italian");
-                if(european.isChecked())
+                if (european.isChecked())
                     user.addCuisine("european");
-                if(baking.isChecked())
+                if (baking.isChecked())
                     user.addCuisine("baking");
-                if(meat.isChecked())
+                if (meat.isChecked())
                     user.addCuisine("meat");
 
-                //add user info to database
+                // add user info to database
                 try {
                     progressDialog.setMessage("Cooking...");
                     progressDialog.show();
@@ -89,20 +89,18 @@ public class SetCuisine extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
 
-                    //TODO - handle in userprofie class
-                    for(int i=0; i < user.getCuisines().size(); i++)
+                    // TODO - handle in userprofie class
+                    for (int i = 0; i < user.getCuisines().size(); i++)
                         app.setSearchByCuisine(user.getCuisines().get(i));
 
                     app.setHome(true);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     Toast toast = Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                     startActivity(new Intent(SetCuisine.this, MainActivity.class));
-                }
-                finally {
+                } finally {
                     progressDialog.dismiss();
                 }
 

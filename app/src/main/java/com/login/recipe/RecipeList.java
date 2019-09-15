@@ -6,9 +6,11 @@ import java.util.List;
 @SuppressWarnings("unused")
 public class RecipeList extends ArrayList<Recipe> {
     private static final long serialVersionUID = 1L;
+
     public RecipeList() {
         super();
     }
+
     public RecipeList(List<Recipe> c) {
         super(c);
     }
@@ -16,6 +18,7 @@ public class RecipeList extends ArrayList<Recipe> {
     public List<Recipe> getRecipes() {
         return this;
     }
+
     public void setRecipes(List<Recipe> recipes) {
         this.addAll(recipes);
     }

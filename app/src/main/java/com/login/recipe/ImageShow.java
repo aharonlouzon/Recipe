@@ -13,7 +13,7 @@ public class ImageShow extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_show);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
 
         imageView = findViewById(R.id.imageView);
         imageView.setImageBitmap(app.getImageShow());

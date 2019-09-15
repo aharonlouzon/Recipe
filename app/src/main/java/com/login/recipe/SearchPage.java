@@ -26,7 +26,7 @@ public class SearchPage extends AppCompatActivity {
     private boolean typeIsChecked = false;
     private int typeCheckedId;
 
-    //radio buttons cuisine
+    // radio buttons cuisine
     private RadioButton meat;
     private RadioButton middle_eastern;
     private RadioButton italian;
@@ -34,12 +34,12 @@ public class SearchPage extends AppCompatActivity {
     private RadioButton asian;
     private RadioButton european;
 
-    //skills radio button
+    // skills radio button
     private RadioButton begginer;
     private RadioButton intermediate;
     private RadioButton pro;
 
-    //radio buttons type
+    // radio buttons type
     private RadioButton dessert;
     private RadioButton soup;
     private RadioButton main;
@@ -53,7 +53,7 @@ public class SearchPage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //radio buttons cuisine
+        // radio buttons cuisine
         meat = findViewById(R.id.meat_b);
         middle_eastern = findViewById(R.id.middle_b);
         italian = findViewById(R.id.italian_b);
@@ -61,12 +61,12 @@ public class SearchPage extends AppCompatActivity {
         asian = findViewById(R.id.asian_b);
         european = findViewById(R.id.european_b);
 
-        //radio buttons skill
+        // radio buttons skill
         begginer = findViewById(R.id.check_beginner);
         intermediate = findViewById(R.id.check_inter);
         pro = findViewById(R.id.check_pro);
 
-        //radio buttons type
+        // radio buttons type
         dessert = findViewById(R.id.checkBoxDessert);
         soup = findViewById(R.id.checkBoxSoup);
         main = findViewById(R.id.checkBoxMain);
@@ -132,7 +132,7 @@ public class SearchPage extends AppCompatActivity {
         // skills radio group
         final RadioGroup skills = findViewById(R.id.radio_group_skills);
 
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         Button search = findViewById(R.id.search_button);
         searchView = findViewById(R.id.free_text_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -165,35 +165,34 @@ public class SearchPage extends AppCompatActivity {
                         app.setSearchBySkills(UserProfile.skillLevel.INTERMEDIATE);
                     else if (pro.isChecked())
                         app.setSearchBySkills(UserProfile.skillLevel.PRO);
-                }
-                else
+                } else
                     app.setSearchBySkills(null);
 
                 // cuisine
                 if (cuisineIsChecked)
-                    if(asian.isChecked())
+                    if (asian.isChecked())
                         app.setSearchByCuisine("asian");
-                    else if(middle_eastern.isChecked())
+                    else if (middle_eastern.isChecked())
                         app.setSearchByCuisine("middle_eastern");
-                    else if(italian.isChecked())
+                    else if (italian.isChecked())
                         app.setSearchByCuisine("italian");
-                    else if(european.isChecked())
+                    else if (european.isChecked())
                         app.setSearchByCuisine("european");
-                    else if(baking.isChecked())
+                    else if (baking.isChecked())
                         app.setSearchByCuisine("baking");
-                    else if(meat.isChecked())
+                    else if (meat.isChecked())
                         app.setSearchByCuisine("meat");
 
                 if (typeIsChecked)
-                    if(main.isChecked())
+                    if (main.isChecked())
                         app.setSearchByType(Recipe.recipeType.MAIN);
-                    else if(dessert.isChecked())
+                    else if (dessert.isChecked())
                         app.setSearchByType(Recipe.recipeType.DESSERT);
-                    else if(salad.isChecked())
+                    else if (salad.isChecked())
                         app.setSearchByType(Recipe.recipeType.SALAD);
-                    else if(soup.isChecked())
+                    else if (soup.isChecked())
                         app.setSearchByType(Recipe.recipeType.SOUP);
-                    else if(appetizer.isChecked())
+                    else if (appetizer.isChecked())
                         app.setSearchByType(Recipe.recipeType.APPETIZER);
                     else
                         app.setSearchByType(null);
@@ -214,7 +213,7 @@ public class SearchPage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
                 finish();

@@ -84,15 +84,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dac2a951-c11f-4994-bde2-66cbfdd7f6c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/Comment.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/Comment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService$TextMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService$TextMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/DatabaseService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyAdapterUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyAdapterUsers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyHolder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyHolderUsers.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyHolderUsers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/Recipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/Recipe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipeList.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipeList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SetUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SetUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadUserImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadUserImage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseServiceTask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ImageShow.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ImageShow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolder.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolderRecipeImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolderRecipeImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolderUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolderUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ProfilePic.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ProfilePic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipeList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetCuisine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadUserImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadUserImage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,8 +151,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="90" selection-end-column="46" />
+            <state relative-caret-position="486">
+              <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,7 +167,6 @@
               <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1849#4051#0" expanded="true" />
                 <element signature="e#4050#4051#0" expanded="true" />
               </folding>
             </state>
@@ -141,8 +176,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Settings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-18">
-              <caret line="160" column="23" selection-start-line="160" selection-start-column="23" selection-end-line="160" selection-end-column="23" />
+            <state relative-caret-position="-48">
+              <caret line="155" column="23" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -154,7 +189,16 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1005">
-              <caret line="69" column="74" lean-forward="true" selection-start-line="69" selection-start-column="74" selection-end-line="69" selection-end-column="74" />
+              <caret line="70" column="74" selection-start-line="70" selection-start-column="74" selection-end-line="70" selection-end-column="74" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="812">
+              <caret line="158" selection-start-line="158" selection-end-line="158" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -163,10 +207,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="154" selection-start-line="154" selection-end-line="154" />
+            <state relative-caret-position="510">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -175,13 +219,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="155">
+              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -600,7 +641,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.32967034" />
@@ -616,10 +656,10 @@
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39082968" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3286026" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" weight="0.30021834" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.26310045" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" visible="true" weight="0.26310045" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50307125" side_tool="true" weight="0.3286026" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.27292576" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" visible="true" weight="0.049126636" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" weight="0.049126636" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49692875" weight="0.3286026" />
       <window_info anchor="bottom" id="Android Profiler" order="9" show_stripe_button="false" weight="0.3286026" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -707,7 +747,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/DatabaseService.java</url>
-          <line>330</line>
+          <line>344</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
@@ -715,14 +755,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="42" selection-end-column="46" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_image_show.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
@@ -1033,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="90" selection-end-column="46" />
+        <state relative-caret-position="486">
+          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1047,7 +1079,6 @@
           <caret line="13" column="28" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1849#4051#0" expanded="true" />
             <element signature="e#4050#4051#0" expanded="true" />
           </folding>
         </state>
@@ -1055,8 +1086,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/Settings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-18">
-          <caret line="160" column="23" selection-start-line="160" selection-start-column="23" selection-end-line="160" selection-end-column="23" />
+        <state relative-caret-position="-48">
+          <caret line="155" column="23" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1066,17 +1097,14 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1005">
-          <caret line="69" column="74" lean-forward="true" selection-start-line="69" selection-start-column="74" selection-end-line="69" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="70" column="74" selection-start-line="70" selection-start-column="74" selection-end-line="70" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
+        <state relative-caret-position="812">
+          <caret line="158" selection-start-line="158" selection-end-line="158" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1085,11 +1113,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="510">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>

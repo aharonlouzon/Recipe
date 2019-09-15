@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,11 +31,11 @@ public class UploadUserImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_user_image);
 
-        //Initialize Views
+        // Initialize Views
         Button btnChoose = findViewById(R.id.btnChooseUserImage);
         Button btnUpload = findViewById(R.id.btnUploadUserImage);
         imageView = findViewById(R.id.imgViewUserImage);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +51,7 @@ public class UploadUserImage extends AppCompatActivity {
             }
         });
     }
+
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -60,16 +62,12 @@ public class UploadUserImage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
-                && data != null && data.getData() != null )
-        {
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 imageView.setImageBitmap(bitmap);
-            }
-            catch (IOException e)
-            {
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -78,8 +76,7 @@ public class UploadUserImage extends AppCompatActivity {
     @SuppressLint("ShowToast")
     private void uploadImage() {
 
-        if(filePath != null)
-        {
+        if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Cooking...");
             progressDialog.show();
@@ -90,21 +87,21 @@ public class UploadUserImage extends AppCompatActivity {
             try {
                 iStream = getContentResolver().openInputStream(filePath);
                 inputData = getBytes(iStream);
-            }catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(UploadUserImage.this, "Failed to get image", Toast.LENGTH_SHORT);
                 startActivity(new Intent(UploadUserImage.this, MyArea.class));
             }
 
             // add the recipe to the database
             try {
-                UserProfile user = (UserProfile) new DatabaseServiceTask("changeProfilePic", app).execute(inputData, app.getUser().getEmail()).get();
+                UserProfile user = (UserProfile) new DatabaseServiceTask("changeProfilePic", app)
+                        .execute(inputData, app.getUser().getEmail()).get();
                 app.setUser(user);
                 Toast toast = Toast.makeText(UploadUserImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
                 startActivity(new Intent(UploadUserImage.this, MyArea.class));
-            }
-            catch (ExecutionException | InterruptedException e) {
+            } catch (ExecutionException | InterruptedException e) {
                 Toast toast = Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

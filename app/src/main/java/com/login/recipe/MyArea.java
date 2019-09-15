@@ -41,7 +41,7 @@ public class MyArea extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         progressDialog = new ProgressDialog(this);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         if (app.isMyArea())
             user = app.getUser();
         else
@@ -80,12 +80,11 @@ public class MyArea extends AppCompatActivity {
         }
 
         ImageView avatar = findViewById(R.id.imageView_my_area);
-        if (user.getPicture() != null){
+        if (user.getPicture() != null) {
             byte[] imageByte = user.getPicture();
             Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
             avatar.setImageDrawable(imageDrawable);
-        }
-        else
+        } else
             avatar.setImageResource(R.drawable.male_avatar);
 
         if (app.isMyArea()) {
@@ -96,8 +95,7 @@ public class MyArea extends AppCompatActivity {
                     startActivity(new Intent(MyArea.this, UploadUserImage.class));
                 }
             });
-        }
-        else
+        } else
             avatar.setClickable(false);
 
         TextView name = findViewById(R.id.name_my_area);
@@ -106,12 +104,11 @@ public class MyArea extends AppCompatActivity {
         name.setText(app.getUser().getFirstName() + " " + app.getUser().getLastName());
         cookingSkills.setText("Skills: " + app.getUser().getCookingSkills());
 
-        //floating button
+        // floating button
         FloatingActionButton fab = findViewById(R.id.recipe_page_add_photo);
-        if (!app.isMyArea()){
+        if (!app.isMyArea()) {
             fab.hide();
-        }
-        else{
+        } else {
             fab.show();
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -148,7 +145,7 @@ public class MyArea extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private void getRecipes(){
+    private void getRecipes() {
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
         Object response;
@@ -163,8 +160,7 @@ public class MyArea extends AppCompatActivity {
 
             if (response instanceof RecipeList)
                 recipeList = (RecipeList) response;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Toast toast = Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -181,7 +177,7 @@ public class MyArea extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
                 finish();

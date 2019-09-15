@@ -13,7 +13,7 @@ public class UsersList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users_list);
 
-        MyApplication app = ((MyApplication)getApplicationContext());
+        MyApplication app = ((MyApplication) getApplicationContext());
         String userListType = app.getUserListType();
         TextView header = findViewById(R.id.header_users_list);
 
@@ -23,8 +23,7 @@ public class UsersList extends AppCompatActivity {
         if (userListType.equals("followers")) {
             header.setText("My followers:");
             myAdapter = new MyAdapterUsers(this, app.getUser().getFollowers());
-        }
-        else {
+        } else {
             header.setText("People I follow:");
             myAdapter = new MyAdapterUsers(this, app.getUser().getFollowerOf());
         }

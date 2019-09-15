@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-public class MyHolderUsers extends RecyclerView.ViewHolder{
+public class MyHolderUsers extends RecyclerView.ViewHolder {
 
     private MyApplication app;
     ImageView imageView;
@@ -22,10 +22,10 @@ public class MyHolderUsers extends RecyclerView.ViewHolder{
 
     MyHolderUsers(@NonNull View itemView) {
         super(itemView);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         this.imageView = itemView.findViewById(R.id.user_image);
         this.userName = itemView.findViewById(R.id.user_name);
-        this.button =itemView.findViewById(R.id.follow_unfollow);
+        this.button = itemView.findViewById(R.id.follow_unfollow);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,8 +33,7 @@ public class MyHolderUsers extends RecyclerView.ViewHolder{
                 if (button.getText().toString().equals("follow")) {
                     app.getUser().follow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
                     button.setText("unfollow");
-                }
-                else {
+                } else {
                     app.getUser().unFollow(app.getUser().getEmail(), user.getEmail(), v.getContext(), app);
                     button.setText("follow");
                 }
@@ -44,12 +43,11 @@ public class MyHolderUsers extends RecyclerView.ViewHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (user.getEmail().equals(app.getUser().getEmail())){
+                if (user.getEmail().equals(app.getUser().getEmail())) {
                     app.setIsMyArea(true);
                     app.setVisitedUser(app.getUser());
                     v.getContext().startActivity(new Intent(v.getContext(), MyArea.class));
-                }
-                else{
+                } else {
                     app.setIsMyArea(false);
                     app.setVisitedUser(user);
                     v.getContext().startActivity(new Intent(v.getContext(), MyArea.class));
@@ -59,7 +57,7 @@ public class MyHolderUsers extends RecyclerView.ViewHolder{
         });
     }
 
-    void setBitmap(Bitmap bitmap){
+    void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
     }
 

@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class Settings extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class Settings extends AppCompatActivity {
     private EditText lastName;
     private EditText country;
     private EditText newPassword;
-    private  EditText passwordConfirm;
+    private EditText passwordConfirm;
     private RadioGroup radioGroup;
     private CheckBox asian;
     private CheckBox middle_eastern;
@@ -42,7 +43,7 @@ public class Settings extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         user = app.getUser();
         progressDialog = new ProgressDialog(this);
 
@@ -61,7 +62,7 @@ public class Settings extends AppCompatActivity {
         asian = findViewById(R.id.settings_asian_rec_category);
         middle_eastern = findViewById(R.id.settings_middle_eastern_rec_category);
         italian = findViewById(R.id.settings_italian_rec_category);
-        european  = findViewById(R.id.settings_european_rec_categories) ;
+        european = findViewById(R.id.settings_european_rec_categories);
         baking = findViewById(R.id.settings_baking_rec_category);
         meat = findViewById(R.id.settings_meat_rec_category);
 
@@ -80,19 +81,18 @@ public class Settings extends AppCompatActivity {
 
         radioGroup.check(skill);
 
-        if(user.getCuisines().contains("asian"))
+        if (user.getCuisines().contains("asian"))
             asian.setChecked(true);
-        if(user.getCuisines().contains("middle_eastern"))
+        if (user.getCuisines().contains("middle_eastern"))
             middle_eastern.setChecked(true);
-        if(user.getCuisines().contains("italian"))
+        if (user.getCuisines().contains("italian"))
             italian.setChecked(true);
-        if(user.getCuisines().contains("european"))
+        if (user.getCuisines().contains("european"))
             european.setChecked(true);
-        if(user.getCuisines().contains("baking"))
+        if (user.getCuisines().contains("baking"))
             baking.setChecked(true);
-        if(user.getCuisines().contains("meat"))
+        if (user.getCuisines().contains("meat"))
             meat.setChecked(true);
-
 
         commitChanges.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,23 +101,23 @@ public class Settings extends AppCompatActivity {
                 UserProfile.skillLevel cookingSkills = null;
                 ArrayList<String> cuisines = new ArrayList<>();
 
-                if(asian.isChecked())
+                if (asian.isChecked())
                     cuisines.add("asian");
-                if(middle_eastern.isChecked())
+                if (middle_eastern.isChecked())
                     cuisines.add("middle_eastern");
-                if(italian.isChecked())
+                if (italian.isChecked())
                     cuisines.add("italian");
-                if(european.isChecked())
+                if (european.isChecked())
                     cuisines.add("european");
-                if(baking.isChecked())
+                if (baking.isChecked())
                     cuisines.add("baking");
-                if(meat.isChecked())
+                if (meat.isChecked())
                     cuisines.add("meat");
 
-                //noinspection ToArrayCallWithZeroLengthArrayArgument
+                // noinspection ToArrayCallWithZeroLengthArrayArgument
                 String[] cuisinesArray = cuisines.toArray(new String[cuisines.size()]);
 
-                switch (radioGroup.getCheckedRadioButtonId()){
+                switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.settings_begginer_radio_set_user:
                         cookingSkills = UserProfile.skillLevel.BEGINNER;
                         break;
@@ -141,36 +141,24 @@ public class Settings extends AppCompatActivity {
                         return;
                     }
 
-                updateUser(password,
-                           firstName.getText().toString(),
-                           lastName.getText().toString(),
-                           country.getText().toString(),
-                           cuisinesArray,
-                           cookingSkills);
+                updateUser(password, firstName.getText().toString(), lastName.getText().toString(),
+                        country.getText().toString(), cuisinesArray, cookingSkills);
 
             }
         });
 
     }
 
-    public void updateUser(String password, String newFirstName, String newLastName,
-                      String newCountry, String[] newCuisines, UserProfile.skillLevel newSkillLeve){
+    public void updateUser(String password, String newFirstName, String newLastName, String newCountry,
+                           String[] newCuisines, UserProfile.skillLevel newSkillLeve) {
 
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
         Object response;
 
         try {
-            response = new DatabaseServiceTask(
-                    "updateUserProfile",
-                              app).execute(
-                                      user.getEmail(),
-                                      password,
-                                      newFirstName,
-                                      newLastName,
-                                      newCountry,
-                                      newCuisines,
-                                      newSkillLeve).get();
+            response = new DatabaseServiceTask("updateUserProfile", app).execute(user.getEmail(), password,
+                    newFirstName, newLastName, newCountry, newCuisines, newSkillLeve).get();
 
             if (!(response instanceof UserProfile))
                 if (response instanceof Exception)
@@ -186,7 +174,7 @@ public class Settings extends AppCompatActivity {
             toast.show();
             app.setIsMyArea(true);
             startActivity(new Intent(Settings.this, MyArea.class));
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast toast = Toast.makeText(Settings.this, "Failed to update user", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -202,7 +190,7 @@ public class Settings extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
                 finish();

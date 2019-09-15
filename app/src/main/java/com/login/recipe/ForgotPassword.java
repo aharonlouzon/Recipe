@@ -23,7 +23,7 @@ public class ForgotPassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
+        final MyApplication app = ((MyApplication) getApplicationContext());
 
         progressDialog = new ProgressDialog(this);
         Button reset = findViewById(R.id.reset_password_button);
@@ -55,7 +55,8 @@ public class ForgotPassword extends AppCompatActivity {
                                 throw (Exception) response;
 
                     } catch (Exception e) {
-                        Toast toast = Toast.makeText(ForgotPassword.this, "Failed to email password", Toast.LENGTH_SHORT);
+                        Toast toast = Toast.makeText(ForgotPassword.this, "Failed to email password",
+                                Toast.LENGTH_SHORT);
                         toast.setGravity(Gravity.CENTER, 0, 0);
                         toast.show();
                         startActivity(new Intent(ForgotPassword.this, MainActivity.class));

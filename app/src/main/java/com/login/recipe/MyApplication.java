@@ -108,7 +108,7 @@ public class MyApplication extends Application {
         this.searchBySkills = searchBySkills;
     }
 
-    public void log_out(){
+    public void log_out() {
         this.user = null;
         this.newPassword = null;
         this.recipe = null;

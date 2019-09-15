@@ -17,7 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import com.facebook.FacebookSdk;
+
 import java.util.concurrent.ExecutionException;
 
 public class HomePage extends AppCompatActivity {
@@ -26,7 +28,6 @@ public class HomePage extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private RecipeList recipeList;
     private static final String preferences = "recipeAppPrefs";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class HomePage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         progressDialog = new ProgressDialog(this);
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         UserProfile user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,19 +59,16 @@ public class HomePage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private RecipeList getRecipes(){
+    private RecipeList getRecipes() {
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
         Object response;
 
         // get user's recipes
         try {
-            response = new DatabaseServiceTask("searchRecipes",
-                                                app).execute(app.getSearchBySkills(),
-                                                             app.getSearchByCuisine(),
-                                                             app.getSearchByType(),
-                                                             app.getSearchByEmail(),
-                                                             app.getSearchByFreeText()).get();
+            response = new DatabaseServiceTask("searchRecipes", app).execute(app.getSearchBySkills(),
+                    app.getSearchByCuisine(), app.getSearchByType(), app.getSearchByEmail(), app.getSearchByFreeText())
+                    .get();
 
             if (!(response instanceof RecipeList))
                 if (response instanceof Exception)
@@ -80,16 +78,13 @@ public class HomePage extends AppCompatActivity {
                 recipeList = (RecipeList) response;
 
             return recipeList;
-        }
-        catch (Exception e) {
-            Toast toast = Toast.makeText(HomePage.this,
-                                         "Failed to get user's recipes", Toast.LENGTH_SHORT);
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
 
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             return new RecipeList();
-        }
-        finally {
+        } finally {
             progressDialog.dismiss();
         }
     }
@@ -103,7 +98,7 @@ public class HomePage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
                 SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);

@@ -26,7 +26,6 @@ public class Comment {
         this.comment = comment;
     }
 
-
     String getAuthorName() {
         return authorName;
     }
@@ -36,4 +35,3 @@ public class Comment {
         this.authorName = authorName;
     }
 }
-

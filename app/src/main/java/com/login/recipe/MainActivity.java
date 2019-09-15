@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         Button forgot_password = findViewById(R.id.forgot_password);
 
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         if (get_email != null && get_password != null)
             try {
                 validate(get_email, get_password);
-            }catch (Exception e){
+            } catch (Exception e) {
                 Toast toast = Toast.makeText(MainActivity.this, "Please log in", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
@@ -101,8 +101,7 @@ public class MainActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-        }
-        finally {
+        } finally {
             progressDialog.dismiss();
         }
     }

@@ -22,6 +22,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
@@ -37,7 +38,7 @@ public class RecipePage extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         recipe = app.getRecipe();
         TextView description = findViewById(R.id.recipe_page_description);
         description.setText(recipe.getDescription());
@@ -59,14 +60,13 @@ public class RecipePage extends AppCompatActivity {
             }
         });
 
-        //image gridview
+        // image gridview
         RecyclerView recyclerView = findViewById(R.id.recipe_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         if (recipe.getImages().size() > 0) {
             MyAdapterRecipeImage myAdapter = new MyAdapterRecipeImage(this, recipe.getImages());
             recyclerView.setAdapter(myAdapter);
         }
-
 
         FloatingActionButton fab = findViewById(R.id.recipe_page_add_photo);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -82,31 +82,32 @@ public class RecipePage extends AppCompatActivity {
         ArrayList<String> recipeIngredientsArray = new ArrayList<>();
         ArrayList<String> commentsText = new ArrayList<>();
 
-        for (Map.Entry<String,String> entry : recipeIngredients.entrySet()) {
-            recipeIngredientsArray.add(entry.getKey() + "   " +  entry.getValue());
+        for (Map.Entry<String, String> entry : recipeIngredients.entrySet()) {
+            recipeIngredientsArray.add(entry.getKey() + "   " + entry.getValue());
         }
 
-        for(Comment comment : recipe.getComments()) {
+        for (Comment comment : recipe.getComments()) {
             commentsText.add(comment.getAuthorName() + "\n" + comment.getComment());
         }
 
-        //locate Views
+        // locate Views
         ListView ingredientsListView = findViewById(R.id.ingredients_list_view);
         ListView instructionsListView = findViewById(R.id.instructions_list_view);
         ListView commentsList = findViewById(R.id.recipe_page_recipe_comments);
 
-
-        //set all ListView adapters
-        ingredientsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeIngredientsArray));
-        instructionsListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeInstructions));
+        // set all ListView adapters
+        ingredientsListView
+                .setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeIngredientsArray));
+        instructionsListView
+                .setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeInstructions));
         commentsList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, commentsText));
 
-        //set dynamic height for all ListViews
+        // set dynamic height for all ListViews
         setDynamicHeight(ingredientsListView);
         setDynamicHeight(instructionsListView);
         setDynamicHeight(commentsList);
 
-        //handle comments
+        // handle comments
         ImageButton addCommentButton = findViewById(R.id.add_comment_button);
         final EditText commentText = findViewById(R.id.new_comment_text);
         addCommentButton.setOnClickListener(new View.OnClickListener() {
@@ -120,14 +121,14 @@ public class RecipePage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    public void leaveComment(String commentText){
-        //create comment object
+    public void leaveComment(String commentText) {
+        // create comment object
         String authorName = app.getUser().getFirstName() + " " + app.getUser().getLastName();
         String author = app.getUser().getEmail();
         Comment comment = new Comment(author, commentText, authorName);
         app.getRecipe().getComments().add(comment);
 
-        //add the recipe comment to the database
+        // add the recipe comment to the database
         Recipe response = null;
         try {
             response = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
@@ -137,8 +138,7 @@ public class RecipePage extends AppCompatActivity {
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             startActivity(new Intent(RecipePage.this, RecipePage.class));
-        }
-        catch (ExecutionException | InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             Toast toast = Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -147,7 +147,7 @@ public class RecipePage extends AppCompatActivity {
 
     public static void setDynamicHeight(ListView listView) {
         ListAdapter adapter = listView.getAdapter();
-        //check adapter if null
+        // check adapter if null
         if (adapter == null) {
             return;
         }
@@ -165,12 +165,11 @@ public class RecipePage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    public UserProfile getAuthor(String email){
+    public UserProfile getAuthor(String email) {
         UserProfile userProfile = null;
         try {
             userProfile = (UserProfile) new DatabaseServiceTask("getUser", app).execute(email).get();
-        }
-        catch (ExecutionException | InterruptedException e) {
+        } catch (ExecutionException | InterruptedException e) {
             Toast toast = Toast.makeText(RecipePage.this, "User no longer exist", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -187,7 +186,7 @@ public class RecipePage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
                 finish();

@@ -1,4 +1,5 @@
 package com.login.recipe;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,13 +22,13 @@ public class SetUser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Intent intent = getIntent();
-        final String password = (String)intent.getSerializableExtra("password");
+        final String password = (String) intent.getSerializableExtra("password");
 
         setContentView(R.layout.activity_set_user);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
+        final MyApplication app = ((MyApplication) getApplicationContext());
 
         firstName = findViewById(R.id.first_name_set_user);
         lastName = findViewById(R.id.last_name_text_set_user);
@@ -40,12 +41,12 @@ public class SetUser extends AppCompatActivity {
             public void onClick(View v) {
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
-                
+
                 String first_name = firstName.getText().toString().trim();
                 String last_name = lastName.getText().toString().trim();
                 UserProfile.skillLevel cookingSkills = UserProfile.skillLevel.BEGINNER;
 
-                switch (radioGroup.getCheckedRadioButtonId()){
+                switch (radioGroup.getCheckedRadioButtonId()) {
                     case R.id.begginer_radio_set_user:
                         cookingSkills = UserProfile.skillLevel.BEGINNER;
                         break;
