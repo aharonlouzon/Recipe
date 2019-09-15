@@ -220,17 +220,28 @@ public class AddRecipe extends AppCompatActivity {
                 }
 
                 //add the recipe to the database
+                Object response;
                 try {
-                    recipe = (Recipe) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+                    response = new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+
+                    if (!(response instanceof Recipe))
+                        if (response instanceof Exception)
+                            throw (Exception) response;
+
+                    Recipe recipe = null;
+                    if (response instanceof UserProfile)
+                        recipe = (Recipe) response;
+
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
                     app.setRecipe(recipe);
                     startActivity(new Intent(AddRecipe.this, RecipePage.class));
                 }
-                catch (ExecutionException | InterruptedException e) {
+                catch (Exception e) {
                     Toast toast = Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
+                progressDialog.dismiss();
             }
         });
 

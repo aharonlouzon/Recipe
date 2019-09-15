@@ -151,17 +151,25 @@ public class MyArea extends AppCompatActivity {
     private void getRecipes(){
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
+        Object response;
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
-            progressDialog.dismiss();
+            response = new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
+
+            if (!(response instanceof RecipeList))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            if (response instanceof RecipeList)
+                recipeList = (RecipeList) response;
         }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+        catch (Exception e) {
             Toast toast = Toast.makeText(MyArea.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
+        progressDialog.dismiss();
     }
 
     @Override

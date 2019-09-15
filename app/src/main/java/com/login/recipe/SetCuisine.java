@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import java.util.concurrent.ExecutionException;
 
 public class SetCuisine extends AppCompatActivity {
 
@@ -71,7 +70,16 @@ public class SetCuisine extends AppCompatActivity {
                 try {
                     progressDialog.setMessage("Cooking...");
                     progressDialog.show();
-                    user = (UserProfile) new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
+
+                    Object response;
+                    response = new DatabaseServiceTask("addUser", app).execute(user, app.getNewPassword()).get();
+
+                    if (!(response instanceof UserProfile))
+                        if (response instanceof Exception)
+                            throw (Exception) response;
+
+                    if (response instanceof UserProfile)
+                        user = (UserProfile) response;
 
                     SharedPreferences.Editor editor = sharedpreferences.edit();
                     editor.putString("Email", user.getEmail());
@@ -81,16 +89,21 @@ public class SetCuisine extends AppCompatActivity {
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
 
+                    //TODO - handle in userprofie class
                     for(int i=0; i < user.getCuisines().size(); i++)
                         app.setSearchByCuisine(user.getCuisines().get(i));
+
                     app.setHome(true);
                     startActivity(new Intent(SetCuisine.this, HomePage.class));
                 }
-                catch (ExecutionException | InterruptedException e) {
+                catch (Exception e) {
                     Toast toast = Toast.makeText(SetCuisine.this, "Failed to add new User", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                     startActivity(new Intent(SetCuisine.this, MainActivity.class));
+                }
+                finally {
+                    progressDialog.dismiss();
                 }
 
             }

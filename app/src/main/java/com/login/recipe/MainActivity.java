@@ -75,26 +75,35 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("ShowToast")
     private void validate(String email, String password) {
 
-        UserProfile user = null;
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
+        Object response;
+
         try {
-            user = (UserProfile) new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
-            if (user == null)
-                throw new Exception();
+            response = new DatabaseServiceTask("validateSignIn", app).execute(email, password).get();
+
+            if (!(response instanceof UserProfile))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            UserProfile user = null;
+            if (response instanceof UserProfile)
+                user = (UserProfile) response;
+
             app.setUser(user);
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString("Email", email);
             editor.putString("Password", password);
             editor.apply();
-            progressDialog.dismiss();
             app.setHome(true);
             startActivity(new Intent(MainActivity.this, HomePage.class));
         } catch (Exception e) {
-            progressDialog.dismiss();
             Toast toast = Toast.makeText(MainActivity.this, "Login failed", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
+        }
+        finally {
+            progressDialog.dismiss();
         }
     }
 }

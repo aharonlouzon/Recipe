@@ -158,10 +158,10 @@ public class Settings extends AppCompatActivity {
 
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
-        Object results;
+        Object response;
 
         try {
-            results = new DatabaseServiceTask(
+            response = new DatabaseServiceTask(
                     "updateUserProfile",
                               app).execute(
                                       user.getEmail(),
@@ -172,13 +172,13 @@ public class Settings extends AppCompatActivity {
                                       newCuisines,
                                       newSkillLeve).get();
 
-            if (!(results instanceof UserProfile))
-                if (results instanceof Exception)
-                    throw (Exception) results;
+            if (!(response instanceof UserProfile))
+                if (response instanceof Exception)
+                    throw (Exception) response;
 
             UserProfile UpdatedUser = null;
-            if (results instanceof UserProfile)
-                UpdatedUser = (UserProfile) results;
+            if (response instanceof UserProfile)
+                UpdatedUser = (UserProfile) response;
 
             app.setUser(UpdatedUser);
             Toast toast = Toast.makeText(Settings.this, "User updated successfully", Toast.LENGTH_SHORT);

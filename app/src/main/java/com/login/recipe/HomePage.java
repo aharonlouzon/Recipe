@@ -61,25 +61,36 @@ public class HomePage extends AppCompatActivity {
     private RecipeList getRecipes(){
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
+        Object response;
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipes",
+            response = new DatabaseServiceTask("searchRecipes",
                                                 app).execute(app.getSearchBySkills(),
                                                              app.getSearchByCuisine(),
                                                              app.getSearchByType(),
                                                              app.getSearchByEmail(),
                                                              app.getSearchByFreeText()).get();
-            progressDialog.dismiss();
+
+            if (!(response instanceof RecipeList))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            if (response instanceof RecipeList)
+                recipeList = (RecipeList) response;
+
             return recipeList;
         }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+        catch (Exception e) {
             Toast toast = Toast.makeText(HomePage.this,
                                          "Failed to get user's recipes", Toast.LENGTH_SHORT);
 
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             return new RecipeList();
+        }
+        finally {
+            progressDialog.dismiss();
         }
     }
 
