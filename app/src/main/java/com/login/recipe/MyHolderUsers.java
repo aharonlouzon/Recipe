@@ -1,5 +1,6 @@
 package com.login.recipe;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
@@ -28,6 +29,7 @@ public class MyHolderUsers extends RecyclerView.ViewHolder {
         this.button = itemView.findViewById(R.id.follow_unfollow);
 
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 if (button.getText().toString().equals("follow")) {
@@ -74,6 +76,7 @@ public class MyHolderUsers extends RecyclerView.ViewHolder {
         this.user = user;
     }
 
+    @SuppressWarnings("unused")
     public Bitmap getBitmap() {
         return bitmap;
     }

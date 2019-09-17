@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ExecutionException;
 
 public class UploadRecipeImage extends AppCompatActivity {
 
@@ -94,16 +93,25 @@ public class UploadRecipeImage extends AppCompatActivity {
             }
 
             // add the recipe to the database
-            Recipe response = null;
+            Object response;
             try {
-                response = (Recipe) new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData)
-                        .get();
-                app.setRecipe(response);
+                response = new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+
+                if (!(response instanceof Recipe))
+                    if (response instanceof Exception)
+                        throw (Exception) response;
+
+
+                Recipe responseRecipe = null;
+                if (response instanceof Recipe)
+                    responseRecipe = (Recipe) response;
+
+                app.setRecipe(responseRecipe);
                 Toast toast = Toast.makeText(UploadRecipeImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
                 startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
-            } catch (ExecutionException | InterruptedException e) {
+            } catch (Exception e) {
                 Toast toast = Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

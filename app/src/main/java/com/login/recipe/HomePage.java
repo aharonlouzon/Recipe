@@ -20,8 +20,6 @@ import android.widget.Toast;
 
 import com.facebook.FacebookSdk;
 
-import java.util.concurrent.ExecutionException;
-
 public class HomePage extends AppCompatActivity {
 
     private MyApplication app;
@@ -39,7 +37,6 @@ public class HomePage extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
         app = ((MyApplication) getApplicationContext());
-        UserProfile user = app.getUser();
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getRecipes();
@@ -59,7 +56,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private RecipeList getRecipes() {
+    private void getRecipes() {
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
         Object response;
@@ -76,14 +73,11 @@ public class HomePage extends AppCompatActivity {
 
             if (response instanceof RecipeList)
                 recipeList = (RecipeList) response;
-
-            return recipeList;
         } catch (Exception e) {
             Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
-
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            return new RecipeList();
+            recipeList = new RecipeList();
         } finally {
             progressDialog.dismiss();
         }

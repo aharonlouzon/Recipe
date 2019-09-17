@@ -13,7 +13,7 @@ public class MyHolderRecipeImage extends RecyclerView.ViewHolder {
 
     private MyApplication app;
     ImageView imageView;
-    Bitmap bitmap;
+    private Bitmap bitmap;
 
     MyHolderRecipeImage(@NonNull View itemView) {
         super(itemView);
@@ -29,6 +29,7 @@ public class MyHolderRecipeImage extends RecyclerView.ViewHolder {
         });
     }
 
+    @SuppressWarnings("WeakerAccess")
     public void setBitmap(Bitmap bitmap) {
         this.bitmap = bitmap;
     }

@@ -11,18 +11,18 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"/>
+        android:theme="@style/AppTheme.AppBarOverlay" />
 
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dip" >
+            android:padding="10dip">
 
             <EditText
                 android:id="@+id/recipe_name"
@@ -34,7 +34,8 @@
                 android:hint="@string/dish_name"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/add_recipe_category"
@@ -51,7 +52,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/asian"
                 app:layout_constraintStart_toStartOf="parent"
@@ -62,7 +62,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/middle_eastern_new_line"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
                 android:layout_marginTop="24dp"
                 android:text="@string/european"
                 app:layout_constraintStart_toStartOf="@+id/asian_rec_category"
@@ -84,7 +82,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/italian"
                 app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
@@ -95,7 +92,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/meat"
                 app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +102,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
-                android:layout_marginLeft="150dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/baking"
                 app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
@@ -128,13 +123,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="80dp"
-                android:layout_marginLeft="80dp"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/product"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients" />
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_ingredients"
+                tools:ignore="Autofill" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/add_ingredient_button"
@@ -143,23 +138,23 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginBottom="8dp"
                 android:clickable="true"
+                android:focusable="true"
                 app:layout_constraintBottom_toBottomOf="@+id/add_recipe_Quantity"
                 app:layout_constraintStart_toEndOf="@+id/add_recipe_product"
-                app:srcCompat="@android:drawable/ic_menu_add"
-                android:focusable="true" />
+                app:srcCompat="@android:drawable/ic_menu_add" />
 
             <EditText
                 android:id="@+id/add_recipe_Quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
-                android:layout_marginLeft="79dp"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/quantity"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_recipe_product" />
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_product"
+                tools:ignore="Autofill" />
 
             <TextView
                 android:id="@+id/add_recipe_directions_title"
@@ -176,20 +171,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="63dp"
-                android:layout_marginLeft="63dp"
                 android:layout_marginTop="31dp"
                 android:ems="10"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title" />
+                app:layout_constraintTop_toBottomOf="@+id/add_recipe_directions_title"
+                tools:ignore="Autofill,LabelFor" />
 
             <Button
                 android:id="@+id/add_recipe_direction_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
                 android:layout_marginTop="16dp"
                 android:background="#D81B60"
                 android:text="@string/_1"
@@ -323,7 +317,8 @@
                 android:inputType="textMultiLine"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/skill_radio_group_add_recipe" />
+                app:layout_constraintTop_toBottomOf="@+id/skill_radio_group_add_recipe"
+                tools:ignore="Autofill" />
 
             <Button
                 android:id="@+id/continue_button_add_recipe"

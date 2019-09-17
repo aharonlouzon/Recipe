@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+@SuppressWarnings("ALL")
 public class DatabaseService {
 
     private static final String BASE_URL = "http://10.0.2.2:8080/RecipeAppDatabaseService/webresources/";

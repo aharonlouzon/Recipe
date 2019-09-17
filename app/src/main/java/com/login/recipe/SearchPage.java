@@ -1,6 +1,8 @@
 package com.login.recipe;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -17,13 +19,16 @@ public class SearchPage extends AppCompatActivity {
 
     private MyApplication app;
     private SearchView searchView;
+    private static final String preferences = "recipeAppPrefs";
 
     // Cuisine radio handling
     private boolean cuisineIsChecked = false;
+    @SuppressWarnings("unused")
     private int cuisineCheckedId;
 
     // Type radio handling
     private boolean typeIsChecked = false;
+    @SuppressWarnings("unused")
     private int typeCheckedId;
 
     // radio buttons cuisine
@@ -216,7 +221,11 @@ public class SearchPage extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(SearchPage.this, MainActivity.class));
                 break;
             }

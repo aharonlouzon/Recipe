@@ -2,7 +2,9 @@ package com.login.recipe;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -22,8 +24,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.concurrent.ExecutionException;
-
 public class MyArea extends AppCompatActivity {
 
     private MyApplication app;
@@ -31,6 +31,7 @@ public class MyArea extends AppCompatActivity {
     private UserProfile user;
     private RecipeList recipeList;
     private Button follow;
+    private static final String preferences = "recipeAppPrefs";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -82,6 +83,7 @@ public class MyArea extends AppCompatActivity {
         ImageView avatar = findViewById(R.id.imageView_my_area);
         if (user.getPicture() != null) {
             byte[] imageByte = user.getPicture();
+            @SuppressWarnings("deprecation")
             Drawable imageDrawable = new BitmapDrawable(BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length));
             avatar.setImageDrawable(imageDrawable);
         } else
@@ -121,8 +123,8 @@ public class MyArea extends AppCompatActivity {
         TextView followers = findViewById(R.id.followers_my_area);
         TextView following = findViewById(R.id.following_my_area);
 
-        String followersStr = user.getFollowers().size() + " followers";
-        String followingStr = user.getFollowerOf().size() + " following";
+        String followersStr = user.getFollowerOf().size() + " followers";
+        String followingStr = user.getFollowers().size() + " following";
 
         followers.setText(followersStr);
         following.setText(followingStr);
@@ -131,6 +133,7 @@ public class MyArea extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 app.setUserListType("followers");
+                app.setUserListResource(user);
                 startActivity(new Intent(MyArea.this, UsersList.class));
             }
         });
@@ -139,6 +142,7 @@ public class MyArea extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 app.setUserListType("following");
+                app.setUserListResource(user);
                 startActivity(new Intent(MyArea.this, UsersList.class));
             }
         });
@@ -180,7 +184,11 @@ public class MyArea extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(MyArea.this, MainActivity.class));
                 break;
             }

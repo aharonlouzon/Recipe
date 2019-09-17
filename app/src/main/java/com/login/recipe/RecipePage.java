@@ -1,7 +1,9 @@
 package com.login.recipe;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +32,7 @@ import java.util.concurrent.ExecutionException;
 public class RecipePage extends AppCompatActivity {
     private Recipe recipe;
     private MyApplication app;
+    private static final String preferences = "recipeAppPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,16 +132,25 @@ public class RecipePage extends AppCompatActivity {
         app.getRecipe().getComments().add(comment);
 
         // add the recipe comment to the database
-        Recipe response = null;
+        Object response;
         try {
-            response = (Recipe) new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+            response = new DatabaseServiceTask("addComment", app).execute(recipe.getRecipeId(), comment).get();
+
+            if (!(response instanceof Recipe))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            Recipe recipe = null;
+            if (response instanceof Recipe)
+                recipe = (Recipe) response;
+
             app.setRecipe(recipe);
 
             Toast toast = Toast.makeText(RecipePage.this, "Comment Added", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
             startActivity(new Intent(RecipePage.this, RecipePage.class));
-        } catch (ExecutionException | InterruptedException e) {
+        } catch (Exception e) {
             Toast toast = Toast.makeText(RecipePage.this, "Failed to add comment", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -189,7 +201,11 @@ public class RecipePage extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(RecipePage.this, MainActivity.class));
                 break;
             }

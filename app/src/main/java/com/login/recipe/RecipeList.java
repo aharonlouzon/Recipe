@@ -7,6 +7,7 @@ import java.util.List;
 public class RecipeList extends ArrayList<Recipe> {
     private static final long serialVersionUID = 1L;
 
+    @SuppressWarnings("WeakerAccess")
     public RecipeList() {
         super();
     }

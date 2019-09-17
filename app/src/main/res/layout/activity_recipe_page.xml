@@ -29,10 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="318dp"
-        android:layout_marginLeft="318dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="37dp"
-        android:layout_marginRight="37dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
@@ -67,8 +65,7 @@
             <TextView
                 android:id="@+id/recipe_page_description"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recipe_page_recycle_view"
@@ -87,7 +84,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
-                android:background="#0DE91E63">
+                android:background="#0DE91E63"
+                tools:ignore="NestedScrolling">
 
             </ListView>
 
@@ -104,7 +102,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
-                android:background="#0DE91E63"></ListView>
+                android:background="#0DE91E63"
+                tools:ignore="NestedScrolling">
+
+            </ListView>
 
             <TextView
                 android:layout_width="match_parent"
@@ -117,24 +118,26 @@
             <EditText
                 android:id="@+id/new_comment_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
             <ImageButton
                 android:id="@+id/add_comment_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
                 android:layout_margin="5dp"
                 android:src="@android:drawable/ic_input_add"
-                android:text="Button" />
+                tools:ignore="ContentDescription" />
 
             <ListView
                 android:id="@+id/recipe_page_recipe_comments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip"
-                android:background="#0DE91E63"></ListView>
+                android:background="#0DE91E63"
+                tools:ignore="NestedScrolling">
+
+            </ListView>
 
         </LinearLayout>
 

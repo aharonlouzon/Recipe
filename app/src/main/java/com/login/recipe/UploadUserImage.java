@@ -17,7 +17,6 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.concurrent.ExecutionException;
 
 public class UploadUserImage extends AppCompatActivity {
 
@@ -93,15 +92,26 @@ public class UploadUserImage extends AppCompatActivity {
             }
 
             // add the recipe to the database
+            Object response;
             try {
-                UserProfile user = (UserProfile) new DatabaseServiceTask("changeProfilePic", app)
+                response = new DatabaseServiceTask("changeProfilePic", app)
                         .execute(inputData, app.getUser().getEmail()).get();
+
+                if (!(response instanceof UserProfile))
+                    if (response instanceof Exception)
+                        throw (Exception) response;
+
+                UserProfile user = null;
+                if (response instanceof UserProfile)
+                    user = (UserProfile) response;
+
                 app.setUser(user);
+
                 Toast toast = Toast.makeText(UploadUserImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
                 startActivity(new Intent(UploadUserImage.this, MyArea.class));
-            } catch (ExecutionException | InterruptedException e) {
+            } catch (Exception e) {
                 Toast toast = Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();

@@ -21,6 +21,7 @@ public class MyApplication extends Application {
     private String userListType;
     private boolean isMyArea = true;
     private boolean isHome = true;
+    private UserProfile userListResource;
 
     public UserProfile getUser() {
         return user;
@@ -152,5 +153,13 @@ public class MyApplication extends Application {
 
     public void setHome(boolean home) {
         isHome = home;
+    }
+
+    public UserProfile getUserListResource() {
+        return userListResource;
+    }
+
+    public void setUserListResource(UserProfile userListResource) {
+        this.userListResource = userListResource;
     }
 }

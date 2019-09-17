@@ -13,7 +13,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -37,6 +36,7 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
         return new MyHolderUsers(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyHolderUsers holder, int position) {
         if (models.size() > 0) {
@@ -62,10 +62,20 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
     }
 
     private UserProfile getUser(String userEmail) {
+        Object response;
         try {
-            UserProfile user = (UserProfile) new DatabaseServiceTask("getUser", app).execute(userEmail).get();
+            response = new DatabaseServiceTask("getUser", app).execute(userEmail).get();
+
+            if (!(response instanceof UserProfile))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            UserProfile user = null;
+            if (response instanceof UserProfile)
+                user = (UserProfile) response;
+
             return user;
-        } catch (ExecutionException | InterruptedException | ClassCastException e) {
+        } catch (Exception e) {
             return new UserProfile();
         }
     }

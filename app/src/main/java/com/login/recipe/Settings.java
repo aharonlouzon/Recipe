@@ -1,7 +1,9 @@
 package com.login.recipe;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +37,7 @@ public class Settings extends AppCompatActivity {
     private CheckBox european;
     private CheckBox baking;
     private CheckBox meat;
+    private static final String preferences = "recipeAppPrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,7 +196,11 @@ public class Settings extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(Settings.this, MainActivity.class));
                 break;
             }

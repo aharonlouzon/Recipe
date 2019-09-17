@@ -1,7 +1,9 @@
 package com.login.recipe;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +19,6 @@ import android.widget.Toast;
 import android.app.ProgressDialog;
 
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 public class AddRecipe extends AppCompatActivity {
 
@@ -36,8 +37,10 @@ public class AddRecipe extends AppCompatActivity {
     private Recipe recipe = new Recipe();
     private EditText description;
     private MyApplication app;
+    private static final String preferences = "recipeAppPrefs";
 
     // Type radio handling
+    @SuppressWarnings("unused")
     private int typeCheckedId;
     private boolean typeIsChecked = false;
 
@@ -87,9 +90,6 @@ public class AddRecipe extends AppCompatActivity {
         begginer = findViewById(R.id.begginer_radio_add_recipe);
         intermediate = findViewById(R.id.intermediate_radio_add_recipe);
         pro = findViewById(R.id.pro_radio_add_recipe);
-
-        // skills radio group
-        final RadioGroup skills = findViewById(R.id.skill_radio_group_add_recipe);
 
         // type radio group
         final RadioGroup type1 = findViewById(R.id.type_radio_group1_add_recipe);
@@ -230,8 +230,9 @@ public class AddRecipe extends AppCompatActivity {
                         if (response instanceof Exception)
                             throw (Exception) response;
 
+
                     Recipe recipe = null;
-                    if (response instanceof UserProfile)
+                    if (response instanceof Recipe)
                         recipe = (Recipe) response;
 
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
@@ -253,7 +254,11 @@ public class AddRecipe extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(AddRecipe.this, MainActivity.class));
                 break;
             }
