@@ -24,7 +24,7 @@ public class RegisterPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regsiter_page);
 
-        final MyApplication app = ((MyApplication)getApplicationContext());
+        final MyApplication app = ((MyApplication) getApplicationContext());
 
         app.setUser(new UserProfile());
         email = findViewById(R.id.email_input);
@@ -42,16 +42,18 @@ public class RegisterPage extends AppCompatActivity {
                 String user_password = password.getText().toString().trim();
                 progressDialog.setMessage("Cooking...");
                 progressDialog.show();
-                if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty() || !password.getText().toString().trim().equals(confirm_password.getText().toString().trim())) {
+
+                if (email.getText().toString().isEmpty() || password.getText().toString().isEmpty()
+                        || !password.getText().toString().trim().equals(confirm_password.getText().toString().trim())) {
                     Toast toast = Toast.makeText(RegisterPage.this, "Invalid Input", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
-                }
-                else {
+                } else {
                     app.getUser().setEmail(user_email);
                     app.setNewPassword(user_password);
                     startActivity(new Intent(RegisterPage.this, SetUser.class));
                 }
+                progressDialog.dismiss();
             }
         });
 

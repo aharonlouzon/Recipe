@@ -1,7 +1,9 @@
 package com.login.recipe;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,8 +17,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.app.ProgressDialog;
+
 import java.util.Date;
-import java.util.concurrent.ExecutionException;
 
 public class AddRecipe extends AppCompatActivity {
 
@@ -35,19 +37,21 @@ public class AddRecipe extends AppCompatActivity {
     private Recipe recipe = new Recipe();
     private EditText description;
     private MyApplication app;
+    private static final String preferences = "recipeAppPrefs";
 
     // Type radio handling
-    private boolean typeIsChecked = false;
+    @SuppressWarnings("unused")
     private int typeCheckedId;
+    private boolean typeIsChecked = false;
 
-    //radio buttons type
+    // radio buttons type
     private RadioButton dessert;
     private RadioButton soup;
     private RadioButton main;
     private RadioButton appetizer;
     private RadioButton salad;
 
-    //skills radio button
+    // skills radio button
     private RadioButton begginer;
     private RadioButton intermediate;
     private RadioButton pro;
@@ -57,8 +61,8 @@ public class AddRecipe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
 
-        //globals
-        app = ((MyApplication)getApplicationContext());
+        // globals
+        app = ((MyApplication) getApplicationContext());
         progressDialog = new ProgressDialog(this);
         asian = findViewById(R.id.asian_rec_category);
         middle_eastern = findViewById(R.id.middle_eastern_rec_category);
@@ -75,20 +79,17 @@ public class AddRecipe extends AppCompatActivity {
         title = findViewById(R.id.recipe_name);
         description = findViewById(R.id.descriptions_text_add_recipe);
 
-        //radio buttons type
+        // radio buttons type
         dessert = findViewById(R.id.radioButtonDessertAddRecipe);
         soup = findViewById(R.id.radioButtonSoupAddRecipe);
         main = findViewById(R.id.radioButtonMainAddRecipe);
         appetizer = findViewById(R.id.radioButtonAppetizerAddRecipe);
         salad = findViewById(R.id.radioButtonSaladAddRecipe);
 
-        //radio buttons skill
+        // radio buttons skill
         begginer = findViewById(R.id.begginer_radio_add_recipe);
         intermediate = findViewById(R.id.intermediate_radio_add_recipe);
         pro = findViewById(R.id.pro_radio_add_recipe);
-
-        // skills radio group
-        final RadioGroup skills = findViewById(R.id.skill_radio_group_add_recipe);
 
         // type radio group
         final RadioGroup type1 = findViewById(R.id.type_radio_group1_add_recipe);
@@ -120,7 +121,7 @@ public class AddRecipe extends AppCompatActivity {
         addDirection.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(direction_step.getText().toString().trim().isEmpty())
+                if (direction_step.getText().toString().trim().isEmpty())
                     return;
                 String step = direction_step.getText().toString();
                 int step_num = Integer.parseInt(addDirection.getText().toString());
@@ -134,11 +135,12 @@ public class AddRecipe extends AppCompatActivity {
         addIngredient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(product_name.getText().toString().trim().isEmpty() || quantity.getText().toString().trim().isEmpty())
+                if (product_name.getText().toString().trim().isEmpty()
+                        || quantity.getText().toString().trim().isEmpty())
                     return;
                 String name = product_name.getText().toString().trim();
                 String quan = quantity.getText().toString().trim();
-                recipe.getIngredients().put(name,quan);
+                recipe.getIngredients().put(name, quan);
                 product_name.getText().clear();
                 quantity.getText().clear();
             }
@@ -153,43 +155,43 @@ public class AddRecipe extends AppCompatActivity {
                 boolean legalRecipe = true;
 
                 // mandatory fields
-                if(title.getText().toString().isEmpty())
+                if (title.getText().toString().isEmpty())
                     legalRecipe = false;
-                if(recipe.getInstructions().size() == 0)
+                if (recipe.getInstructions().size() == 0)
                     legalRecipe = false;
-                if(recipe.getIngredients().size() == 0)
+                if (recipe.getIngredients().size() == 0)
                     legalRecipe = false;
 
                 // cuisine
-                if(asian.isChecked())
+                if (asian.isChecked())
                     recipe.getCuisines().add("asian");
-                if(middle_eastern.isChecked())
+                if (middle_eastern.isChecked())
                     recipe.getCuisines().add("middle_eastern");
-                if(italian.isChecked())
+                if (italian.isChecked())
                     recipe.getCuisines().add("italian");
-                if(european.isChecked())
+                if (european.isChecked())
                     recipe.getCuisines().add("european");
-                if(baking.isChecked())
+                if (baking.isChecked())
                     recipe.getCuisines().add("baking");
-                if(meat.isChecked())
+                if (meat.isChecked())
                     recipe.getCuisines().add("meat");
 
-                //set type
+                // set type
                 if (typeIsChecked)
-                    if(main.isChecked())
+                    if (main.isChecked())
                         recipe.setType(Recipe.recipeType.MAIN);
-                    else if(dessert.isChecked())
+                    else if (dessert.isChecked())
                         recipe.setType(Recipe.recipeType.DESSERT);
-                    else if(salad.isChecked())
+                    else if (salad.isChecked())
                         recipe.setType(Recipe.recipeType.SALAD);
-                    else if(soup.isChecked())
+                    else if (soup.isChecked())
                         recipe.setType(Recipe.recipeType.SOUP);
-                    else if(appetizer.isChecked())
+                    else if (appetizer.isChecked())
                         recipe.setType(Recipe.recipeType.APPETIZER);
                     else
                         recipe.setType(null);
 
-                //set skill level
+                // set skill level
                 if (begginer.isChecked())
                     recipe.setSkillLevel(UserProfile.skillLevel.BEGINNER);
                 else if (intermediate.isChecked())
@@ -197,40 +199,51 @@ public class AddRecipe extends AppCompatActivity {
                 else if (pro.isChecked())
                     recipe.setSkillLevel(UserProfile.skillLevel.PRO);
 
-                //set author to be current user
-                MyApplication app = ((MyApplication)getApplicationContext());
+                // set author to be current user
+                MyApplication app = ((MyApplication) getApplicationContext());
                 recipe.setAuthor(app.getUser().getEmail());
 
-                //set release time for recipe
+                // set release time for recipe
                 recipe.setReleaseDate(new Date(System.currentTimeMillis()));
 
-                //set recipe name
+                // set recipe name
                 recipe.setName(title.getText().toString().trim());
 
                 // Set description
                 recipe.setDescription(description.getText().toString());
 
-                if (!legalRecipe){
+                if (!legalRecipe) {
                     progressDialog.dismiss();
-                    Toast toast = Toast.makeText(AddRecipe.this, "Title, instructions and ingredients\n" +
-                            "are mandatory fields", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(AddRecipe.this,
+                            "Title, instructions and ingredients\n" + "are mandatory fields", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                     return;
                 }
 
-                //add the recipe to the database
+                // add the recipe to the database
+                Object response;
                 try {
-                    recipe = (Recipe) new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+                    response = new DatabaseServiceTask("addRecipe", app).execute(recipe).get();
+
+                    if (!(response instanceof Recipe))
+                        if (response instanceof Exception)
+                            throw (Exception) response;
+
+
+                    Recipe recipe = null;
+                    if (response instanceof Recipe)
+                        recipe = (Recipe) response;
+
                     Toast.makeText(AddRecipe.this, "Recipe Added", Toast.LENGTH_SHORT);
                     app.setRecipe(recipe);
                     startActivity(new Intent(AddRecipe.this, RecipePage.class));
-                }
-                catch (ExecutionException | InterruptedException e) {
+                } catch (Exception e) {
                     Toast toast = Toast.makeText(AddRecipe.this, "Failed to add new Recipe", Toast.LENGTH_SHORT);
                     toast.setGravity(Gravity.CENTER, 0, 0);
                     toast.show();
                 }
+                progressDialog.dismiss();
             }
         });
 
@@ -238,10 +251,14 @@ public class AddRecipe extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                finish();
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                sharedpreferences.edit().remove("Email").apply();
+                sharedpreferences.edit().remove("Password").apply();
+                app.log_out();
+                finishAffinity();
                 startActivity(new Intent(AddRecipe.this, MainActivity.class));
                 break;
             }
@@ -251,7 +268,12 @@ public class AddRecipe extends AppCompatActivity {
                 break;
             }
             case R.id.home_page_button_user_menu: {
+                app.setHome(true);
                 startActivity(new Intent(AddRecipe.this, HomePage.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(AddRecipe.this, Settings.class));
                 break;
             }
 

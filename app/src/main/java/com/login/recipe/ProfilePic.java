@@ -4,6 +4,7 @@ public class ProfilePic {
 
     private byte[] picture;
 
+    @SuppressWarnings("WeakerAccess")
     public ProfilePic(byte[] picture) {
         this.picture = picture;
     }
@@ -18,6 +19,4 @@ public class ProfilePic {
         this.picture = picture;
     }
 
-
 }
-

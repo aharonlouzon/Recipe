@@ -7,11 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import java.util.concurrent.ExecutionException;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-
-public class MyHolder extends RecyclerView.ViewHolder{
+public class MyHolder extends RecyclerView.ViewHolder {
 
     ImageView imageView;
     TextView title, description;
@@ -23,7 +24,7 @@ public class MyHolder extends RecyclerView.ViewHolder{
     MyHolder(@NonNull View itemView) {
         super(itemView);
         progressDialog = new ProgressDialog(itemView.getContext());
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
         this.imageView = itemView.findViewById(R.id.card_image);
         this.title = itemView.findViewById(R.id.model_title);
         this.description = itemView.findViewById(R.id.model_card_detail);
@@ -53,13 +54,12 @@ public class MyHolder extends RecyclerView.ViewHolder{
         this.description = description;
     }
 
-    private Recipe getRecipe(){
+    private Recipe getRecipe() {
 
         // get recipe by id
         try {
             recipe = (Recipe) new DatabaseServiceTask("getRecipe", app).execute(this.recipeId).get();
-        }
-        catch (ExecutionException | InterruptedException ignored) {
+        } catch (ExecutionException | InterruptedException ignored) {
 
         }
 

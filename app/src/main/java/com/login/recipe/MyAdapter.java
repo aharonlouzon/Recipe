@@ -17,7 +17,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     private Context c;
     private RecipeList models;
 
-
     MyAdapter(Context c, RecipeList models) {
         this.c = c;
         this.models = models;
@@ -26,7 +25,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model, null );
+        @SuppressLint("InflateParams")
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model, null);
         return new MyHolder(v);
     }
 
@@ -35,8 +35,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.title.setText(models.get(position).getName());
         holder.description.setText(models.get(position).getName());
         holder.setRecipeId(models.get(position).getRecipeId());
-        if(models.get(position).getImages().size() > 0){
-            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(position).getImages().get(0),0, models.get(position).getImages().get(0).length);
+        if (models.get(position).getImages().size() > 0) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(position).getImages().get(0), 0,
+                    models.get(position).getImages().get(0).length);
             holder.imageView.setImageBitmap(bitmap);
         }
 

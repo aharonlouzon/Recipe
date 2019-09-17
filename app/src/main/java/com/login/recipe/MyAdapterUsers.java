@@ -11,8 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
+
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
@@ -21,23 +22,24 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
     private ArrayList<String> models;
     private MyApplication app;
 
-
     MyAdapterUsers(Context c, ArrayList<String> models) {
         this.c = c;
         this.models = models;
-        app = ((MyApplication)getApplicationContext());
+        app = ((MyApplication) getApplicationContext());
     }
 
     @NonNull
     @Override
     public MyHolderUsers onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user, null );
+        @SuppressLint("InflateParams")
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.user, null);
         return new MyHolderUsers(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MyHolderUsers holder, int position) {
-        if(models.size() > 0){
+        if (models.size() > 0) {
             UserProfile user = getUser(models.get(position));
             holder.setUser(user);
             if (user.getPicture() != null) {
@@ -49,6 +51,8 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
                 holder.button.setText("unfollow");
             else
                 holder.button.setText("follow");
+            if (user.getEmail().equals(app.getUser().getEmail()))
+                holder.button.setVisibility(View.GONE);
             String name = user.getFirstName() + " " + user.getLastName();
             holder.userName.setText(name);
         }
@@ -57,12 +61,21 @@ public class MyAdapterUsers extends RecyclerView.Adapter<MyHolderUsers> {
         holder.itemView.startAnimation(animation);
     }
 
-    private UserProfile getUser(String userEmail){
+    private UserProfile getUser(String userEmail) {
+        Object response;
         try {
-            UserProfile user = (UserProfile) new DatabaseServiceTask("getUser", app).execute(userEmail).get();
+            response = new DatabaseServiceTask("getUser", app).execute(userEmail).get();
+
+            if (!(response instanceof UserProfile))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            UserProfile user = null;
+            if (response instanceof UserProfile)
+                user = (UserProfile) response;
+
             return user;
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+        } catch (Exception e) {
             return new UserProfile();
         }
     }
