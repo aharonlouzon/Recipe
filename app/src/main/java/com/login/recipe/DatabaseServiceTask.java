@@ -40,14 +40,10 @@ public class DatabaseServiceTask extends AsyncTask<Object, Integer, Object> {
                     result = database.changeProfilePic((byte[]) objects[0], (String) objects[1]);
                     break;
                 case "updateUserProfile":
-                    // objects[0] is email. objects[1] is new password. objects[2] is newFirstName.
-                    // objects[3] is newLastName.
-                    // objects[4] is newCountry. objects[5] is newCuisines (array). objects[6] is
-                    // newSkillLevel (of type skilllevel).
-                    result = database.updateUserProfile((String) objects[0], (String) objects[1], (String) objects[2],
-                            (String) objects[3], (String) objects[4], (String[]) objects[5],
-                            (UserProfile.skillLevel) objects[6]);
-                    break;
+                    // objects[0] is email. objects[1] is new password. objects[2] is newFirstName. objects[3] is newLastName.
+                    // objects[4] is newCountry. objects[5] is newCuisines (array). objects[6] is newSkillLevel (of type skilllevel).
+                    result = database.updateUserProfileString((String) objects[0], (String) objects[1], (String) objects[2],
+                                                              (String) objects[3], (String) objects[4], (String[]) objects[5], (UserProfile.skillLevel) objects[6]);
                 case "addFollower":
                     // objects[0] is followedEmail. objects[1] is follower email.
                     result = database.addFollower((String) objects[0], (String) objects[1]);
@@ -73,10 +69,8 @@ public class DatabaseServiceTask extends AsyncTask<Object, Integer, Object> {
                     result = database.getFollowedRecipes((String) objects[0]);
                     break;
                 case "searchRecipes":
-                    // objects[0] is skill, objects[1] is cuisine array, objects[2] is type,
-                    // objects[3] is author email, objects[4] is freeText
-                    result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String[]) objects[1],
-                            (Recipe.recipeType) objects[2], (String) objects[3], (String) objects[4]);
+                    // objects[0] is skill, objects[1] is cuisine array, objects[2] is type, objects[3] is author email, objects[4] is freeText
+                    result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String[]) objects[1], (Recipe.recipeType) objects[2], (String) objects[3], (String) objects[4]);
                     break;
                 case "addComment":
                     // objects[0] is recipe ID. objects[1] is Comment
