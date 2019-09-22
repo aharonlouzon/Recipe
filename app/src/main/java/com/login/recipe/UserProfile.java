@@ -13,7 +13,9 @@ import java.util.concurrent.ExecutionException;
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class UserProfile implements Serializable {
 
-    public enum skillLevel{BEGINNER, INTERMEDIATE, PRO}
+    public enum skillLevel {
+        BEGINNER, INTERMEDIATE, PRO
+    }
 
     private String email;
     private String firstName;
@@ -180,7 +182,7 @@ public class UserProfile implements Serializable {
         }
     }
 
-    public void follow(String userEmail, String followEmail, Context context, MyApplication app){
+    public void follow(String userEmail, String followEmail, Context context, MyApplication app) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
@@ -191,8 +193,7 @@ public class UserProfile implements Serializable {
             response = (UserProfile) new DatabaseServiceTask("addFollower", app).execute(userEmail, followEmail).get();
             app.setUser(response);
             progressDialog.dismiss();
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+        } catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
@@ -200,7 +201,7 @@ public class UserProfile implements Serializable {
 
     }
 
-    public void unFollow(String userEmail, String followEmail, Context context, MyApplication app){
+    public void unFollow(String userEmail, String followEmail, Context context, MyApplication app) {
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
@@ -208,11 +209,11 @@ public class UserProfile implements Serializable {
         UserProfile response;
         // unfollow
         try {
-            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail).get();
+            response = (UserProfile) new DatabaseServiceTask("deleteFollower", app).execute(userEmail, followEmail)
+                    .get();
             app.setUser(response);
             progressDialog.dismiss();
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+        } catch (ExecutionException | InterruptedException | ClassCastException e) {
             Toast toast = Toast.makeText(context, "Failed to follow user", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();

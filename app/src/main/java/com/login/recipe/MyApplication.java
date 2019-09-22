@@ -3,6 +3,8 @@ package com.login.recipe;
 import android.app.Application;
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+
 public class MyApplication extends Application {
 
     private UserProfile user;
@@ -13,11 +15,13 @@ public class MyApplication extends Application {
     private String searchByEmail;
     private Recipe.recipeType searchByType;
     private UserProfile.skillLevel searchBySkills;
-    private String searchByCuisine;
+    private ArrayList<String> searchByCuisine = new ArrayList<>();
     private Bitmap imageShow;
     private UserProfile visitedUser;
     private String userListType;
     private boolean isMyArea = true;
+    private boolean isHome = true;
+    private UserProfile userListResource;
 
     public UserProfile getUser() {
         return user;
@@ -48,7 +52,10 @@ public class MyApplication extends Application {
     }
 
     public String getSearchByFreeText() {
-        return searchByFreeText;
+        if (this.isHome)
+            return null;
+        else
+            return searchByFreeText;
     }
 
     public void setSearchByFreeText(String searchByFreeText) {
@@ -56,7 +63,11 @@ public class MyApplication extends Application {
     }
 
     public String getSearchByEmail() {
-        return searchByEmail;
+
+        if (this.isHome)
+            return null;
+        else
+            return searchByEmail;
     }
 
     public void setSearchByEmail(String searchByEmail) {
@@ -64,31 +75,41 @@ public class MyApplication extends Application {
     }
 
     public Recipe.recipeType getSearchByType() {
-        return searchByType;
+
+        if (this.isHome)
+            return null;
+        else
+            return searchByType;
     }
 
     public void setSearchByType(Recipe.recipeType searchByType) {
         this.searchByType = searchByType;
     }
 
-    public String getSearchByCuisine() {
-        return searchByCuisine;
+    public String[] getSearchByCuisine() {
+        if (this.isHome || (this.searchByCuisine.size() == 0))
+            return null;
+        else
+            return this.searchByCuisine.toArray(new String[searchByCuisine.size()]);
     }
 
     public void setSearchByCuisine(String searchByCuisine) {
-        this.searchByCuisine = searchByCuisine;
+        this.searchByCuisine.add(searchByCuisine);
     }
 
     public UserProfile.skillLevel getSearchBySkills() {
-        return searchBySkills;
+
+        if (this.isHome)
+            return getUser().getCookingSkills();
+        else
+            return searchBySkills;
     }
 
     public void setSearchBySkills(UserProfile.skillLevel searchBySkills) {
         this.searchBySkills = searchBySkills;
     }
 
-    @SuppressWarnings("unused")
-    public void log_out(){
+    public void log_out() {
         this.user = null;
         this.newPassword = null;
         this.recipe = null;
@@ -124,5 +145,21 @@ public class MyApplication extends Application {
 
     public void setIsMyArea(boolean myArea) {
         this.isMyArea = myArea;
+    }
+
+    public boolean isHome() {
+        return isHome;
+    }
+
+    public void setHome(boolean home) {
+        isHome = home;
+    }
+
+    public UserProfile getUserListResource() {
+        return userListResource;
+    }
+
+    public void setUserListResource(UserProfile userListResource) {
+        this.userListResource = userListResource;
     }
 }

@@ -13,9 +13,8 @@
         android:layout_width="225dp"
         android:layout_height="60dp"
         android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginTop="35dp"
-        android:text="Welcom!"
+        android:text="@string/welcom"
         android:textSize="36sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +24,6 @@
         android:layout_width="289dp"
         android:layout_height="56dp"
         android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginTop="8dp"
         android:text="@string/welcome_message"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,48 +35,47 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginLeft="45dp"
         android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="@string/first_name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome_message" />
+        app:layout_constraintTop_toBottomOf="@+id/welcome_message"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/last_name_text_set_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_marginTop="3dp"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="@string/last_name"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/first_name_set_user" />
+        app:layout_constraintTop_toBottomOf="@+id/first_name_set_user"
+        tools:ignore="Autofill" />
 
     <EditText
         android:id="@+id/country_text_set_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_marginTop="3dp"
         android:ems="10"
-        android:hint="Country"
+        android:hint="@string/country"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/last_name_text_set_user" />
+        app:layout_constraintTop_toBottomOf="@+id/last_name_text_set_user"
+        tools:ignore="Autofill" />
 
     <TextView
         android:id="@+id/i_am_text_view_set_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_marginTop="3dp"
-        android:text="My cooking skills"
+        android:text="@string/my_cooking_skills"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/country_text_set_user" />
 
@@ -87,7 +84,6 @@
         android:layout_width="210dp"
         android:layout_height="85dp"
         android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
         android:layout_marginTop="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/i_am_text_view_set_user">
@@ -97,21 +93,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Burn an omelette" />
+            android:text="@string/burn_an_omelette" />
 
         <RadioButton
             android:id="@+id/intermediate_set_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Know my shit" />
+            android:text="@string/know_my_shit" />
 
         <RadioButton
             android:id="@+id/experienced_set_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Professional Chef!" />
+            android:text="@string/professional_chef" />
 
     </RadioGroup>
 
@@ -120,9 +116,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="96dp"
-        android:text="Continue..."
+        android:text="@string/_continue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radio_group_set_user" />
 

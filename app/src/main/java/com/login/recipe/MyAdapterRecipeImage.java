@@ -28,14 +28,14 @@ public class MyAdapterRecipeImage extends RecyclerView.Adapter<MyHolderRecipeIma
     @NonNull
     @Override
     public MyHolderRecipeImage onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        @SuppressLint("InflateParams") View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_image, null );
+        @SuppressLint("InflateParams") View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.model_image, null);
         return new MyHolderRecipeImage(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyHolderRecipeImage holder, int position) {
-        if(models.size() > 0){
-            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(0),0, models.get(0).length);
+        if (models.size() > 0) {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(0), 0, models.get(0).length);
             holder.setBitmap(bitmap);
             holder.imageView.setImageBitmap(bitmap);
         }

@@ -2,7 +2,7 @@ package com.login.recipe;
 
 import android.os.AsyncTask;
 
-public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
+public class DatabaseServiceTask extends AsyncTask<Object, Integer, Object> {
 
     private String taskName;
     private MyApplication app;
@@ -67,6 +67,7 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                 case "getFollowedRecipes":
                     // objects[0] is User email.
                     result = database.getFollowedRecipes((String) objects[0]);
+                    break;
                 case "searchRecipes":
                     // objects[0] is skill, objects[1] is cuisine array, objects[2] is type, objects[3] is author email, objects[4] is freeText
                     result = database.searchRecipes((UserProfile.skillLevel) objects[0], (String[]) objects[1], (Recipe.recipeType) objects[2], (String) objects[3], (String) objects[4]);
@@ -80,8 +81,7 @@ public class DatabaseServiceTask extends AsyncTask <Object, Integer , Object> {
                     result = database.addPicture((int) objects[0], (byte[]) objects[1]);
                     break;
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return e;
         }
 

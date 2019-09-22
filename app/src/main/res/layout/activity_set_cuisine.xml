@@ -11,9 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="150dp"
-        android:text="Asian"
+        android:text="@string/asian"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
 
@@ -22,9 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="24dp"
-        android:text="Middle Eastern"
+        android:text="@string/middle_eastern_new_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/asian_rec_category" />
 
@@ -33,9 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="150dp"
-        android:text="European"
+        android:text="@string/european"
         app:layout_constraintStart_toStartOf="@+id/asian_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/cuisine_chose_msg_text_set_cuisine" />
 
@@ -44,9 +41,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="24dp"
-        android:text="Italian"
+        android:text="@string/italian"
         app:layout_constraintStart_toStartOf="@+id/middle_eastern_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/european_rec_categories" />
 
@@ -55,9 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
-        android:layout_marginLeft="80dp"
         android:layout_marginTop="24dp"
-        android:text="Meat"
+        android:text="@string/meat"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/middle_eastern_rec_category" />
 
@@ -66,9 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"
         android:layout_marginTop="24dp"
-        android:text="Baking"
+        android:text="@string/baking"
         app:layout_constraintStart_toStartOf="@+id/meat_rec_category"
         app:layout_constraintTop_toBottomOf="@+id/italian_rec_category" />
 
@@ -94,9 +88,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="75dp"
-        android:layout_marginRight="75dp"
         android:background="#E91E63"
-        android:text="Continue"
+        android:text="@string/_continue"
         android:textColor="#FCFAFA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/baking_rec_category" />

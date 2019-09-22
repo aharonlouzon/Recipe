@@ -4,13 +4,17 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Date;
+
 import com.login.recipe.UserProfile.skillLevel;
+
 import java.util.HashMap;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class Recipe implements Serializable {
 
-    public enum recipeType {APPETIZER, SOUP, SALAD, MAIN, DESSERT}
+    public enum recipeType {
+        APPETIZER, SOUP, SALAD, MAIN, DESSERT
+    }
 
     private String name;
     private int recipeId;
@@ -33,7 +37,8 @@ public class Recipe implements Serializable {
         this.instructions = new ArrayList<>();
     }
 
-    public Recipe(String name, String description, recipeType type, skillLevel skillLevel, String authorEmail, Date releaseDate) {
+    public Recipe(String name, String description, recipeType type, skillLevel skillLevel, String authorEmail,
+                  Date releaseDate) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -46,8 +51,6 @@ public class Recipe implements Serializable {
         this.ingredients = new HashMap<>();
         this.instructions = new ArrayList<>();
     }
-
-
 
     public Recipe(String name, String description, recipeType type, skillLevel skillLevel,
                   ArrayList<String> instructions, ArrayList<String> cuisines, ArrayList<byte[]> images,

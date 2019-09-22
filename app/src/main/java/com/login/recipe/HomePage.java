@@ -17,18 +17,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 import com.facebook.FacebookSdk;
-import java.util.concurrent.ExecutionException;
 
 public class HomePage extends AppCompatActivity {
 
     private MyApplication app;
-    private UserProfile user;
     private ProgressDialog progressDialog;
     private RecipeList recipeList;
-    private SharedPreferences sharedpreferences;
     private static final String preferences = "recipeAppPrefs";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +36,7 @@ public class HomePage extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         progressDialog = new ProgressDialog(this);
-        app = ((MyApplication)getApplicationContext());
-        user = app.getUser();
+        app = ((MyApplication) getApplicationContext());
         RecyclerView recyclerView = findViewById(R.id.home_page_recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         getRecipes();
@@ -60,22 +56,30 @@ public class HomePage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private RecipeList getRecipes(){
+    private void getRecipes() {
         progressDialog.setMessage("Cooking...");
         progressDialog.show();
+        Object response;
 
         // get user's recipes
         try {
-            recipeList = (RecipeList) new DatabaseServiceTask("getUsersRecipes", app).execute(user.getEmail()).get();
-//            recipeList = (RecipeList) new DatabaseServiceTask("searchRecipe", app).execute(null, null, null, null, null).get();
-            progressDialog.dismiss();
-            return recipeList;
-        }
-        catch (ExecutionException | InterruptedException | ClassCastException e) {
+            response = new DatabaseServiceTask("searchRecipes", app).execute(app.getSearchBySkills(),
+                    app.getSearchByCuisine(), app.getSearchByType(), app.getSearchByEmail(), app.getSearchByFreeText())
+                    .get();
+
+            if (!(response instanceof RecipeList))
+                if (response instanceof Exception)
+                    throw (Exception) response;
+
+            if (response instanceof RecipeList)
+                recipeList = (RecipeList) response;
+        } catch (Exception e) {
             Toast toast = Toast.makeText(HomePage.this, "Failed to get user's recipes", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
-            return new RecipeList();
+            recipeList = new RecipeList();
+        } finally {
+            progressDialog.dismiss();
         }
     }
 
@@ -88,10 +92,10 @@ public class HomePage extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
 
             case R.id.logout_button: {
-                sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
+                SharedPreferences sharedpreferences = getSharedPreferences(preferences, Context.MODE_PRIVATE);
                 sharedpreferences.edit().remove("Email").apply();
                 sharedpreferences.edit().remove("Password").apply();
                 app.log_out();
@@ -102,6 +106,10 @@ public class HomePage extends AppCompatActivity {
             case R.id.my_area_button_user_menu: {
                 app.setIsMyArea(true);
                 startActivity(new Intent(HomePage.this, MyArea.class));
+                break;
+            }
+            case R.id.account_button: {
+                startActivity(new Intent(HomePage.this, Settings.class));
                 break;
             }
 
