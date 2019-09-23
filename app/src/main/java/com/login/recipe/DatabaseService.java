@@ -153,50 +153,12 @@ public class DatabaseService {
     }
 
     /**
-     * change a UserProfiles details. Cannot change email. If not changing a value,
-     * set its parameter to null.
-     *
-     * @return if successful - the userProfile with the changes made.
-     * @throws Exception   if userEmail doesn't exist or if invalid input. exception
-     *                     message - "invalid email or input"
-     * @throws IOException if error in connection to the server
-     */
-    public UserProfile updateUserProfile(String userEmail, String newPassword, String newFirstName, String newLastName,
-                                         String newCountry, String[] newCuisines, skillLevel newSkillLevel) throws Exception, IOException {
-        String newSkillString = null;
-        if (newSkillLevel != null)
-            newSkillString = newSkillLevel.name();
-        String newCuisinesString = null;
-        if (newCuisines != null && newCuisines.length != 0) {
-            newCuisinesString = "";
-            for (int i = 0; i < newCuisines.length; i++) {
-                if (i == newCuisines.length - 1)
-                    newCuisinesString += newCuisines[i];
-                else
-                    newCuisinesString += newCuisines[i] + "+";
-            }
-        }
-
-        String url = BASE_URL + "userProfile/updateUserProfile/" + userEmail + "/" + newPassword + "/" + newFirstName
-                + "/" + newLastName + "/" + newCountry + "/" + newCuisinesString + "/" + newSkillString;
-        try (InputStreamReader reader = new InputStreamReader(new URL(url).openStream())) {
-            UserProfile user = new Gson().fromJson(reader, UserProfile.class);
-            if (user == null)
-                throw new Exception("invalid email or input");
-            else
-                return user;
-        } catch (IOException e) {
-            throw e;
-        }
-    }
-
-    /**
      * change a UserProfiles details. Cannot change email. If not changing a value, set its parameter to null.
      * @return if successful - the userProfile with the changes made.
      * @throws Exception if userEmail doesn't exist or if invalid input. exception message - "invalid email or input"
      * @throws IOException if error in connection to the server
      */
-    public UserProfile updateUserProfileString(String userEmail, String newPassword, String newFirstName, String newLastName,
+    public UserProfile updateUserProfile(String userEmail, String newPassword, String newFirstName, String newLastName,
                                                String newCountry, String[] newCuisines, skillLevel newSkillLevel) throws Exception, IOException {
         String newSkillString = null;
         if (newSkillLevel != null)
@@ -220,8 +182,7 @@ public class DatabaseService {
                 throw new Exception("invalid email or input");
             else
                 return user;
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             throw e;
         }
     }
