@@ -213,7 +213,7 @@
             android:id="@+id/checkBoxSalad"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:text="@string/salad"/>
+            android:text="@string/salad" />
 
     </RadioGroup>
 

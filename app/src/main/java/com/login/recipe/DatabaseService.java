@@ -135,7 +135,7 @@ public class DatabaseService {
             connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("Method", "POST");
             writer = new OutputStreamWriter(connection.getOutputStream());
-            writer.write(new Gson().toJson(new ProfilePic(picture)));
+            writer.write(new Gson().toJson(picture));
             writer.flush();
 
             reader = new InputStreamReader(connection.getInputStream());
