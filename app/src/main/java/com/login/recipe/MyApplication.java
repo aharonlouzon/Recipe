@@ -88,7 +88,7 @@ public class MyApplication extends Application {
 
     public String[] getSearchByCuisine() {
         if (this.isHome || (this.searchByCuisine.size() == 0))
-            return null;
+            return this.user.getCuisines().toArray(new String[user.getCuisines().size()]);
         else
             return this.searchByCuisine.toArray(new String[searchByCuisine.size()]);
     }
@@ -98,9 +98,8 @@ public class MyApplication extends Application {
     }
 
     public UserProfile.skillLevel getSearchBySkills() {
-
         if (this.isHome)
-            return getUser().getCookingSkills();
+            return null;
         else
             return searchBySkills;
     }
@@ -161,5 +160,13 @@ public class MyApplication extends Application {
 
     public void setUserListResource(UserProfile userListResource) {
         this.userListResource = userListResource;
+    }
+
+    public void resetSearchParams(){
+        this.searchByFreeText = null;
+        this.searchByEmail = null;
+        this.searchByType = null;
+        this.searchBySkills = null;
+        this.searchByCuisine  = new ArrayList<>();
     }
 }

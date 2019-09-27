@@ -47,6 +47,17 @@ public class RecipePage extends AppCompatActivity {
         description.setText(recipe.getDescription());
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
+        TextView type = findViewById(R.id.recipe_page_type);
+        if (recipe.getType() == Recipe.recipeType.APPETIZER)
+            type.setText(getString(R.string.appetizer));
+        else if (recipe.getType() == Recipe.recipeType.SALAD)
+            type.setText(getString(R.string.salad));
+        else if (recipe.getType() == Recipe.recipeType.SOUP)
+            type.setText(getString(R.string.soup));
+        else if (recipe.getType() == Recipe.recipeType.MAIN)
+            type.setText(getString(R.string.main));
+        else
+            type.setText(getString(R.string.dessert));
 
         // author
         final TextView author = findViewById(R.id.recipe_page_author);

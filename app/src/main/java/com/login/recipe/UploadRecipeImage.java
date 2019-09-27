@@ -115,6 +115,7 @@ public class UploadRecipeImage extends AppCompatActivity {
                 Toast toast = Toast.makeText(UploadRecipeImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
+                startActivity(new Intent(UploadRecipeImage.this, RecipePage.class));
             }
         }
     }

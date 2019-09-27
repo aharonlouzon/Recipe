@@ -63,9 +63,12 @@ public class HomePage extends AppCompatActivity {
 
         // get user's recipes
         try {
-            response = new DatabaseServiceTask("searchRecipes", app).execute(app.getSearchBySkills(),
-                    app.getSearchByCuisine(), app.getSearchByType(), app.getSearchByEmail(), app.getSearchByFreeText())
-                    .get();
+            response = new DatabaseServiceTask("searchRecipes",
+                    app).execute(app.getSearchBySkills(),
+                                 app.getSearchByCuisine(),
+                                 app.getSearchByType(),
+                                 app.getSearchByEmail(),
+                                 app.getSearchByFreeText()).get();
 
             if (!(response instanceof RecipeList))
                 if (response instanceof Exception)
@@ -110,6 +113,11 @@ public class HomePage extends AppCompatActivity {
             }
             case R.id.account_button: {
                 startActivity(new Intent(HomePage.this, Settings.class));
+                break;
+            }
+            case R.id.home_page_button_user_menu: {
+                app.setHome(true);
+                startActivity(new Intent(HomePage.this, HomePage.class));
                 break;
             }
 
