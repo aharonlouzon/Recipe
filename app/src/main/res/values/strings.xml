@@ -51,7 +51,7 @@
     <string name="main">Main</string>
     <string name="salad">Salad</string>
     <string name="recipe_skill">Skill Level:</string>
-    <string name="begginer">Begginer</string>
+    <string name="begginer">Beginner</string>
     <string name="intermediate">Intermediate</string>
     <string name="pro">Pro</string>
     <string name="descriptions">Descriptions</string>
@@ -85,4 +85,6 @@
     <string name="last_name">Last Name</string>
     <string name="country">Country</string>
     <string name="my_cooking_skills">My cooking skills</string>
+    <string name="recipe_appetizer">Appetizer</string>
+    <string name="recipe_salad">Salad</string>
 </resources>
