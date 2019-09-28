@@ -88,26 +88,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/HomePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/MyArea.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/RecipePage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/SearchPage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UploadRecipeImage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile$skillLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile$skillLevel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/bin/src/main/java/com/login/recipe/UserProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/HomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_recipe_page.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -127,16 +115,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="148" selection-start-line="148" selection-end-line="148" />
+            <state relative-caret-position="314">
+              <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="117" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="102" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="555">
+              <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic1.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic2.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic3.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic5.jpg">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/male_avatar.png">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -153,27 +196,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="valueResourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -211,9 +242,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UserProfile.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolder.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/Recipe.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SetUser.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_recipe.xml" />
@@ -245,7 +273,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyCommentAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ImageShow.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/AddRecipe.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterUsers.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyHolderRecipeImage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/ProfilePic.java" />
@@ -260,8 +287,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyApplication.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/SearchPage.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/test.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/TestApp.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java" />
       </list>
     </option>
   </component>
@@ -546,10 +577,36 @@
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.login.recipe.TestApp" />
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.login.recipe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.login.recipe.test" />
+      <module name="app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.login.recipe.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Android App.SetCuisine" />
-        <item itemvalue="Android App.SetCuisine" />
+        <item itemvalue="Application.TestApp" />
+        <item itemvalue="Application.test" />
         <item itemvalue="Android App.SetCuisine" />
         <item itemvalue="Android App.SetCuisine" />
         <item itemvalue="Android App.SetCuisine" />
@@ -580,7 +637,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1680" height="1027" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.24969475" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.32967034" />
@@ -592,13 +648,13 @@
       <window_info id="Capture Tool" order="7" />
       <window_info x="435" y="343" width="141" height="406" id="Component Tree" order="8" side_tool="true" type="FLOATING" />
       <window_info content_ui="combo" id="Project" order="9" visible="true" weight="0.21253072" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4963145" weight="0.24235807" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4963145" weight="0.04257642" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39082968" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3286026" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" visible="true" weight="0.041484717" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.37991267" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" weight="0.37991267" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.31113538" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50307125" side_tool="true" weight="0.3286026" />
-      <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.25655022" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" visible="true" weight="0.25655022" />
       <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" weight="0.34716156" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49692875" weight="0.3286026" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3286026" />
@@ -622,14 +678,14 @@
       <window_info id="Capture Tool" order="7" />
       <window_info x="435" y="343" width="141" height="406" id="Component Tree" order="8" side_tool="true" type="FLOATING" />
       <window_info active="true" content_ui="combo" id="Project" order="9" visible="true" weight="0.21253072" />
-      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4963145" visible="true" weight="0.24235807" />
+      <window_info anchor="bottom" id="Run" order="0" sideWeight="0.4963145" weight="0.24235807" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4969475" weight="0.39082968" />
       <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.4993895" weight="0.3286026" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" weight="0.30021834" />
-      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.041439477" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49508598" visible="true" weight="0.36462882" />
+      <window_info anchor="bottom" id="Terminal" order="4" sideWeight="0.4987715" weight="0.31113538" />
       <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50307125" side_tool="true" weight="0.3286026" />
       <window_info anchor="bottom" id="Version Control" order="6" sideWeight="0.4993895" weight="0.25655022" />
-      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" weight="0.4967249" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.4938575" weight="0.34716156" />
       <window_info anchor="bottom" id="Find" order="8" sideWeight="0.49692875" weight="0.3286026" />
       <window_info anchor="bottom" id="Android Profiler" order="9" weight="0.3286026" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -707,81 +763,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_home_page.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding>
-            <element signature="e#355#395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_my_area.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_recipe_page.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-          <folding>
-            <element signature="e#398#438#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_search_page.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_set_user.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="39" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-          <folding>
-            <element signature="e#701#717#0" expanded="true" />
-            <element signature="e#1165#1190#0" expanded="true" />
-            <element signature="e#1327#1352#0" expanded="true" />
-            <element signature="e#1559#1579#0" expanded="true" />
-            <element signature="e#2028#2047#0" expanded="true" />
-            <element signature="e#2498#2515#0" expanded="true" />
-            <element signature="e#2947#2974#0" expanded="true" />
-            <element signature="e#3690#3716#0" expanded="true" />
-            <element signature="e#3954#3976#0" expanded="true" />
-            <element signature="e#4213#4240#0" expanded="true" />
-            <element signature="e#4520#4539#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_users_list.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/model_image.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/user.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="12" selection-start-line="42" selection-start-column="12" selection-end-line="42" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_recipe.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor">
@@ -843,7 +824,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/ForgotPassword.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
+        <state relative-caret-position="291">
           <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -893,7 +874,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/RegisterPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
+        <state relative-caret-position="306">
           <caret line="31" column="36" selection-start-line="31" selection-start-column="36" selection-end-line="31" selection-end-column="36" />
         </state>
       </provider>
@@ -915,17 +896,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="84" column="12" selection-start-line="84" selection-start-column="12" selection-end-line="90" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadUserImage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        <state relative-caret-position="282">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1048,23 +1022,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="35" column="53" selection-start-line="35" selection-start-column="53" selection-end-line="35" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/RecipePage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
@@ -1077,7 +1034,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UsersList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
+        <state relative-caret-position="225">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1097,13 +1054,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/TestApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="19" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic2.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic3.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic5.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/male_avatar.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyArea.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="148" selection-start-line="148" selection-end-line="148" />
+        <state relative-caret-position="91">
+          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="102" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/debugAndroidTest/processDebugAndroidTestResources/r/com/login/recipe/test/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/UploadRecipeImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="97" column="16" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="117" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pic1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-28/android/content/SharedPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/login/recipe/MyAdapterRecipeImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="51" lean-forward="true" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
