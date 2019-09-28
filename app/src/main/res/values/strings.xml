@@ -8,7 +8,7 @@
     </string>
     <string name="cuisine_chose_msg">
         <![CDATA[Tell us what kind of
-        do you like to cook.]]>
+        food do you like to cook.]]>
     </string>
     <string name="my_area">My Area</string>
     <string name="title_activity_my_area">MyArea</string>
@@ -80,7 +80,7 @@
     <string name="change">Change</string>
     <string name="choose">Choose</string>
     <string name="upload">Upload</string>
-    <string name="welcom">Welcom!</string>
+    <string name="welcom">Welcome!</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="country">Country</string>

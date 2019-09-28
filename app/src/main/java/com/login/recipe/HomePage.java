@@ -63,12 +63,17 @@ public class HomePage extends AppCompatActivity {
 
         // get user's recipes
         try {
-            response = new DatabaseServiceTask("searchRecipes",
-                    app).execute(app.getSearchBySkills(),
-                                 app.getSearchByCuisine(),
-                                 app.getSearchByType(),
-                                 app.getSearchByEmail(),
-                                 app.getSearchByFreeText()).get();
+            if (app.isHome() && app.getUser().getFollowers().size() > 0){
+                response = new DatabaseServiceTask("getFollowedRecipes", app).execute(app.getUser().getEmail()).get();
+
+            } else {
+                response = new DatabaseServiceTask("searchRecipes",
+                        app).execute(app.getSearchBySkills(),
+                        app.getSearchByCuisine(),
+                        app.getSearchByType(),
+                        app.getSearchByEmail(),
+                        app.getSearchByFreeText()).get();
+            }
 
             if (!(response instanceof RecipeList))
                 if (response instanceof Exception)
