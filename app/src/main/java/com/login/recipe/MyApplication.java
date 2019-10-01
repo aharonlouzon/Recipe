@@ -7,6 +7,11 @@ import java.util.ArrayList;
 
 public class MyApplication extends Application {
 
+
+    public enum uploadImageTypes {
+        RECIPE, PROFILE_PICTURE
+    }
+
     private UserProfile user;
     private String newPassword;
     private final DatabaseService database = new DatabaseService();
@@ -22,6 +27,7 @@ public class MyApplication extends Application {
     private boolean isMyArea = true;
     private boolean isHome = true;
     private UserProfile userListResource;
+    private uploadImageTypes uploadImageType;
 
     public UserProfile getUser() {
         return user;
@@ -143,6 +149,14 @@ public class MyApplication extends Application {
 
     public void setUserListResource(UserProfile userListResource) {
         this.userListResource = userListResource;
+    }
+
+    public uploadImageTypes getUploadImageType() {
+        return uploadImageType;
+    }
+
+    public void setUploadImageType(uploadImageTypes uploadImageType) {
+        this.uploadImageType = uploadImageType;
     }
 
     public void resetSearchParams(){
