@@ -68,6 +68,11 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/recipe_page_skill_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
                 android:id="@+id/recipe_page_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>

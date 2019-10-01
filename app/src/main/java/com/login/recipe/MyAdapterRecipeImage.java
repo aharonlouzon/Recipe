@@ -35,7 +35,7 @@ public class MyAdapterRecipeImage extends RecyclerView.Adapter<MyHolderRecipeIma
     @Override
     public void onBindViewHolder(@NonNull MyHolderRecipeImage holder, int position) {
         if (models.size() > 0) {
-            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(0), 0, models.get(0).length);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(models.get(position), 0, models.get(position).length);
             holder.setBitmap(bitmap);
             holder.imageView.setImageBitmap(bitmap);
         }
