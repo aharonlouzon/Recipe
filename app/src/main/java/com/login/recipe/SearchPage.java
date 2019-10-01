@@ -138,7 +138,6 @@ public class SearchPage extends AppCompatActivity {
         final RadioGroup skills = findViewById(R.id.radio_group_skills);
 
         app = ((MyApplication) getApplicationContext());
-        app.resetSearchParams();
         Button search = findViewById(R.id.search_button);
         searchView = findViewById(R.id.free_text_search);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -158,6 +157,9 @@ public class SearchPage extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // reset
+                app.resetSearchParams();
+
                 String freeText = searchView.getQuery().toString();
                 if (freeText.equals(""))
                     app.setSearchByFreeText(null);

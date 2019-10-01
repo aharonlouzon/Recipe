@@ -47,6 +47,9 @@ public class RecipePage extends AppCompatActivity {
         description.setText(recipe.getDescription());
         TextView title = findViewById(R.id.recipe_page_title);
         title.setText(recipe.getName());
+        TextView title_skills = findViewById(R.id.recipe_page_skill_level);
+        title_skills.setText(recipe.getSkillLevel().toString());
+        title.setText(recipe.getName());
         TextView type = findViewById(R.id.recipe_page_type);
         if (recipe.getType() == Recipe.recipeType.APPETIZER)
             type.setText(getString(R.string.appetizer));

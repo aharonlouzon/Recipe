@@ -63,7 +63,7 @@ public class HomePage extends AppCompatActivity {
 
         // get user's recipes
         try {
-            if (app.isHome() && app.getUser().getFollowers().size() > 0){
+            if (app.isHome() && app.getUser().getFollowerOf().size() > 0){
                 response = new DatabaseServiceTask("getFollowedRecipes", app).execute(app.getUser().getEmail()).get();
 
             } else {

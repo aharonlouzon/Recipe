@@ -52,10 +52,7 @@ public class MyApplication extends Application {
     }
 
     public String getSearchByFreeText() {
-        if (this.isHome)
-            return null;
-        else
-            return searchByFreeText;
+        return searchByFreeText;
     }
 
     public void setSearchByFreeText(String searchByFreeText) {
@@ -63,11 +60,7 @@ public class MyApplication extends Application {
     }
 
     public String getSearchByEmail() {
-
-        if (this.isHome)
-            return null;
-        else
-            return searchByEmail;
+        return searchByEmail;
     }
 
     public void setSearchByEmail(String searchByEmail) {
@@ -75,11 +68,7 @@ public class MyApplication extends Application {
     }
 
     public Recipe.recipeType getSearchByType() {
-
-        if (this.isHome)
-            return null;
-        else
-            return searchByType;
+        return searchByType;
     }
 
     public void setSearchByType(Recipe.recipeType searchByType) {
@@ -87,10 +76,7 @@ public class MyApplication extends Application {
     }
 
     public String[] getSearchByCuisine() {
-        if (this.isHome || (this.searchByCuisine.size() == 0))
-            return this.user.getCuisines().toArray(new String[user.getCuisines().size()]);
-        else
-            return this.searchByCuisine.toArray(new String[searchByCuisine.size()]);
+        return this.searchByCuisine.toArray(new String[searchByCuisine.size()]);
     }
 
     public void setSearchByCuisine(String searchByCuisine) {
@@ -98,10 +84,7 @@ public class MyApplication extends Application {
     }
 
     public UserProfile.skillLevel getSearchBySkills() {
-        if (this.isHome)
-            return null;
-        else
-            return searchBySkills;
+        return searchBySkills;
     }
 
     public void setSearchBySkills(UserProfile.skillLevel searchBySkills) {
