@@ -16,13 +16,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Settings"></activity>
         <activity android:name=".UsersList" />
+        <activity android:name=".UploadImage" />
         <activity android:name=".ImageShow" />
-        <activity android:name=".UploadUserImage" />
         <activity
             android:name=".SearchPage"
             android:label="@string/title_activity_search_page"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UploadRecipeImage" />
         <activity
             android:name=".RecipePage"
             android:label="@string/title_activity_recipe_page"

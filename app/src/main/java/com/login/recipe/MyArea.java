@@ -98,7 +98,8 @@ public class MyArea extends AppCompatActivity {
             avatar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(MyArea.this, UploadUserImage.class));
+                    app.setUploadImageType(MyApplication.uploadImageTypes.PROFILE_PICTURE);
+                    startActivity(new Intent(MyArea.this, UploadImage.class));
                 }
             });
         } else

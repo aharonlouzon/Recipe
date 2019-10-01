@@ -89,7 +89,8 @@ public class RecipePage extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RecipePage.this, UploadRecipeImage.class));
+                app.setUploadImageType(MyApplication.uploadImageTypes.RECIPE);
+                startActivity(new Intent(RecipePage.this, UploadImage.class));
             }
         });
 

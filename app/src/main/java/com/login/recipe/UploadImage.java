@@ -18,23 +18,25 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class UploadUserImage extends AppCompatActivity {
+public class UploadImage extends AppCompatActivity {
 
     private ImageView imageView;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     private MyApplication app;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_user_image);
+        setContentView(R.layout.activity_upload_image);
 
         // Initialize Views
-        Button btnChoose = findViewById(R.id.btnChooseUserImage);
-        Button btnUpload = findViewById(R.id.btnUploadUserImage);
-        imageView = findViewById(R.id.imgViewUserImage);
+        Button btnChoose = findViewById(R.id.btnChoose);
+        Button btnUpload = findViewById(R.id.btnUpload);
+        imageView = findViewById(R.id.imgView);
         app = ((MyApplication) getApplicationContext());
+        progressDialog = new ProgressDialog(this);
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +48,12 @@ public class UploadUserImage extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uploadImage();
+                progressDialog.setTitle("Cooking...");
+                progressDialog.show();
+                if (app.getUploadImageType() == MyApplication.uploadImageTypes.RECIPE)
+                    uploadRecipeImage();
+                else
+                    uploadUserImage();
             }
         });
     }
@@ -73,12 +80,9 @@ public class UploadUserImage extends AppCompatActivity {
     }
 
     @SuppressLint("ShowToast")
-    private void uploadImage() {
-
+    private void uploadRecipeImage() {
         if (filePath != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Cooking...");
-            progressDialog.show();
+            Recipe recipe = app.getRecipe();
 
             InputStream iStream;
             byte[] inputData = null;
@@ -87,8 +91,50 @@ public class UploadUserImage extends AppCompatActivity {
                 iStream = getContentResolver().openInputStream(filePath);
                 inputData = getBytes(iStream);
             } catch (Exception e) {
-                Toast.makeText(UploadUserImage.this, "Failed to get image", Toast.LENGTH_SHORT);
-                startActivity(new Intent(UploadUserImage.this, MyArea.class));
+                Toast.makeText(UploadImage.this, "Failed to get image", Toast.LENGTH_SHORT);
+                startActivity(new Intent(UploadImage.this, RecipePage.class));
+            }
+
+            // add the recipe to the database
+            Object response;
+            try {
+                response = new DatabaseServiceTask("addPicture", app).execute(recipe.getRecipeId(), inputData).get();
+
+                if (!(response instanceof Recipe))
+                    if (response instanceof Exception)
+                        throw (Exception) response;
+
+
+                Recipe responseRecipe = null;
+                if (response instanceof Recipe)
+                    responseRecipe = (Recipe) response;
+
+                app.setRecipe(responseRecipe);
+                Toast toast = Toast.makeText(UploadImage.this, "Picture was added to recipe", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(UploadImage.this, RecipePage.class));
+            } catch (Exception e) {
+                Toast toast = Toast.makeText(UploadImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+                startActivity(new Intent(UploadImage.this, RecipePage.class));
+            }
+        }
+    }
+
+    @SuppressLint("ShowToast")
+    private void uploadUserImage() {
+        if (filePath != null) {
+            InputStream iStream;
+            byte[] inputData = null;
+
+            try {
+                iStream = getContentResolver().openInputStream(filePath);
+                inputData = getBytes(iStream);
+            } catch (Exception e) {
+                Toast.makeText(UploadImage.this, "Failed to get image", Toast.LENGTH_SHORT);
+                startActivity(new Intent(UploadImage.this, MyArea.class));
             }
 
             // add the recipe to the database
@@ -107,15 +153,15 @@ public class UploadUserImage extends AppCompatActivity {
 
                 app.setUser(user);
 
-                Toast toast = Toast.makeText(UploadUserImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(UploadImage.this, "Picture was added to user", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-                startActivity(new Intent(UploadUserImage.this, MyArea.class));
+                startActivity(new Intent(UploadImage.this, MyArea.class));
             } catch (Exception e) {
-                Toast toast = Toast.makeText(UploadUserImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(UploadImage.this, "Failed to upload picture", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER, 0, 0);
                 toast.show();
-                startActivity(new Intent(UploadUserImage.this, MyArea.class));
+                startActivity(new Intent(UploadImage.this, MyArea.class));
             }
         }
     }
